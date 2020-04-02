@@ -32,7 +32,6 @@ from inference_utils_2 import load_spectrum_param_data_mat, calc_RMSE_MAE_MSE_Er
 
 #feature importance
 from sklearn.externals.six import StringIO  
-from IPython.display import Image  
 from sklearn.tree import export_graphviz
 #import pydotplus
 import matplotlib.pyplot as plt
@@ -69,7 +68,7 @@ spectral_or_scalar_calc_all = ['scalar','spectral'] # list that contains either 
 
 datetime_str = strftime("%Y%m%d_%H%M%S")
 
-matlab_data_path = '../data/All_data_10_23_19_nonNeg_uniq_NoInvDesign.mat'
+matlab_data_path = 'data/simulated_data.mat'
 
 optional_title_folders='{0}sc_{1}sp_{2}_CPU'.format(train_datasize_fraction_scalar*100, train_datasize_fraction_spectral*100, n_cpus)
 #optional_title_folders='DataSize_study_BigTest'
@@ -157,7 +156,7 @@ time_train = {}
 time_pred = {}
 for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     # folder to save the data
-    save_folder = '../cache/r{0}_'.format(datetime_str) + optional_title_folders + '/' + spectral_or_scalar_calc + '/'
+    save_folder = 'cache/r{0}_'.format(datetime_str) + optional_title_folders + '/' + spectral_or_scalar_calc + '/'
     os.makedirs(save_folder, exist_ok=True)
     
     # preparing features and labels
@@ -182,12 +181,18 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
                 test_size_reduced = 1 - data_size_fraction_here
                 save_folder_here = save_folder+'frctn_'+str(data_size_fraction_here)+'/iter_'+str(iii)
                 
-                z_RF_DT_DTGEN_error_folds(X[feature_set], y, feature_set, feature_set_dimensions, feature_set_geom_mat, data_featurized, my_x, \
-                     num_folds=num_folds_training_for_errors, test_size=test_size_reduced, n_estimators=n_estimators, \
-                     n_cpus = n_cpus, keep_spheres = True, optional_title_folders=save_folder_here, \
-                     use_log_emissivity=use_log_emissivity, display_plots=False, display_txt_out = True, \
-                     RF_or_DT__ = Models_to_Study_performanceVSsize, PlotTitle_extra = spectral_or_scalar_calc, \
-                     n_gen_to_data_ratio = n_gen_to_data_ratio)
+                z_RF_DT_DTGEN_error_folds(X[feature_set], y, feature_set,
+                        feature_set_dimensions, feature_set_geom_mat,
+                        data_featurized, my_x,
+                        num_folds=num_folds_training_for_errors,
+                        test_size=test_size_reduced, n_estimators=n_estimators,
+                        n_cpus=n_cpus, keep_spheres=True,
+                        optional_title_folders=save_folder_here,
+                        use_log_emissivity=use_log_emissivity,
+                        display_plots=False, display_txt_out=True,
+                        RF_or_DT__=Models_to_Study_performanceVSsize,
+                        PlotTitle_extra=spectral_or_scalar_calc,
+                        n_gen_to_data_ratio=n_gen_to_data_ratio)
         
     # to reduce datasize
     test_size = 1-train_data_size_fraction
@@ -197,11 +202,14 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     
     # analysing RF and DT error, if trained multiple times
     for RF_DT__ in ['RF', 'DT']:
-        z_RF_DT_DTGEN_error_folds(X,y, feature_set, feature_set_dimensions, feature_set_geom_mat, data_featurized, my_x, \
-                         num_folds=num_folds_training_for_errors, test_size=test_size, n_estimators=n_estimators, \
-                         n_cpus = n_cpus, keep_spheres = True, optional_title_folders=save_folder, \
-                         use_log_emissivity=use_log_emissivity, display_plots=False, display_txt_out = True, \
-                         RF_or_DT__ = [RF_DT__], PlotTitle_extra = spectral_or_scalar_calc)
+        z_RF_DT_DTGEN_error_folds(X, y, feature_set, feature_set_dimensions,
+                feature_set_geom_mat, data_featurized, my_x,
+                num_folds=num_folds_training_for_errors, test_size=test_size,
+                n_estimators=n_estimators, n_cpus=n_cpus, keep_spheres=True,
+                optional_title_folders=save_folder,
+                use_log_emissivity=use_log_emissivity, display_plots=False,
+                display_txt_out=True, RF_or_DT__=[RF_DT__],
+                PlotTitle_extra=spectral_or_scalar_calc)
     
     # splitting test and training
     X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=test_size,stratify=X[feature_set_geom_mat])    

@@ -23,7 +23,6 @@ import glob
 
 #plotting
 import matplotlib.pyplot as plt
-from IPython.display import Latex
 
 # setting plotting parameters
 import matplotlib.pyplot as plt
@@ -39,9 +38,6 @@ plt.rc('legend', fontsize=SMALL_SIZE)       # legend fontsize
 plt.rc('figure', titlesize=BIGGER_SIZE)     # fontsize of the figure title
 plt.rcParams["font.family"] = "Helvetica"       # fontname
 
-
-#for unit conversion
-from astropy import units as u
 
 #homemade
 from InverseDesign_utils_2 import \
@@ -65,10 +61,10 @@ DT_or_DTGEN__ = ['DT', 'DTGEN'] #DT_or_DTGEN__ = ['DT'] #
 
 gen_n = 2500 # number of posible InverseDesign features suggested by ML model
 
-InverseDesign_scalar = False
+InverseDesign_scalar = True
 target_scalar_emissivity_ = [0.1, 0.5, 2, 5]
 
-InverseDesign_spectral = False
+InverseDesign_spectral = True
 
 RadCooling = False
 
@@ -83,17 +79,10 @@ peak_at_lambda = False
 target_peak_center_um = 7.5
 target_peak_width_rads = 6e13
 
-feature_importance_permutation = True
-sclar_or_spectral = 'scalar'
-
-
 bestdesign_method =  'MorethanOneMatGeom' #'absolute_best'
 
 #InverseDesignModels_folder = 'latest' # here, input the string 'latest' to use the latest models, or input the folder of the latest model relative to the current folder
-#InverseDesignModels_folder = '../cache/results_20191029_174223_smi_final/'
-#InverseDesignModels_folder = '../cache/r20191103_145953_20.0sc_20.0sp/'
-InverseDesignModels_folder = '../cache/r20191106_173403_50.0sc_50.0sp/'
-#InverseDesignModels_folder = '../cache/r20191112_103049_50.0sc_50.0sp/'
+InverseDesignModels_folder = 'latest'
 
 #in case we need to display design rules for a number of leaves. If we really need a neat inverse design, set this to -1
 n_best_leaves_force=10
@@ -101,7 +90,7 @@ n_best_leaves_force=10
 
 # defining the InverseDesign folder
 if InverseDesignModels_folder == 'latest':
-    all_subdirs = ['../cache/'+d for d in os.listdir('../cache/') if os.path.isdir('../cache/'+d)]
+    all_subdirs = ['cache/'+d for d in os.listdir('cache/') if os.path.isdir('cache/'+d)]
     InverseDesignModels_folder = max(all_subdirs, key=os.path.getmtime)
 
    
@@ -319,48 +308,3 @@ if InverseDesign_spectral:
                 features_InverseDesign_here,min_max_dict,min_max_dict_orig = DoInverseDesign_SaveCSV(estimator_here,X_train_here[idx_mat],y_train_here[idx_mat],vector_low_high_range, scaling_factors, gen_n=gen_n, plotting=True, search_method = 'max_integrated_contrast', frequency=my_x, n_best_candidates = 500, bestdesign_method=bestdesign_method, InverDesignSaveFilename_CSV = InverDesignSaveFilename_CSV, n_best_leaves_force=n_best_leaves_force)
                 features_InverseDesign_here = features_InverseDesign_here.astype(np.float)
                 feature_names_here = features_InverseDesign_here.columns
-                
-
-if feature_importance_permutation:
-    #%% load ML models for the inverse design
-    # this is the folder that contains all the variables
-    InverseDesignModels_folder_here = InverseDesignModels_folder+'/'+sclar_or_spectral+'/'
-    dirpath_old = os.getcwd()
-    os.chdir(InverseDesignModels_folder_here)
-    for filename in glob.glob("*.joblib"):
-        variable_name = filename.replace(".joblib",''); # print(filename); 
-        print(variable_name)
-        globals()[variable_name] = joblib.load(filename)
-    os.chdir(dirpath_old)    
-    
-    InverseDesigns_save_folder = InverseDesignModels_folder_here + '/InvDesRes/'
-    os.makedirs(InverseDesigns_save_folder, exist_ok=True)
-    InverseDesigns_save_filename = InverseDesigns_save_folder+date_for_dirname
-    
-    for DT_or_DTGEN in DT_or_DTGEN__:
-        if DT_or_DTGEN == 'DTGEN':                
-            estimator_here = dt_gen                
-            X_train_here = X_new_train
-            y_train_here = y_new_train
-        elif DT_or_DTGEN == 'DT':                
-            estimator_here = dt
-            X_train_here = X_train
-            y_train_here = y_train
-        else:
-            estimator_here = [] 
-            
-        for mat in feature_set_mat:
-            idx_mat = X_train_here[mat].astype(bool)
-            XX = X_train_here[idx_mat].copy
-            yy = y_train_here[idx_mat]
-            
-            result = permutation_importance(estimator_here, XX, yy, n_repeats=50)
-            sorted_idx = result.importances_mean.argsort()
-            
-            fig, ax = plt.subplots()
-            ax.boxplot(result.importances[sorted_idx].T,
-                       vert=False, labels=X_test.columns[sorted_idx])
-            ax.set_title("Permutation Importances (test set)")
-            #fig.tight_layout()
-            plt.show()
-    

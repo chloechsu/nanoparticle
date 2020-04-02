@@ -23,7 +23,6 @@ from sklearn.metrics import r2_score,mean_absolute_error,mean_squared_error
 
 #feature importance
 from sklearn.externals.six import StringIO  
-from IPython.display import Image  
 from sklearn.tree import export_graphviz
 #import pydotplus
 
@@ -35,11 +34,6 @@ def get_all_children(node_id,left,right):
         right_children = get_all_children(right[node_id],left,right)
         return left_children+right_children
 
-
-
-
-
-
 from time import strftime,time
 
 from InverseDesign_utils_2 import gen_data_P1_P2_P3_Elzouka
@@ -47,7 +41,6 @@ from InverseDesign_utils_2 import gen_data_P1_P2_P3_Elzouka
 #plotting
 import matplotlib.pyplot as plt
 import seaborn as sns
-from IPython.display import Latex
 # setting plotting parameters
 import matplotlib.pyplot as plt
 SMALL_SIZE = 20
@@ -774,11 +767,11 @@ def z_RF_DT_DTGEN_error_folds(X_reduced,y_reduced, feature_set, feature_set_dime
         
     if display_txt_out:
         print(feature_set_dimensions)
-        display(Latex('R$^2$: {0:.6f} $\pm$ {1:.6f}'.format(np.average(r2),2*np.std(r2))))
-        display(Latex('MAE: {0:.6f} $\pm$ {1:.6f}'.format(np.average(mae),2*np.std(mae))))
-        display(Latex('RMSE: {0:.6f} $\pm$ {1:.6f}'.format(np.average(rmse),2*np.std(rmse))))
-        display(Latex('MSE: {0:.6f} $\pm$ {1:.6f}'.format(np.average(mse),2*np.std(mse))))
-        display(Latex('Erel: {0:.6f} $\pm$ {1:.6f}'.format(np.average(Erel),2*np.std(Erel))))
+        print('R^2: {0:.6f} pm {1:.6f}'.format(np.average(r2),2*np.std(r2)))
+        print('MAE: {0:.6f} pm {1:.6f}'.format(np.average(mae),2*np.std(mae)))
+        print('RMSE: {0:.6f} pm {1:.6f}'.format(np.average(rmse),2*np.std(rmse)))
+        print('MSE: {0:.6f} pm {1:.6f}'.format(np.average(mse),2*np.std(mse)))
+        print('Erel: {0:.6f} pm {1:.6f}'.format(np.average(Erel),2*np.std(Erel)))
 
         print("average runtime per sample on lawrencium (clock seconds): {0}".format(data_featurized[data_featurized["Runtime"]>0]['Runtime'].mean()*3600))
         print("Average runtime per sample for "+RF_or_DT+" training feature(CPU seconds): {0}".format(np.average(train_time_feat)*n_cpus/10**6))
