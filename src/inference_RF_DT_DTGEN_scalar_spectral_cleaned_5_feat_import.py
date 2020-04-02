@@ -282,6 +282,15 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     end_time = time() 
     print('done predicting emissivity using the input features using RF in {0} seconds'.format(end_time-start_time))
     time_DTGEN_label_creation = end_time - start_time
+
+    X_train.to_csv('data/sim_inputs.csv')
+    print('saved simulated input features to data/sim_inputs.csv')
+    np.savetxt('data/sim_outputs.csv', y_train, delimiter=',')
+    print('saved simulated outputs to data/sim_outputs.csv')
+    X_gen.to_csv('data/gen_inputs.csv')
+    print('saved generated input features to data/gen_inputs.csv')
+    np.savetxt('data/gen_outputs.csv', y_gen, delimiter=',')
+    print('saved generated outputs to data/gen_outputs.csv')
     
     # adding the generated emissivity to original training emissivity ------------------
     if use_log_emissivity:
