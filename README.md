@@ -14,4 +14,7 @@ with desired `n_gen_to_data_ratio` (line 52, default to 1).
 This script trains a random forest model based on the simulated data, and
 generates more data based on the random forest model.
 
-The generated data will be in the `data` directory.
+The generated data in csv form will be in the `data` directory.
+
+## Load generated data and original simulated data.
+See example script `src/load_data.py`.
