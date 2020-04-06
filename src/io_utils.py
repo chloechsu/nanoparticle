@@ -11,7 +11,7 @@ def split_and_write_to_csv(data, filepath, rows_per_file=10000):
         filepath = filepath[:-4]
     number_of_chunks = int(ceil(float(data.shape[0]) / rows_per_file))
     for i, data_i in  enumerate(np.array_split(data, number_of_chunks)):
-        p = '{}_{}-of-{}.csv'.format(filepath, i, number_of_chunks)
+        p = '{}_{:02d}-of-{}.csv'.format(filepath, i, number_of_chunks)
         if isinstance(data_i, pd.DataFrame):
             data_i.to_csv(p)
         else:
