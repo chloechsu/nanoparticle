@@ -4,7 +4,7 @@ Machine learning project for predicting nanoparticle geometry from emissivity sp
 ## Prerequisite
 Download the training data and put it in `data/simulated_data.mat`.
 
-Install conda environment by running
+Install Anaconda and install the conda environment by running
 `conda env create -f nano.yml`
 
 ## Generate data from random forest
