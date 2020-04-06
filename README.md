@@ -7,9 +7,9 @@ Download the training data and put it in `data/simulated_data.mat`.
 ## Generate data from random forest
 In the nanoparticle directory, run
 
-`python src/inference_RF_DTGEN_scalar_spectral_cleaned_5_feat_import.py`
+`python src/train_RF_and_gen_data.py`
 
-with desired `n_gen_to_data_ratio` (line 52, default to 1).
+with desired `n_gen_to_data_ratio` (line 52, default to 20).
 
 This script trains a random forest model based on the simulated data, and
 generates more data based on the random forest model.
@@ -17,4 +17,4 @@ generates more data based on the random forest model.
 The generated data in csv form will be in the `data` directory.
 
 ## Load generated data and original simulated data.
-See example script `src/load_data.py`.
+See example script `src/load_sim_and_gen_data.py`.

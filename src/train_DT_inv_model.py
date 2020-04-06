@@ -11,7 +11,6 @@ import sys
 import os
 from time import strftime,time
 from joblib import dump, load
-from math import pi
 
 #data processing
 import numpy as np
@@ -21,32 +20,7 @@ import pandas as pd
 import joblib
 import glob
 
-#plotting
-import matplotlib.pyplot as plt
-
-# setting plotting parameters
-import matplotlib.pyplot as plt
-SMALL_SIZE = 20
-MEDIUM_SIZE = 24
-BIGGER_SIZE = 28
-plt.rc('font', size=SMALL_SIZE)             # controls default text sizes
-plt.rc('axes', titlesize=SMALL_SIZE)        # fontsize of the axes title
-plt.rc('axes', labelsize=MEDIUM_SIZE)       # fontsize of the x and y labels
-plt.rc('xtick', labelsize=MEDIUM_SIZE)      # fontsize of the tick labels
-plt.rc('ytick', labelsize=MEDIUM_SIZE)      # fontsize of the tick labels
-plt.rc('legend', fontsize=SMALL_SIZE)       # legend fontsize
-plt.rc('figure', titlesize=BIGGER_SIZE)     # fontsize of the figure title
-plt.rcParams["font.family"] = "Helvetica"       # fontname
-
-
-#homemade
-from InverseDesign_utils_2 import \
-    DoInverseDesign_SaveCSV, \
-    draw_target_spectrum_from_low_high_ranges, \
-    plot_spectral_target_VS_spectral_predicted_using_InverseDesignFeatures
- # FLAG I am using 'InverseDesign_utils_2'
- 
-from inference_utils import df_to_csv
+from inv_model_utils import DoInverseDesign_SaveCSV, draw_target_spectrum_from_low_high_ranges
 
 #to ignore warnings
 import warnings
@@ -81,7 +55,9 @@ target_peak_width_rads = 6e13
 
 bestdesign_method =  'MorethanOneMatGeom' #'absolute_best'
 
-#InverseDesignModels_folder = 'latest' # here, input the string 'latest' to use the latest models, or input the folder of the latest model relative to the current folder
+#InverseDesignModels_folder = 'latest' # here, input the string 'latest' to use
+#the latest models, or input the folder of the latest model relative to the
+#current folder
 InverseDesignModels_folder = 'latest'
 
 #in case we need to display design rules for a number of leaves. If we really need a neat inverse design, set this to -1
@@ -133,8 +109,18 @@ if InverseDesign_scalar:
             for mat in feature_set_mat:        
                 idx_mat = X_train_here[mat].astype(bool) 
                 
-                InverDesignSaveFilename_CSV = InverseDesigns_save_filename+DT_or_DTGEN+'_'+bestdesign_method+'_'+mat+'_emiss_{0}'.format(target_scalar_emissivity)
-                features_InverseDesign_here,min_max_dict,min_max_dict_orig = DoInverseDesign_SaveCSV(estimator_here,X_train_here[idx_mat],y_train_here[idx_mat],target_scalar_emissivity, scaling_factors, gen_n=gen_n, plotting=True, search_method = 'scalar_target', frequency=my_x, n_best_candidates = 3, bestdesign_method=bestdesign_method, InverDesignSaveFilename_CSV = InverDesignSaveFilename_CSV, n_best_leaves_force=n_best_leaves_force)
+                InverDesignSaveFilename_CSV = (InverseDesigns_save_filename + DT_or_DTGEN + '_'
+                        + bestdesign_method + '_' + mat
+                        + '_emiss_{0}'.format(target_scalar_emissivity))
+                features_InverseDesign_here,min_max_dict,min_max_dict_orig = DoInverseDesign_SaveCSV(
+                        estimator_here, X_train_here[idx_mat],
+                        y_train_here[idx_mat], target_scalar_emissivity,
+                        scaling_factors, gen_n=gen_n, plotting=True,
+                        search_method = 'scalar_target', frequency=my_x,
+                        n_best_candidates = 3,
+                        bestdesign_method=bestdesign_method,
+                        InverDesignSaveFilename_CSV=InverDesignSaveFilename_CSV,
+                        n_best_leaves_force=n_best_leaves_force)
                 features_InverseDesign_here = features_InverseDesign_here.astype(np.float)                                
               
                     
@@ -269,7 +255,8 @@ if InverseDesign_spectral:
         
         title_here = 'peak_{0}um_wid_{1}rd'.format(target_peak_center_um, target_peak_width_rads)
         
-        target_peak_center_rads = (([target_peak_center_um] * u.micron).to(u.Hz, equivalencies=u.spectral())*2*3.14).value
+        target_peak_center_rads = (([target_peak_center_um] * u.micron).to(
+            u.Hz, equivalencies=u.spectral())*2*3.14).value
          
         
         min_w_h = target_peak_center_rads - target_peak_width_rads/2 ; min_w_h=min_w_h[0]
@@ -281,7 +268,9 @@ if InverseDesign_spectral:
         high_emissivity_values = [1]
         
         vector_low_high_range = [vector_low_range, vector_high_range]
-        target_vector =  draw_target_spectrum_from_low_high_ranges(my_x, vector_low_high_range, [low_emissivity_values, high_emissivity_values], plotting = True)        
+        target_vector =  draw_target_spectrum_from_low_high_ranges(my_x,
+                vector_low_high_range, [low_emissivity_values,
+                    high_emissivity_values], plotting=True)        
     
         for DT_or_DTGEN in DT_or_DTGEN__:
             if DT_or_DTGEN == 'DTGEN':                
@@ -304,7 +293,16 @@ if InverseDesign_spectral:
                 
                 #search_method = 'max_integrated_contrast' # just find the largest contrast
                 #search_method = 'max_integrated_contrast_high_emiss' # just find the largest contrast
-                InverDesignSaveFilename_CSV = InverseDesigns_save_filename+DT_or_DTGEN+'_'+bestdesign_method+'_'+mat+'_'+title_here
-                features_InverseDesign_here,min_max_dict,min_max_dict_orig = DoInverseDesign_SaveCSV(estimator_here,X_train_here[idx_mat],y_train_here[idx_mat],vector_low_high_range, scaling_factors, gen_n=gen_n, plotting=True, search_method = 'max_integrated_contrast', frequency=my_x, n_best_candidates = 500, bestdesign_method=bestdesign_method, InverDesignSaveFilename_CSV = InverDesignSaveFilename_CSV, n_best_leaves_force=n_best_leaves_force)
+                InverDesignSaveFilename_CSV = (InverseDesigns_save_filename + DT_or_DTGEN
+                        + '_' + bestdesign_method + '_' + mat + '_' + title_here)
+                features_InverseDesign_here,min_max_dict,min_max_dict_orig = DoInverseDesign_SaveCSV(
+                        estimator_here, X_train_here[idx_mat],
+                        y_train_here[idx_mat], vector_low_high_range,
+                        scaling_factors, gen_n=gen_n, plotting=True,
+                        search_method='max_integrated_contrast',
+                        frequency=my_x, n_best_candidates=500,
+                        bestdesign_method=bestdesign_method,
+                        InverDesignSaveFilename_CSV=InverDesignSaveFilename_CSV,
+                        n_best_leaves_force=n_best_leaves_force)
                 features_InverseDesign_here = features_InverseDesign_here.astype(np.float)
                 feature_names_here = features_InverseDesign_here.columns

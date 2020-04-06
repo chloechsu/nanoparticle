@@ -15,8 +15,6 @@ from scipy.io import loadmat
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import train_test_split
-from sklearn.inspection import permutation_importance
-
 
 # for saving data
 import joblib
@@ -26,30 +24,16 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # homemade functions
-from InverseDesign_utils_2 import gen_data_P1_P2_P3_Elzouka
-from inference_utils_2 import load_spectrum_param_data_mat, calc_RMSE_MAE_MSE_Erel, z_RF_DT_DTGEN_error_folds, spectra_prediction_corrector
-
-
-#feature importance
-from sklearn.externals.six import StringIO  
-from sklearn.tree import export_graphviz
-#import pydotplus
-import matplotlib.pyplot as plt
-
-def get_all_children(node_id,left,right):
-    if left[node_id]==right[node_id]:
-        return [node_id]
-    else:
-        left_children = get_all_children(left[node_id],left,right)
-        right_children = get_all_children(right[node_id],left,right)
-        return left_children+right_children
+from data_gen_utils import gen_data_P1_P2_P3_Elzouka
+from io_utils import load_spectrum_param_data_mat, split_and_write_to_csv
+from eval_utils import calc_RMSE_MAE_MSE_Erel, z_RF_DT_DTGEN_error_folds, spectra_prediction_corrector
 
 #%% inputs ====================================================================
 n_estimators = 200
 test_size = 0.2
 n_cpus = 1
 num_folds_training_for_errors = 2 # 100
-n_gen_to_data_ratio = 1 #180 # the ratio between n_gen to the data used for ML
+n_gen_to_data_ratio = 20 #180 # the ratio between n_gen to the data used for ML
 
 train_datasize_fraction_scalar = 0.5 # the fraction of original data to be used for ML.
 train_datasize_fraction_spectral = 0.5 # the fraction of original data to be used for ML.
@@ -57,7 +41,6 @@ n_data_desired = {'Geometry_sphere': 500, 'Geometry_wire': 800, 'Geometry_parall
 
 use_log_emissivity = True # True: use log emissivity as input to ML, this will make the training target to monimize relative error (i.e., MINIMIZE( log(y_pred) - log(y_test) ) is equivalent to MINIMIZE( log(y_pred / y_test) ))
 
-Study_performance_VS_datasize = False
 data_size_fraction_ = np.array([0.01,0.02,0.05,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9])
 data_size_fraction_ = np.array([0.5])
 Models_to_Study_performanceVSsize = ['DTGEN', 'DT']                    
@@ -168,32 +151,6 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
         y = data_featurized['Emissivity'].values
         train_data_size_fraction = train_datasize_fraction_scalar
 
-    # effect of datasize on model performance
-    if Study_performance_VS_datasize:
-        n_iter = 0
-        for data_size_fraction_here in data_size_fraction_:
-            for iii in np.arange(num_folds_repeat_DataReduction):
-                n_iter = n_iter + 1
-                print("using {0} of the data, reducing data for the {1} time".format(data_size_fraction_here, iii))
-                print("processing {0} out of {1} iterations ====================================================".format(n_iter, len(data_size_fraction_)*(num_folds_repeat_DataReduction)))                
-                
-                # here, we will reduce the "training data", not the "entire data"                
-                test_size_reduced = 1 - data_size_fraction_here
-                save_folder_here = save_folder+'frctn_'+str(data_size_fraction_here)+'/iter_'+str(iii)
-                
-                z_RF_DT_DTGEN_error_folds(X[feature_set], y, feature_set,
-                        feature_set_dimensions, feature_set_geom_mat,
-                        data_featurized, my_x,
-                        num_folds=num_folds_training_for_errors,
-                        test_size=test_size_reduced, n_estimators=n_estimators,
-                        n_cpus=n_cpus, keep_spheres=True,
-                        optional_title_folders=save_folder_here,
-                        use_log_emissivity=use_log_emissivity,
-                        display_plots=False, display_txt_out=True,
-                        RF_or_DT__=Models_to_Study_performanceVSsize,
-                        PlotTitle_extra=spectral_or_scalar_calc,
-                        n_gen_to_data_ratio=n_gen_to_data_ratio)
-        
     # to reduce datasize
     test_size = 1-train_data_size_fraction
     
@@ -207,7 +164,7 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
                 num_folds=num_folds_training_for_errors, test_size=test_size,
                 n_estimators=n_estimators, n_cpus=n_cpus, keep_spheres=True,
                 optional_title_folders=save_folder,
-                use_log_emissivity=use_log_emissivity, display_plots=False,
+                use_log_emissivity=use_log_emissivity,
                 display_txt_out=True, RF_or_DT__=[RF_DT__],
                 PlotTitle_extra=spectral_or_scalar_calc)
     
@@ -283,14 +240,18 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     print('done predicting emissivity using the input features using RF in {0} seconds'.format(end_time-start_time))
     time_DTGEN_label_creation = end_time - start_time
 
-    X_train.to_csv('data/sim_inputs.csv')
-    print('saved simulated input features to data/sim_inputs.csv')
-    np.savetxt('data/sim_outputs.csv', y_train, delimiter=',')
-    print('saved simulated outputs to data/sim_outputs.csv')
-    X_gen.to_csv('data/gen_inputs.csv')
-    print('saved generated input features to data/gen_inputs.csv')
-    np.savetxt('data/gen_outputs.csv', y_gen, delimiter=',')
-    print('saved generated outputs to data/gen_outputs.csv')
+    split_and_write_to_csv(X_train, 'data/sim_train_geom_%s.csv' %
+            spectral_or_scalar_calc)
+    split_and_write_to_csv(y_train, 'data/sim_train_emi_%s.csv' %
+            spectral_or_scalar_calc)
+    split_and_write_to_csv(X_test, 'data/sim_test_geom_%s.csv' %
+            spectral_or_scalar_calc)
+    split_and_write_to_csv(y_test, 'data/sim_test_emi_%s.csv' %
+            spectral_or_scalar_calc)
+    split_and_write_to_csv(X_gen, 'data/gen_geom_%s.csv' %
+            spectral_or_scalar_calc)
+    split_and_write_to_csv(y_gen, 'data/gen_emi_%s.csv' %
+            spectral_or_scalar_calc)
     
     # adding the generated emissivity to original training emissivity ------------------
     if use_log_emissivity:
@@ -318,140 +279,6 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     print("DTGEN error analysis")
     dt_gen_r2,dt_gen_mae,dt_gen_mse,dt_gen_Erel, dt_gen_r2_all,dt_gen_mae_all,dt_gen_mse_all,dt_gen_Erel_all = calc_RMSE_MAE_MSE_Erel(y_test,y_pred_dtgen, my_x)    
     
-    #%% feature importance ====================================================
-    #dt.feature_importances_
-    Au_feature_idx,SiO_feature_idx,SiN_feature_idx = np.where(X_train.columns=='Material_Au')[0][0],np.where(X_train.columns=='Material_SiO2')[0][0],np.where(X_train.columns=='Material_SiN')[0][0]
-    
-    Au_feature_importances,SiO_feature_importances,SiN_feature_importances = np.zeros(dt.n_features_),np.zeros(dt.n_features_),np.zeros(dt.n_features_)
-    Au_node_id,SiO_node_id,SiN_node_id=[],[],[]
-    
-    #get feature importances and all tree parameters
-    n_nodes = dt.tree_.node_count
-    children_left = dt.tree_.children_left
-    children_right = dt.tree_.children_right
-    feature = dt.tree_.feature
-    threshold = dt.tree_.threshold
-    impurity = dt.tree_.impurity
-    weighted_samples = dt.tree_.weighted_n_node_samples 
-    n_samples = dt.tree_.n_node_samples
-    feature_importances = np.ones(dt.n_features_)
-
-
-    #if less than threshold, go to left children, if greater than threshold, go to right children
-    for i in range(n_nodes):
-        this_node_feature = feature[i]
-        if this_node_feature == Au_feature_idx:
-            if threshold[i]!=0.5:
-                assert children_right[i]==children_left[i] # is leaf
-                continue
-            else:
-                assert threshold[i]==0.5
-                Au_node_id.extend(get_all_children(children_right[i],children_left,children_right))
-                Au_node_id.append(children_right[i])
-                
-        elif this_node_feature == SiO_feature_idx:
-            if threshold[i]!=0.5:
-                assert children_right[i]==children_left[i] # is leaf
-                continue
-            else:
-                assert threshold[i]==0.5
-                SiO_node_id.extend(get_all_children(children_right[i],children_left,children_right))
-                SiO_node_id.append(children_right[i])
-                
-        elif this_node_feature == SiN_feature_idx:
-            if threshold[i]!=0.5:
-                assert children_right[i]==children_left[i] # is leaf
-                continue
-            else:
-                assert threshold[i]==0.5
-                SiN_node_id.extend(get_all_children(children_right[i],children_left,children_right))
-                SiN_node_id.append(children_right[i])
-                
-        else:
-            if not((i in Au_node_id) or (i in SiN_node_id) or (i in SiO_node_id)):          
-                #Au_node_id.append(i)
-                #SiO_node_id.append(i)
-                #SiN_node_id.append(i)
-                continue #probably why everything looks the same
-            else:
-                continue
-    
-    #remove duplicate nodes
-    Au_node_id = np.unique(Au_node_id)
-    SiO_node_id = np.unique(SiO_node_id)
-    SiN_node_id = np.unique(SiN_node_id)    
-    
-    ## Get feature importances
-    for i in Au_node_id:
-        if (feature[i] != SiN_feature_idx) and (feature[i] != SiO_feature_idx):
-            Au_feature_importances[feature[i]] += (
-                weighted_samples[i] * impurity[i] -
-                weighted_samples[children_left[i]] * impurity[children_left[i]] -
-                weighted_samples[children_right[i]] * impurity[children_right[i]])
-    Au_feature_importances /= weighted_samples[0]
-    Au_feature_importances /= np.sum(Au_feature_importances)    
-    
-    for i in SiO_node_id:
-        if (feature[i] != SiN_feature_idx) and (feature[i] != Au_feature_idx):
-            SiO_feature_importances[feature[i]] += (
-            weighted_samples[i] * impurity[i] -
-            weighted_samples[children_left[i]] * impurity[children_left[i]] -
-            weighted_samples[children_right[i]] * impurity[children_right[i]])
-    SiO_feature_importances /= weighted_samples[0]
-    SiO_feature_importances /= np.sum(SiO_feature_importances)
-    
-    for i in SiN_node_id:
-        if (feature[i] != Au_feature_idx) and (feature[i] != SiO_feature_idx):
-            SiN_feature_importances[feature[i]] += (
-                weighted_samples[i] * impurity[i] -
-                weighted_samples[children_left[i]] * impurity[children_left[i]] -
-                weighted_samples[children_right[i]] * impurity[children_right[i]])
-    print(SiN_feature_importances)
-    SiN_feature_importances /= weighted_samples[0]
-    SiN_feature_importances /= np.sum(SiN_feature_importances)
-    
-    ## Plot
-    fig,ax = plt.subplots(figsize=(20,10))
-    ax.bar(X.columns,Au_feature_importances)
-    ax.set_ylabel("Decision Tree Feature Importance",fontsize=20)
-    ax.set_xlabel("Feature",fontsize=20)
-    ax.set_title("For Au materials",fontsize=32)
-    ax.xaxis.set_tick_params(labelsize=16,rotation=90)
-    ax.yaxis.set_tick_params(labelsize=16)
-    
-    ## Plot
-    fig,ax = plt.subplots(figsize=(20,10))
-    ax.bar(X.columns,SiO_feature_importances)
-    ax.set_ylabel("Decision Tree Feature Importance",fontsize=20)
-    ax.set_xlabel("Feature",fontsize=20)
-    ax.set_title("For SiO2 materials",fontsize=32)
-    ax.xaxis.set_tick_params(labelsize=16,rotation=90)
-    ax.yaxis.set_tick_params(labelsize=16)    
-    
-    ## Plot
-    fig,ax = plt.subplots(figsize=(20,10))
-    ax.bar(X.columns,SiN_feature_importances)
-    ax.set_ylabel("Decision Tree Feature Importance",fontsize=20)
-    ax.set_xlabel("Feature",fontsize=20)
-    ax.set_title("For SiN materials",fontsize=32)
-    ax.xaxis.set_tick_params(labelsize=16,rotation=90)
-    ax.yaxis.set_tick_params(labelsize=16)
-    '''
-    # permutation feature importance
-    #for m in feature_set_mat:
-    #    idx_mat_here = np.where((X_test[geom].values == 1))[0]
-    #    XX = X_test.iloc[idx_mat_here]
-    ###    yy = 
-        result = permutation_importance(dt, X_test, y_test, n_repeats=50)
-        sorted_idx = result.importances_mean.argsort()
-        
-        fig, ax = plt.subplots()
-        ax.boxplot(result.importances[sorted_idx].T,
-                   vert=False, labels=X_test.columns[sorted_idx])
-        ax.set_title("Permutation Importances (test set)")
-        #fig.tight_layout()
-        plt.show()
-    '''
     #%% save ML models, test and train data ===================================
     # Save in Python format
     variable_name_list = ['rf', 'dt', 'dt_gen',                           
@@ -460,20 +287,3 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
                           'n_gen', 'train_data_size_fraction', 'my_x', 'scaling_factors']
     for variable_name in variable_name_list:
         joblib.dump(globals()[variable_name], save_folder+variable_name+'.joblib')        
-    
-    
-    # Save in MATLAB format
-    filename_mat = 'inference_{0}_RF_DT_DTGEN'.format(spectral_or_scalar_calc)
-    dict_to_save = {}
-    X_test_index_py  = np.array(X_test.index);  X_test_index_mat  = X_test_index_py +1
-    X_train_index_py = np.array(X_train.index); X_train_index_mat = X_train_index_py+1    
-    variable_name_list = ['X_train_index_py','X_test_index_py', 'X_train_index_mat','X_test_index_mat',
-                          'y_train','y_test', 'my_x', 'scaling_factors', 'time_train', 'time_pred', 'time_DTGEN_feature_creation', 'time_DTGEN_label_creation',
-                          'y_pred_rf', 'y_pred_dt', 'y_pred_dtgen',
-                          'rf_r2', 'rf_mae', 'rf_mse', 'rf_Erel', 'rf_r2_all', 'rf_mae_all', 'rf_mse_all', 'rf_Erel_all',
-                          'dt_r2', 'dt_mae', 'dt_mse', 'dt_Erel', 'dt_r2_all', 'dt_mae_all', 'dt_mse_all', 'dt_Erel_all',
-                          'dt_gen_r2', 'dt_gen_mae', 'dt_gen_mse', 'dt_gen_Erel', 'dt_gen_r2_all', 'dt_gen_mae_all', 'dt_gen_mse_all', 'dt_gen_Erel_all',
-                          'matlab_data_path', 'feature_set']    
-    for variable_name in variable_name_list:
-        dict_to_save[variable_name] = globals()[variable_name]
-    scipy.io.savemat(save_folder+filename_mat+'.mat', dict_to_save)
