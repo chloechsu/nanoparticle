@@ -90,7 +90,7 @@ def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
 def compute_metrics(model, validation_set, print_metrics=True):
     evalloader = torch.utils.data.DataLoader(validation_set,
             batch_size=64, shuffle=False, num_workers=1)
-    class_names = validation_set.class_names
+    class_names = validation_set.get_class_names()
     cross_entropy_fn = nn.CrossEntropyLoss()
     cross_entropy_loss = 0.0
     n_classes = len(class_names)
