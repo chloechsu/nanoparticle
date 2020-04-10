@@ -93,7 +93,7 @@ def compute_metrics(model, validation_set, print_metrics=True):
     class_names = validation_set.class_names
     cross_entropy_fn = nn.CrossEntropyLoss()
     cross_entropy_loss = 0.0
-    n_classes = len(evalloader.class_names)
+    n_classes = len(class_names)
     class_correct = list(0. for i in range(n_classes))
     class_total = list(0. for i in range(n_classes))
     # no gradients when evalutating
@@ -108,7 +108,7 @@ def compute_metrics(model, validation_set, print_metrics=True):
                 class_correct[label] += c[i].item()
                 class_total[label] += 1
     metrics = {}
-    for i, c in enumerate(evalloader.class_names):
+    for i, c in enumerate(class_names):
         metrics['class_acc_' + c] = float(class_correct[i]) / class_total[i]
         metrics['class_cnt_' + c] = class_total[i]
     metrics['overall_acc'] = float(np.sum(class_correct)) / np.sum(class_total)
