@@ -50,6 +50,9 @@ class DatasetFromFilepath(Dataset):
     def __getitem__(self, idx):
         return self.X[idx, :], self.y[idx]
 
+    def class_names(self):
+        return GEOM_CLASSES
+
 
 class OriginalTrainDataset(DatasetFromFilepath):
     """The original simulated training dataset for training random forest."""
@@ -103,9 +106,13 @@ def main():
     original_train = OriginalTrainDataset()
     print('Original train dataset size:', original_train.__len__())
 
-    print('Loading original test dataset..')
-    original_test = TestDataset()
-    print('Original test dataset size:', original_test.__len__())
+    print('Loading validation dataset..')
+    validation = ValidationDataset()
+    print('Validation dataset size:', validation.__len__())
+
+    print('Loading test dataset..')
+    test = TestDataset()
+    print('Test dataset size:', test.__len__())
 
     print('Loading generated dataset..')
     gen = GeneratedDataset()
