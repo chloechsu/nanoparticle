@@ -74,7 +74,7 @@ def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
             
             running_loss += loss.item()
             if i % print_every_n_batches == print_every_n_batches - 1:    # print every 100 mini-batches
-                print("[epoch %d, batch %5d] avg loss: %.4f" %
+                print("[epoch %d, batch %5d] avg loss: %.6f" %
                       (epoch + 1, i + 1, running_loss / (print_every_n_batches *
                           batch_size)))
                 running_loss = 0.0
@@ -110,6 +110,7 @@ def evaluate(model_path, testset, class_names, model=None, batch_size=64):
     metrics = {}
     for i, c in enumerate(class_names):
         metrics['class_acc_' + c] = float(class_correct[i]) / class_total[i]
+        metrics['class_cnt_' + c] = class_total[i]
     metrics['overall_acc'] = float(np.sum(class_correct)) / np.sum(class_total)
     metrics['avg_cross_entropy_loss'] = cross_entropy_loss / np.sum(class_total)
     metrics_path = model_path.split('.')[0] + '_metrics.csv'
@@ -123,13 +124,13 @@ def evaluate(model_path, testset, class_names, model=None, batch_size=64):
 
 
 def main():
-    og_train_data = OriginalTrainDataset()
+    # og_train_data = OriginalTrainDataset()
     # gen_data = GeneratedDataset()
-    # combined_train_data = CombinedTrainDataset()
+    combined_train_data = CombinedTrainDataset()
     test_data = TestDataset()
 
     model = AlexNet1D()
-    model, saved_path = train(model, og_train_data, 100)
+    model, saved_path = train(model, combined_train_data, 20)
     evaluate(saved_path, test_data, GEOM_CLASSES)
 
 

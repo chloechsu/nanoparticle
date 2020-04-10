@@ -59,6 +59,15 @@ class OriginalTrainDataset(DatasetFromFilepath):
             'data/sim_train_emi_spectral.csv', 'data/sim_train_geom_spectral.csv')
 
 
+class ValidationDataset(DatasetFromFilepath):
+    """The original simulated test dataset."""
+
+    def __init__(self):
+        super(ValidationDataset, self).__init__(
+            'data/sim_validation_emi_spectral.csv',
+            'data/sim_validation_geom_spectral.csv')
+
+
 class TestDataset(DatasetFromFilepath):
     """The original simulated test dataset."""
 

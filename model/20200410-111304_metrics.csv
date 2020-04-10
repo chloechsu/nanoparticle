@@ -1,0 +1,2 @@
+class_acc_TriangPrismIsosc,class_cnt_TriangPrismIsosc,class_acc_parallelepiped,class_cnt_parallelepiped,class_acc_sphere,class_cnt_sphere,class_acc_wire,class_cnt_wire,overall_acc,avg_cross_entropy_loss
+0.5496666666666666,3000.0,0.19333333333333333,3000.0,0.9869494290375204,613.0,0.6491666666666667,1200.0,0.4624344041981313,0.017561727863686743
