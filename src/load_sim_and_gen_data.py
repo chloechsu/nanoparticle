@@ -7,7 +7,7 @@ from sklearn.utils import shuffle
 import torch
 from torch.utils.data import Dataset, ConcatDataset
 
-GEOM_TYPES = ["TriangPrismIsosc", "parallelepiped", "sphere", "wire"]
+GEOM_CLASSES = ["TriangPrismIsosc", "parallelepiped", "sphere", "wire"]
 
 
 def read_split_files(base_filepath, is_pandas=False):
@@ -17,9 +17,9 @@ def read_split_files(base_filepath, is_pandas=False):
     data = []
     for f in glob.glob(base_filepath+'*.csv'):
         if is_pandas:
-            data.append(pd.read_csv(f))
+            data.append(pd.read_csv(f, dtype=np.float32))
         else:
-            data.append(np.loadtxt(f, delimiter=','))
+            data.append(np.loadtxt(f, delimiter=',', dtype=np.float32))
     if is_pandas:
         data = pd.concat(data, axis=0)
     else:
@@ -35,11 +35,11 @@ class DatasetFromFilepath(Dataset):
         super(DatasetFromFilepath).__init__()
         self.X = read_split_files(input_filepath)
         df_y = read_split_files(label_filepath, is_pandas=True)
-        self.y = df_y[["Geometry_" + g for g in GEOM_TYPES]].to_numpy()
+        self.y = df_y[["Geometry_" + g for g in GEOM_CLASSES]].to_numpy()
         # Check that only one geometry type has 1 in each row.
         assert np.all(np.sum(self.y, axis=1) == 1)
         # Convert one-hot encoding to integer encoding.
-        self.y = np.argmax(self.y, axis=1)[:, None]
+        self.y = np.argmax(self.y, axis=1)
         # Check X and y have the same number of rows.
         self.n_samples = self.X.shape[0]
         assert self.y.shape[0] == self.n_samples
@@ -48,7 +48,7 @@ class DatasetFromFilepath(Dataset):
         return self.n_samples
 
     def __getitem__(self, idx):
-        return self.X[idx, :], self.y[idx, :]
+        return self.X[idx, :], self.y[idx]
 
 
 class OriginalTrainDataset(DatasetFromFilepath):
