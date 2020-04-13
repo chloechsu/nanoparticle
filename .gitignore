@@ -9,4 +9,5 @@ data/*
 *.DS_Store
 *.mat
 cache/
-!model/*
+model/*
+runs/*
