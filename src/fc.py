@@ -6,7 +6,7 @@ import torch.optim as optim
 class OneLayerFC(nn.Module):
     "A fully-connected network."
 
-    def __init__(self, n_logits=4):
+    def __init__(self, n_logits):
         super(OneLayerFC, self).__init__()
         self.classifier = nn.Sequential(
             nn.Dropout(),
@@ -22,7 +22,7 @@ class OneLayerFC(nn.Module):
 class TwoLayerFC(nn.Module):
     "A fully-connected network."
 
-    def __init__(self, n_logits=4):
+    def __init__(self, n_logits):
         super(TwoLayerFC, self).__init__()
         self.classifier = nn.Sequential(
             nn.Dropout(),

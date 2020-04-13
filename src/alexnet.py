@@ -6,7 +6,7 @@ import torch.optim as optim
 class AlexNet1D(nn.Module):
     "A 1D ConvNet based on AlexNet kernel size, stride, and padding."
 
-    def __init__(self, n_logits=4):
+    def __init__(self, n_logits):
         super(AlexNet1D, self).__init__()
         self.features = nn.Sequential(
             nn.Conv1d(1, 4, kernel_size=11, stride=4, padding=2),

@@ -8,6 +8,7 @@ import torch
 from torch.utils.data import Dataset, ConcatDataset
 
 GEOM_CLASSES = ["TriangPrismIsosc", "parallelepiped", "sphere", "wire"]
+MAT_CLASSES = ["Au", "SiN", "SiO2"]
 
 
 def read_split_files(base_filepath, is_pandas=False):
@@ -35,23 +36,42 @@ class DatasetFromFilepath(Dataset):
         super(DatasetFromFilepath).__init__()
         self.X = read_split_files(input_filepath)
         df_y = read_split_files(label_filepath, is_pandas=True)
-        self.y = df_y[["Geometry_" + g for g in GEOM_CLASSES]].to_numpy()
-        # Check that only one geometry type has 1 in each row.
-        assert np.all(np.sum(self.y, axis=1) == 1)
-        # Convert one-hot encoding to integer encoding.
-        self.y = np.argmax(self.y, axis=1)
         # Check X and y have the same number of rows.
         self.n_samples = self.X.shape[0]
-        assert self.y.shape[0] == self.n_samples
+        assert df_y.shape[0] == self.n_samples
+        # Extract geometry and material information.
+        self.geom = df_y[["Geometry_" + g for g in GEOM_CLASSES]].to_numpy()
+        self.mat = df_y[["Material_" + g for g in MAT_CLASSES]].to_numpy()
+        # Check that only one type has 1 in each row.
+        assert np.all(np.sum(self.geom, axis=1) == 1)
+        assert np.all(np.sum(self.mat, axis=1) == 1)
+        # Convert one-hot encoding to integer encoding.
+        self.geom = np.argmax(self.geom, axis=1)
+        self.mat = np.argmax(self.mat, axis=1)
 
     def __len__(self):
         return self.n_samples
 
     def __getitem__(self, idx):
-        return self.X[idx, :], self.y[idx]
+        return self.X[idx, :], self.geom[idx], self.mat[idx]
 
-    def get_class_names(self):
+    @staticmethod
+    def n_geom_classes():
+        return 4
+
+    @staticmethod
+    def n_mat_classes():
+        return 3
+
+    @staticmethod
+    def n_logits():
+        return 7
+
+    def get_geom_class_names(self):
         return GEOM_CLASSES
+    
+    def get_mat_class_names(self):
+        return MAT_CLASSES
 
 
 class OriginalTrainDataset(DatasetFromFilepath):
