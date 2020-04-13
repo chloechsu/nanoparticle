@@ -244,14 +244,21 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
             spectral_or_scalar_calc)
     split_and_write_to_csv(y_train, 'data/sim_train_emi_%s.csv' %
             spectral_or_scalar_calc)
-    split_and_write_to_csv(X_test, 'data/sim_test_geom_%s.csv' %
-            spectral_or_scalar_calc)
-    split_and_write_to_csv(y_test, 'data/sim_test_emi_%s.csv' %
-            spectral_or_scalar_calc)
     split_and_write_to_csv(X_gen, 'data/gen_geom_%s.csv' %
             spectral_or_scalar_calc)
     split_and_write_to_csv(y_gen, 'data/gen_emi_%s.csv' %
             spectral_or_scalar_calc)
+    # Split test into half validation and half test.
+    X_val, X_test, y_val, y_test = train_test_split(X_test, y_test,
+            test_size=0.5, stratify=X_test[feature_set_geom_mat])
+    split_and_write_to_csv(X_val,
+            'data/sim_validation_geom_%s.csv' % spectral_or_scalar_calc)
+    split_and_write_to_csv(y_val,
+            'data/sim_validation_emi_%s.csv' % spectral_or_scalar_calc)
+    split_and_write_to_csv(X_test,
+            'data/sim_test_geom_%s.csv' % spectral_or_scalar_calc)
+    split_and_write_to_csv(y_test,
+            'data/sim_test_emi_%s.csv' % spectral_or_scalar_calc)
     
     # adding the generated emissivity to original training emissivity ------------------
     if use_log_emissivity:

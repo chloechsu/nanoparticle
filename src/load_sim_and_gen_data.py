@@ -7,7 +7,8 @@ from sklearn.utils import shuffle
 import torch
 from torch.utils.data import Dataset, ConcatDataset
 
-GEOM_TYPES = ["TriangPrismIsosc", "parallelepiped", "sphere", "wire"]
+GEOM_CLASSES = ["TriangPrismIsosc", "parallelepiped", "sphere", "wire"]
+MAT_CLASSES = ["Au", "SiN", "SiO2"]
 
 
 def read_split_files(base_filepath, is_pandas=False):
@@ -17,9 +18,9 @@ def read_split_files(base_filepath, is_pandas=False):
     data = []
     for f in glob.glob(base_filepath+'*.csv'):
         if is_pandas:
-            data.append(pd.read_csv(f))
+            data.append(pd.read_csv(f, dtype=np.float32))
         else:
-            data.append(np.loadtxt(f, delimiter=','))
+            data.append(np.loadtxt(f, delimiter=',', dtype=np.float32))
     if is_pandas:
         data = pd.concat(data, axis=0)
     else:
@@ -35,20 +36,42 @@ class DatasetFromFilepath(Dataset):
         super(DatasetFromFilepath).__init__()
         self.X = read_split_files(input_filepath)
         df_y = read_split_files(label_filepath, is_pandas=True)
-        self.y = df_y[["Geometry_" + g for g in GEOM_TYPES]].to_numpy()
-        # Check that only one geometry type has 1 in each row.
-        assert np.all(np.sum(self.y, axis=1) == 1)
-        # Convert one-hot encoding to integer encoding.
-        self.y = np.argmax(self.y, axis=1)[:, None]
         # Check X and y have the same number of rows.
         self.n_samples = self.X.shape[0]
-        assert self.y.shape[0] == self.n_samples
+        assert df_y.shape[0] == self.n_samples
+        # Extract geometry and material information.
+        self.geom = df_y[["Geometry_" + g for g in GEOM_CLASSES]].to_numpy()
+        self.mat = df_y[["Material_" + g for g in MAT_CLASSES]].to_numpy()
+        # Check that only one type has 1 in each row.
+        assert np.all(np.sum(self.geom, axis=1) == 1)
+        assert np.all(np.sum(self.mat, axis=1) == 1)
+        # Convert one-hot encoding to integer encoding.
+        self.geom = np.argmax(self.geom, axis=1)
+        self.mat = np.argmax(self.mat, axis=1)
 
     def __len__(self):
         return self.n_samples
 
     def __getitem__(self, idx):
-        return self.X[idx, :], self.y[idx, :]
+        return self.X[idx, :], self.geom[idx], self.mat[idx]
+
+    @staticmethod
+    def n_geom_classes():
+        return 4
+
+    @staticmethod
+    def n_mat_classes():
+        return 3
+
+    @staticmethod
+    def n_logits():
+        return 7
+
+    def get_geom_class_names(self):
+        return GEOM_CLASSES
+    
+    def get_mat_class_names(self):
+        return MAT_CLASSES
 
 
 class OriginalTrainDataset(DatasetFromFilepath):
@@ -57,6 +80,15 @@ class OriginalTrainDataset(DatasetFromFilepath):
     def __init__(self):
         super(OriginalTrainDataset, self).__init__(
             'data/sim_train_emi_spectral.csv', 'data/sim_train_geom_spectral.csv')
+
+
+class ValidationDataset(DatasetFromFilepath):
+    """The original simulated test dataset."""
+
+    def __init__(self):
+        super(ValidationDataset, self).__init__(
+            'data/sim_validation_emi_spectral.csv',
+            'data/sim_validation_geom_spectral.csv')
 
 
 class TestDataset(DatasetFromFilepath):
@@ -94,9 +126,13 @@ def main():
     original_train = OriginalTrainDataset()
     print('Original train dataset size:', original_train.__len__())
 
-    print('Loading original test dataset..')
-    original_test = TestDataset()
-    print('Original test dataset size:', original_test.__len__())
+    print('Loading validation dataset..')
+    validation = ValidationDataset()
+    print('Validation dataset size:', validation.__len__())
+
+    print('Loading test dataset..')
+    test = TestDataset()
+    print('Test dataset size:', test.__len__())
 
     print('Loading generated dataset..')
     gen = GeneratedDataset()
