@@ -17,11 +17,19 @@ from sklearn.multioutput import MultiOutputRegressor
 
 
 spectra_train_set = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/y_new_train.joblib')
+# spectra produced from random forests generative model
 spectra_test_set = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/y_test.joblib')
+# spectra created from solving maxwell's equations
 labels_train_set = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/x_new_train.joblib').reset_index()
+# data fed into random forests generative model to create spectra_train_set
 labels_test_set = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/x_test.joblib').reset_index()
-labels_train_smaller = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/x_train.joblib').reset_index()
-spectra_train_smaller = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/y_train.joblib')
+# labels used to solve maxwell's equations and produce spectra_test_set
+
+
+# Training/Test set made completely from simulated data. I used this to make sure the random forest model wasn't doing
+# artificially well because its training set was made up of data created by a random forests model
+labels_train_maxwell_equations = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/x_train.joblib').reset_index()
+spectra_train_maxwell_equations = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/y_train.joblib')
 
 
 
@@ -53,12 +61,17 @@ def drop_indicies(df, column, condition_to_drop, update_existing_file = True):
 
 
 
-from_one_hot_dict = {(1.,0.,0.,0.) : 0, (0.,1.,0.,0.) : 1, (0.,0.,1.,0.) : 2, (0.,0.,0.,1.) : 3}
-from_one_hot_dict_materials = {(1.,0.,0.) : 0, (0.,1.,0.) : 1, (0.,0.,1.) : 2}
-
-
-
 def convert_from_one_hot(df_as_array, dictionary):
+    """
+    This function takes a dataframe (represented as a numpy array) that has been set up as a one hot encoding of a
+    categorical variable and converts it to a numerical categorical system (for example, the shape representation
+    [0,0,1,0] would become [2]). It takes as input the mxn dimensional array and a dictionary with n entries and returns
+    a mx1 dimensional array.
+
+    :param df_as_array: The data you want to convert from one hot encoding. Must be a numpy array
+    :param dictionary: A dictionary containing representations for each one hot encoding
+    :return: mx1 array containing variables represented as numerical encodings
+    """
     catagories_list = []
     for row in df_as_array:
         row_tuple = tuple(row)
@@ -69,7 +82,23 @@ def convert_from_one_hot(df_as_array, dictionary):
 
 
 def Train_Random_Forests_Shape_Classification(model_type, training_spectra, training_labels, 
-                                              test_spectra, test_labels, trees):
+                                              test_spectra, test_labels, trees = 100):
+
+    """
+    Trains random forest classifier to predict shape from nanoparticle emissivity spectra. Has the ability to train a
+    model for all materials or one individial material
+
+    :param model_type: specify whether this model will be trained on all materials or one individually. STRING. Options
+    are "All", "SiO2", "SiN" and "Au"
+    :param training_spectra - spectra to be used in training. Numpy Array
+    :param training_spectra - labels to be used in training. Pandas Dataframe
+    :param training_spectra - spectra to be used for testing. Numpy Array
+    :param training_spectra - labels to be used for testing. Pandas Dataframe
+    :param trees - number of trees used when creating the model. Default is 100
+    :return: list containing: 1) accuracy of the model 2) the model itself 3) the confusion matrix for the model
+    4) the output when the model is tested on the test set 5) the labels used in testing 6) the spectra used in testing
+    """
+
     if model_type == 'All':
         labels_train_shape = training_labels.drop(columns = ['index','log Area/Vol', 'ShortestDim', 'MiddleDim', 'LongDim', 
                                                              'Material_Au', 'Material_SiN', 'Material_SiO2', 'index'] )
@@ -146,12 +175,29 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
         predictions = rf_model.predict(spectra_test_shape_as_array)
         cm_rf = confusion_matrix(labels_test_shape_as_array_wo_OHE, predictions)
     
-    return (accuracy, rf_model, cm_rf, predictions, labels_test_shape_as_array_wo_OHE)
+    return (accuracy, rf_model, cm_rf, predictions, labels_test_shape_as_array_wo_OHE, spectra_test_shape_as_array)
 
 
 
 def Train_Random_Forests_Size_Regression(model_type, training_spectra, training_labels, 
-                                              test_spectra, test_labels, trees):
+                                              test_spectra, test_labels, trees = 10):
+
+    """
+    Trains random forest regressor to predict size from nanoparticle emissivity spectra. Has the ability to train a
+    model for dimensions, volume, and both
+
+    :param model_type: specify whether this model will be trained on size, dimensions, or both. STRING. Options
+    are "volume", "all" and "size"
+    :param training_spectra - spectra to be used in training. Numpy Array
+    :param training_spectra - labels to be used in training. Pandas Dataframe
+    :param training_spectra - spectra to be used for testing. Numpy Array
+    :param training_spectra - labels to be used for testing. Pandas Dataframe
+    :param trees - number of trees used when creating the model. Default is 10
+    :return: list containing: 1) accuracy of the model 2) the model itself
+    """
+
+
+
     if model_type == 'volume':
         labels_train = training_labels.drop(columns = ['ShortestDim', 'MiddleDim', 'LongDim', 'Geometry_TriangPrismIsosc',
                                                             'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire', 'index',
@@ -163,7 +209,7 @@ def Train_Random_Forests_Size_Regression(model_type, training_spectra, training_
         rf_model.fit(training_spectra, np.ravel(labels_train))
         accuracy = rf_model.score(test_spectra, np.ravel(labels_test))
     
-    if model_type == 'All':
+    if model_type == 'all':
         labels_train = training_labels.drop(columns = ['Geometry_TriangPrismIsosc',
                                                             'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire', 'index',
                                                             'Material_Au', 'Material_SiN', 'Material_SiO2'] )
@@ -199,9 +245,18 @@ def Train_Random_Forests_Size_Regression(model_type, training_spectra, training_
 
 
 
-def normalize_cm(cm, test_set, num_catagories):
+def normalize_cm(cm, test_set, num_categories):
+    """
+    Takes a confusion matrix and normalizes it to show probabilities rather than number of cases
+    :param cm: confusion matrix showing numbers of cases rather than probabilities of classification (this is how the
+    confusion matrix is outputted in the random forests classifier function)
+    :param test_set: the test set used to produce the confusion matrix (also outputted by the RF classifier function)
+    NOTE must be a list, not a numpy array, which is what is outputted by the classifier function
+    :param num_categories: INT The number of categories in the confusion matrix
+    :return: a confusion matrix showing probabilities in each entry rather than number of cases
+    """
     normalized_list_cm = []
-    for i in range(0, num_catagories):
+    for i in range(0, num_categories):
         list_cm = list(cm[i])
         normalized_row_cm = [x /test_set.count(i) for x in  list_cm]
         normalized_list_cm.append(normalized_row_cm)
@@ -210,16 +265,30 @@ def normalize_cm(cm, test_set, num_catagories):
 
 
 
-def plot_accuracy(cm, catagories, title, y_range = [0.5,1]):
+def plot_accuracy(cm, categories, title, y_range = [0.5,1]):
+    """
+    plots the accuracy of a model at predicting shapes from spectra, showing the accuracy for each shape
+
+    :param cm: confusion matrix with probabilities at each entry (this is the output of the normalize_cm function)
+    :param categories: LIST of STRINGS the shapes predicted by the model (IMPORTANT!!! Make sure the entries in this
+    list are in the same order as the diagonal on the confusion matrix)
+    :param title: STRING the title of the plot
+    :param y_range: LIST of INT/FLOAT range of the y axis for the plot
+    :return: Saves the plot as a png file in the same folder as this script. The name will be the title + .png
+    """
+
     accuracies = []
-    for i in range(0, len(catagories)):
+    for i in range(0, len(categories)):
         accuracies.append(cm[i][i])
-    sns.barplot(catagories, accuracies).set(title = title, ylabel = "Accuracy", ylim = y_range)
+    sns.barplot(categories, accuracies).set(title = title, ylabel = "Accuracy", ylim = y_range)
     plt.savefig(str(title) + '.png', format='png')
 
 
+# Dictionaries used to convert from one hot encoding
+from_one_hot_dict = {(1.,0.,0.,0.) : 0, (0.,1.,0.,0.) : 1, (0.,0.,1.,0.) : 2, (0.,0.,0.,1.) : 3}
+from_one_hot_dict_materials = {(1.,0.,0.) : 0, (0.,1.,0.) : 1, (0.,0.,1.) : 2}
 
-# Example code to produce shape classification model for only gold
+# Example code to produce shape classification model for only gold and visualize it's accuracy
 rf_Au = Train_Random_Forests_Shape_Classification("Au", spectra_train_set, labels_train_set, spectra_test_set, labels_test_set, 50)
 
 accuracy_rf = rf_Au[0]
