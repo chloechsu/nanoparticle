@@ -77,7 +77,6 @@ def convert_from_one_hot(df_as_array, dictionary):
         row_tuple = tuple(row)
         catagories_list.append(dictionary[row_tuple])
     catagories_list_array = np.asarray(catagories_list)
-    print('done')
     return catagories_list_array
 
 
@@ -113,7 +112,7 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
         
         labels_train_shape_as_array_wo_OHE = convert_from_one_hot(labels_train_shape_as_array, convert_from_one_hot_dict)
         labels_test_shape_as_array_wo_OHE = convert_from_one_hot(labels_test_shape_as_array, convert_from_one_hot_dict)
-    
+        spectra_test_shape_as_array = test_spectra
         rf_model = RandomForestClassifier(n_estimators = trees)
         rf_model.fit(training_spectra, labels_train_shape_as_array_wo_OHE)
         accuracy = rf_model.score(test_spectra, labels_test_shape_as_array_wo_OHE)
