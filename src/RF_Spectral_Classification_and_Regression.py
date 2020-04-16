@@ -82,7 +82,7 @@ def convert_from_one_hot(df_as_array, dictionary):
 
 
 def Train_Random_Forests_Shape_Classification(model_type, training_spectra, training_labels, 
-                                              test_spectra, test_labels, trees = 100):
+                                              test_spectra, test_labels, convert_from_one_hot_dict, trees = 100):
 
     """
     Trains random forest classifier to predict shape from nanoparticle emissivity spectra. Has the ability to train a
@@ -95,11 +95,14 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
     :param training_spectra - spectra to be used for testing. Numpy Array
     :param training_spectra - labels to be used for testing. Pandas Dataframe
     :param trees - number of trees used when creating the model. Default is 100
+    :param convert_from_one_hot_dict - dictionary to convert one hot encoded representations to one dimensional
+    representations
     :return: list containing: 1) accuracy of the model 2) the model itself 3) the confusion matrix for the model
     4) the output when the model is tested on the test set 5) the labels used in testing 6) the spectra used in testing
     """
 
     if model_type == 'All':
+        print("training shape classifier all materials")
         labels_train_shape = training_labels.drop(columns = ['index','log Area/Vol', 'ShortestDim', 'MiddleDim', 'LongDim', 
                                                              'Material_Au', 'Material_SiN', 'Material_SiO2', 'index'] )
         labels_test_shape = test_labels.drop(columns = ['index','log Area/Vol', 'ShortestDim', 'MiddleDim', 'LongDim', 
@@ -108,8 +111,8 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
         labels_train_shape_as_array = labels_train_shape.to_numpy()
         labels_test_shape_as_array = labels_test_shape.to_numpy()
         
-        labels_train_shape_as_array_wo_OHE = convert_from_one_hot(labels_train_shape_as_array, from_one_hot_dict)
-        labels_test_shape_as_array_wo_OHE = convert_from_one_hot(labels_test_shape_as_array, from_one_hot_dict)
+        labels_train_shape_as_array_wo_OHE = convert_from_one_hot(labels_train_shape_as_array, convert_from_one_hot_dict)
+        labels_test_shape_as_array_wo_OHE = convert_from_one_hot(labels_test_shape_as_array, convert_from_one_hot_dict)
     
         rf_model = RandomForestClassifier(n_estimators = trees)
         rf_model.fit(training_spectra, labels_train_shape_as_array_wo_OHE)
@@ -151,8 +154,8 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
         labels_train_shape.drop(columns = ['Material_SiO2'] , inplace=True)
         labels_test_shape.drop(columns = ['Material_SiO2'] , inplace=True)
         
-    if model_type == 'Au' or 'SiN' or 'SiO2':
-        
+    if model_type in ['Au','SiN','SiO2']:
+        print("training " + model_type)
         spectra_train_df = pd.DataFrame(training_spectra)
         spectra_test_df = pd.DataFrame(test_spectra)
 
@@ -162,19 +165,19 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
         labels_train_shape_as_array = labels_train_shape.to_numpy()
         labels_test_shape_as_array = labels_test_shape.to_numpy()
 
-        labels_train_shape_as_array_wo_OHE = convert_from_one_hot(labels_train_shape_as_array, from_one_hot_dict)
-        labels_test_shape_as_array_wo_OHE =  convert_from_one_hot(labels_test_shape_as_array, from_one_hot_dict)
+        labels_train_shape_as_array_wo_OHE = convert_from_one_hot(labels_train_shape_as_array, convert_from_one_hot_dict)
+        labels_test_shape_as_array_wo_OHE =  convert_from_one_hot(labels_test_shape_as_array, convert_from_one_hot_dict)
 
         spectra_train_shape_as_array = spectra_train_df.to_numpy()
         spectra_test_shape_as_array= spectra_test_df.to_numpy()
-        
+
         rf_model = RandomForestClassifier(n_estimators = trees)
         rf_model.fit(spectra_train_shape_as_array, labels_train_shape_as_array_wo_OHE)
         accuracy = rf_model.score(spectra_test_shape_as_array, labels_test_shape_as_array_wo_OHE)
-        
+
         predictions = rf_model.predict(spectra_test_shape_as_array)
         cm_rf = confusion_matrix(labels_test_shape_as_array_wo_OHE, predictions)
-    
+
     return (accuracy, rf_model, cm_rf, predictions, labels_test_shape_as_array_wo_OHE, spectra_test_shape_as_array)
 
 
@@ -283,8 +286,7 @@ def plot_accuracy(cm, categories, title, y_range = [0.5,1]):
     sns.barplot(categories, accuracies).set(title = title, ylabel = "Accuracy", ylim = y_range)
     plt.savefig(str(title) + '.png', format='png')
 
-
-# Dictionaries used to convert from one hot encoding
+""" Dictionaries used to convert from one hot encoding
 from_one_hot_dict = {(1.,0.,0.,0.) : 0, (0.,1.,0.,0.) : 1, (0.,0.,1.,0.) : 2, (0.,0.,0.,1.) : 3}
 from_one_hot_dict_materials = {(1.,0.,0.) : 0, (0.,1.,0.) : 1, (0.,0.,1.) : 2}
 
@@ -303,5 +305,5 @@ plot_accuracy(cm_Au_normalized, catagories_shape_prediction, "Accuracy of Shapes
 
 
 
-
+"""
 
