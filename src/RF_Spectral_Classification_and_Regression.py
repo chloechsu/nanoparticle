@@ -260,7 +260,7 @@ def normalize_cm(cm, test_set, num_categories):
     normalized_list_cm = []
     for i in range(0, num_categories):
         list_cm = list(cm[i])
-        normalized_row_cm = [x /test_set.count(i) for x in  list_cm]
+        normalized_row_cm = [round(x /test_set.count(i), 2) for x in  list_cm]
         normalized_list_cm.append(normalized_row_cm)
         
     return normalized_list_cm
