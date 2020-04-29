@@ -13,7 +13,7 @@ import seaborn as sns
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.multioutput import MultiOutputRegressor
-
+import itertools
 
 
 spectra_train_set = joblib.load('cache/r20200406_234541_50.0sc_50.0sp_1_CPU/spectral/y_new_train.joblib')
@@ -81,8 +81,8 @@ def convert_from_one_hot(df_as_array, dictionary):
 
 
 def Train_Random_Forests_Shape_Classification(model_type, training_spectra, training_labels, 
-                                              test_spectra, test_labels, convert_from_one_hot_dict, trees = 100):
-
+                                              test_spectra, test_labels, convert_from_one_hot_dict, trees = 100,
+                                              depth = None, m_features = 'auto'):
     """
     Trains random forest classifier to predict shape from nanoparticle emissivity spectra. Has the ability to train a
     model for all materials or one individial material
@@ -113,7 +113,7 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
         labels_train_shape_as_array_wo_OHE = convert_from_one_hot(labels_train_shape_as_array, convert_from_one_hot_dict)
         labels_test_shape_as_array_wo_OHE = convert_from_one_hot(labels_test_shape_as_array, convert_from_one_hot_dict)
         spectra_test_shape_as_array = test_spectra
-        rf_model = RandomForestClassifier(n_estimators = trees)
+        rf_model = RandomForestClassifier(n_estimators = trees, max_depth=depth, max_features=m_features)
         rf_model.fit(training_spectra, labels_train_shape_as_array_wo_OHE)
         accuracy = rf_model.score(test_spectra, labels_test_shape_as_array_wo_OHE)
         predictions = rf_model.predict(test_spectra)
@@ -170,7 +170,7 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
         spectra_train_shape_as_array = spectra_train_df.to_numpy()
         spectra_test_shape_as_array= spectra_test_df.to_numpy()
 
-        rf_model = RandomForestClassifier(n_estimators = trees)
+        rf_model = RandomForestClassifier(n_estimators = trees, max_depth=depth, max_features=m_features)
         rf_model.fit(spectra_train_shape_as_array, labels_train_shape_as_array_wo_OHE)
         accuracy = rf_model.score(spectra_test_shape_as_array, labels_test_shape_as_array_wo_OHE)
 
@@ -284,6 +284,137 @@ def plot_accuracy(cm, categories, title, y_range = [0.5,1]):
         accuracies.append(cm[i][i])
     sns.barplot(categories, accuracies).set(title = title, ylabel = "Accuracy", ylim = y_range)
     plt.savefig(str(title) + '.png', format='png')
+
+def plot_confusion_matrix(cm, classes,
+                          normalize=False,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Blues):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    """
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
+
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+
+    print(cm)
+
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, cm[i, j],
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+
+
+def shape_classification_binary(training_set_spectrum, training_set_lables, test_set_spectrum, test_set_labels,
+                                num_trees, shapes):
+    for shape in shapes:
+        if shape == 'Geometry_parallelepiped':
+            labels_train_shape_parallelepiped = training_set_lables.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                                           'MiddleDim', 'LongDim', 'Material_SiN',
+                                                                           'Material_SiO2', 'Material_Au',
+                                                                           'Geometry_sphere',
+                                                                           'Geometry_wire',
+                                                                           'Geometry_TriangPrismIsosc'])
+            labels_test_shape_parallelepiped = test_set_labels.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                                         'MiddleDim', 'LongDim', 'Material_SiN',
+                                                                         'Material_SiO2', 'Material_Au',
+                                                                         'Geometry_sphere',
+                                                                         'Geometry_wire', 'Geometry_TriangPrismIsosc'])
+            labels_train_shape_parallelepiped_as_array = np.asarray(labels_train_shape_parallelepiped)
+            labels_test_shape_parallelepiped_as_array = np.asarray(labels_test_shape_parallelepiped)
+
+            print("Training rf_parallelepiped")
+            rf_parallelepiped = RandomForestClassifier(n_estimators=num_trees)
+            rf_parallelepiped.fit(training_set_spectrum, np.ravel(labels_train_shape_parallelepiped_as_array))
+            rf_parallelepiped_accuracy = rf_parallelepiped.score(test_set_spectrum,
+                                                                 labels_test_shape_parallelepiped_as_array)
+            rf_parallelepiped_predictions = rf_parallelepiped.predict(test_set_spectrum)
+            rf_parallelepiped_cm = confusion_matrix(labels_test_shape_parallelepiped_as_array,
+                                                    rf_parallelepiped_predictions)
+
+        if shape == 'Geometry_TriangPrismIsosc':
+            labels_train_shape_triangle = training_set_lables.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                                     'MiddleDim', 'LongDim', 'Material_SiN',
+                                                                     'Material_SiO2', 'Material_Au', 'Geometry_sphere',
+                                                                     'Geometry_wire', 'Geometry_parallelepiped'])
+            labels_test_shape_triangle = test_set_labels.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                                   'MiddleDim', 'LongDim', 'Material_SiN',
+                                                                   'Material_SiO2', 'Material_Au', 'Geometry_sphere',
+                                                                   'Geometry_wire', 'Geometry_parallelepiped'])
+
+            labels_train_shape_triangle_as_array = np.asarray(labels_train_shape_triangle)
+            labels_test_shape_triangle_as_array = np.asarray(labels_test_shape_triangle)
+
+            print("Training rf_triangle")
+            rf_triangle = RandomForestClassifier(n_estimators=num_trees)
+            rf_triangle.fit(training_set_spectrum, np.ravel(labels_train_shape_triangle_as_array))
+            rf_triangle_accuracy = rf_triangle.score(test_set_spectrum, labels_test_shape_triangle_as_array)
+            rf_triangle_predictions = rf_triangle.predict(test_set_spectrum)
+            rf_triangle_cm = confusion_matrix(labels_test_shape_triangle_as_array, rf_triangle_predictions)
+
+        if shape == 'Geometry_wire':
+            labels_train_shape_wire = training_set_lables.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                                 'MiddleDim', 'LongDim', 'Material_SiN',
+                                                                 'Material_SiO2', 'Material_Au', 'Geometry_sphere',
+                                                                 'Geometry_TriangPrismIsosc',
+                                                                 'Geometry_parallelepiped'])
+            labels_test_shape_wire = test_set_labels.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                               'MiddleDim', 'LongDim', 'Material_SiN',
+                                                               'Material_SiO2', 'Material_Au', 'Geometry_sphere',
+                                                               'Geometry_TriangPrismIsosc', 'Geometry_parallelepiped'])
+
+            labels_train_shape_wire_as_array = np.asarray(labels_train_shape_wire)
+            labels_test_shape_wire_as_array = np.asarray(labels_test_shape_wire)
+
+            print("Training rf_wire")
+            rf_wire = RandomForestClassifier(n_estimators=num_trees)
+            rf_wire.fit(training_set_spectrum, np.ravel(labels_train_shape_wire_as_array))
+            rf_wire_accuracy = rf_wire.score(test_set_spectrum, labels_test_shape_wire_as_array)
+            rf_wire_predictions = rf_wire.predict(test_set_spectrum)
+            rf_wire_cm = confusion_matrix(labels_test_shape_wire_as_array, rf_wire_predictions)
+
+        if shape == 'Geometry_sphere':
+            labels_train_shape_sphere = training_set_lables.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                                   'MiddleDim', 'LongDim', 'Material_SiN',
+                                                                   'Material_SiO2', 'Material_Au', 'Geometry_wire',
+                                                                   'Geometry_TriangPrismIsosc',
+                                                                   'Geometry_parallelepiped'])
+            labels_test_shape_sphere = test_set_labels.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                                 'MiddleDim', 'LongDim', 'Material_SiN',
+                                                                 'Material_SiO2', 'Material_Au', 'Geometry_wire',
+                                                                 'Geometry_TriangPrismIsosc',
+                                                                 'Geometry_parallelepiped'])
+            labels_train_shape_sphere_as_array = np.asarray(labels_train_shape_sphere)
+            labels_test_shape_sphere_as_array = np.asarray(labels_test_shape_sphere)
+
+            print("Training rf_sphere")
+            rf_sphere = RandomForestClassifier(n_estimators=num_trees)
+            rf_sphere.fit(training_set_spectrum, np.ravel(labels_train_shape_sphere_as_array))
+            rf_sphere_accuracy = rf_sphere.score(test_set_spectrum, labels_test_shape_sphere_as_array)
+            rf_sphere_predictions = rf_sphere.predict(test_set_spectrum)
+            rf_sphere_cm = confusion_matrix(labels_test_shape_sphere_as_array, rf_sphere_predictions)
+
+    return [["parallelepiped", rf_parallelepiped_accuracy, rf_parallelepiped_predictions, rf_parallelepiped_cm,
+             labels_test_shape_parallelepiped_as_array],
+            ["sphere", rf_sphere_accuracy, rf_sphere_predictions, rf_sphere_cm, labels_test_shape_sphere_as_array],
+            ["triangle", rf_triangle_accuracy, rf_triangle_predictions, rf_triangle_cm,
+             labels_test_shape_triangle_as_array],
+            ["wire", rf_wire_accuracy, rf_wire_predictions, rf_wire_cm, labels_test_shape_wire_as_array]]
+
 
 """ Dictionaries used to convert from one hot encoding
 from_one_hot_dict = {(1.,0.,0.,0.) : 0, (0.,1.,0.,0.) : 1, (0.,0.,1.,0.) : 2, (0.,0.,0.,1.) : 3}
