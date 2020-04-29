@@ -26,13 +26,17 @@ MODEL_NAME_TO_CLASS_MAP = {
 
 N_GEOM_CLASSES = ValidationDataset.n_geom_classes()
 N_MAT_CLASSES = ValidationDataset.n_mat_classes()
+N_DIM_LABELS = ValidationDataset.n_dim_labels()
 
 
-def loss_fn(logits, labels_geom, labels_mat):
-    assert logits.shape[1] == N_GEOM_CLASSES + N_MAT_CLASSES
+def loss_fn(logits, labels_geom, labels_mat, labels_dim):
+    assert logits.shape[1] == N_GEOM_CLASSES + N_MAT_CLASSES + N_DIM_LABELS
     ce = nn.CrossEntropyLoss()
-    return ce(logits[:, :N_GEOM_CLASSES], labels_geom) + ce(
-            logits[:,-N_MAT_CLASSES:], labels_mat)
+    combined_loss = ce(logits[:, :N_GEOM_CLASSES], labels_geom)
+    combined_loss += ce(
+            logits[:, N_GEOM_CLASSES:N_GEOM_CLASSES+N_MAT_CLASSES], labels_mat)
+    combined_loss += nn.MSELoss()(logits[:, -N_DIM_LABELS:], labels_dim)
+    return combined_loss
 
 
 def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
@@ -51,17 +55,17 @@ def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
     for epoch in range(n_epochs):
         running_loss = 0.0
         for i, data in enumerate(trainloader):
-            inputs, labels_geom, labels_mat = data
+            inputs, labels_geom, labels_mat, labels_dim = data
             # zero the parameter gradients, important
             optimizer.zero_grad()
             outputs = model(inputs)
-            loss = loss_fn(outputs, labels_geom, labels_mat)
+            loss = loss_fn(outputs, labels_geom, labels_mat, labels_dim)
             loss.backward()
             optimizer.step()
             
             running_loss += loss.item()
             if i % print_every_n_batches == print_every_n_batches - 1:    # print every 100 mini-batches
-                avg_loss = running_loss / (print_every_n_batches * batch_size)
+                avg_loss = running_loss / print_every_n_batches
                 print("[epoch %d, batch %5d] avg loss: %.6f" %
                       (epoch, i, avg_loss))
                 summary_writer.add_scalar('loss/train', avg_loss,
@@ -81,12 +85,13 @@ def compute_metrics(model, validation_set, print_metrics=False):
     evalloader = torch.utils.data.DataLoader(validation_set,
             batch_size=64, shuffle=False, num_workers=1)
     metrics = {}
+    # Evaluate classification performance.
     for geom_or_mat in ['geom', 'mat']:
         if geom_or_mat == 'geom':
             class_names = validation_set.get_geom_class_names()
         else:
             class_names = validation_set.get_mat_class_names()
-        cross_entropy_fn = nn.CrossEntropyLoss()
+        cross_entropy_fn = nn.CrossEntropyLoss(reduction='sum')
         cross_entropy_loss = 0.0
         n_classes = len(class_names)
         class_correct = list(0. for i in range(n_classes))
@@ -95,11 +100,11 @@ def compute_metrics(model, validation_set, print_metrics=False):
         with torch.no_grad():
             for data in evalloader:
                 if geom_or_mat == 'geom':
-                    inputs, labels, _ = data
+                    inputs, labels, _, _ = data
                     outputs = model(inputs)[:, :N_GEOM_CLASSES]
                 else:
-                    inputs, _, labels = data
-                    outputs = model(inputs)[:, -N_MAT_CLASSES:]
+                    inputs, _, labels, _ = data
+                    outputs = model(inputs)[:, N_GEOM_CLASSES:N_GEOM_CLASSES+N_MAT_CLASSES]
                 predicted = torch.argmax(outputs.data, dim=1)
                 cross_entropy_loss += cross_entropy_fn(outputs, labels).item()
                 c = (predicted == labels).squeeze()
@@ -110,11 +115,29 @@ def compute_metrics(model, validation_set, print_metrics=False):
             metrics['accuracy/' + c] = float(class_correct[i]) / class_total[i]
             metrics['n_examples/' + c] = class_total[i]
         metrics['accuracy/avg_' + geom_or_mat] = float(
-                np.sum(class_correct)) / np.sum(class_total)
+                np.sum(class_correct)) / validation_set.__len__()
         metrics['loss/validation_' + geom_or_mat] = (
-                cross_entropy_loss / np.sum(class_total))
-    metrics['loss/validation'] = (
-            metrics['loss/validation_geom'] + metrics['loss/validation_mat'])
+                cross_entropy_loss / validation_set.__len__())
+    # Evaluate regression performance of dimensions.
+    label_names = validation_set.get_dim_label_names()
+    mse_fn = nn.MSELoss(reduction='none')
+    mae_fn = nn.L1Loss(reduction='none')
+    mse_loss = np.zeros(len(label_names))
+    mae_loss = np.zeros(len(label_names))
+    with torch.no_grad():
+        for data in evalloader:
+            inputs, _, _, labels = data 
+            outputs = model(inputs)[:, -N_DIM_LABELS:]
+            mse_loss += np.sum(mse_fn(outputs, labels).numpy(), axis=0)
+            mae_loss += np.sum(mae_fn(outputs, labels).numpy(), axis=0)
+    mse_loss /= validation_set.__len__()
+    mae_loss /= validation_set.__len__()
+    for i, c in enumerate(label_names):
+        metrics['MSE/' + c] = mse_loss[i]
+        metrics['MAE/' + c] = mae_loss[i]
+    metrics['loss/validation_dim'] = np.sum(mse_loss) 
+    metrics['loss/validation'] = (metrics['loss/validation_geom'] +
+            metrics['loss/validation_mat'] + metrics['loss/validation_dim'])
     if print_metrics:
         for k, v in metrics.items():
             print(k, ':', v)

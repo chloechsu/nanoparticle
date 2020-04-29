@@ -10,9 +10,9 @@ class OneLayerFC(nn.Module):
         super(OneLayerFC, self).__init__()
         self.classifier = nn.Sequential(
             nn.Dropout(),
-            nn.Linear(400, 128),
+            nn.Linear(799, 512),
             nn.ReLU(inplace=True),
-            nn.Linear(128, n_logits),
+            nn.Linear(512, n_logits),
         )
 
     def forward(self, x):
@@ -26,10 +26,10 @@ class TwoLayerFC(nn.Module):
         super(TwoLayerFC, self).__init__()
         self.classifier = nn.Sequential(
             nn.Dropout(),
-            nn.Linear(400, 256),
+            nn.Linear(799, 512),
             nn.ReLU(inplace=True),
             nn.Dropout(),
-            nn.Linear(256, 64),
+            nn.Linear(512, 64),
             nn.ReLU(inplace=True),
             nn.Linear(64, n_logits),
         )

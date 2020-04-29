@@ -9,6 +9,7 @@ from torch.utils.data import Dataset, ConcatDataset
 
 GEOM_CLASSES = ["TriangPrismIsosc", "parallelepiped", "sphere", "wire"]
 MAT_CLASSES = ["Au", "SiN", "SiO2"]
+DIM_LABELS = ["ShortestDim", "MiddleDim", "LongDim", "log Area/Vol"]
 
 
 def read_split_files(base_filepath, is_pandas=False):
@@ -35,6 +36,8 @@ class DatasetFromFilepath(Dataset):
     def __init__(self, input_filepath, label_filepath):
         super(DatasetFromFilepath).__init__()
         self.X = read_split_files(input_filepath)
+        self.X_diff = self.X[:, 1:] - self.X[:, :-1]
+        self.X = np.concatenate([self.X, self.X_diff], axis=1)
         df_y = read_split_files(label_filepath, is_pandas=True)
         # Check X and y have the same number of rows.
         self.n_samples = self.X.shape[0]
@@ -42,6 +45,7 @@ class DatasetFromFilepath(Dataset):
         # Extract geometry and material information.
         self.geom = df_y[["Geometry_" + g for g in GEOM_CLASSES]].to_numpy()
         self.mat = df_y[["Material_" + g for g in MAT_CLASSES]].to_numpy()
+        self.dims = df_y[DIM_LABELS].to_numpy()
         # Check that only one type has 1 in each row.
         assert np.all(np.sum(self.geom, axis=1) == 1)
         assert np.all(np.sum(self.mat, axis=1) == 1)
@@ -53,7 +57,7 @@ class DatasetFromFilepath(Dataset):
         return self.n_samples
 
     def __getitem__(self, idx):
-        return self.X[idx, :], self.geom[idx], self.mat[idx]
+        return self.X[idx, :], self.geom[idx], self.mat[idx], self.dims[idx]
 
     @staticmethod
     def n_geom_classes():
@@ -64,14 +68,21 @@ class DatasetFromFilepath(Dataset):
         return 3
 
     @staticmethod
+    def n_dim_labels():
+        return 4
+
+    @staticmethod
     def n_logits():
-        return 7
+        return 11
 
     def get_geom_class_names(self):
         return GEOM_CLASSES
     
     def get_mat_class_names(self):
         return MAT_CLASSES
+    
+    def get_dim_label_names(self):
+        return DIM_LABELS
 
 
 class OriginalTrainDataset(DatasetFromFilepath):
