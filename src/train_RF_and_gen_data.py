@@ -31,9 +31,9 @@ from eval_utils import calc_RMSE_MAE_MSE_Erel, z_RF_DT_DTGEN_error_folds, spectr
 #%% inputs ====================================================================
 n_estimators = 200
 test_size = 0.2
-n_cpus = 1
+n_cpus = 8
 num_folds_training_for_errors = 2 # 100
-n_gen_to_data_ratio = 20 #180 # the ratio between n_gen to the data used for ML
+n_gen_to_data_ratio = 20 # the ratio between n_gen to the data used for ML
 
 train_datasize_fraction_scalar = 0.5 # the fraction of original data to be used for ML.
 train_datasize_fraction_spectral = 0.5 # the fraction of original data to be used for ML.
@@ -47,7 +47,8 @@ Models_to_Study_performanceVSsize = ['DTGEN', 'DT']
 #data_size_fraction_ = np.array([0.01,0.02,0.05])
 num_folds_repeat_DataReduction=1
 
-spectral_or_scalar_calc_all = ['scalar','spectral'] # list that contains either 'scalar' or 'spectral' or both
+#spectral_or_scalar_calc_all = ['scalar','spectral'] # list that contains either 'scalar' or 'spectral' or both
+spectral_or_scalar_calc_all = ['spectral'] # list that contains either 'scalar' or 'spectral' or both
 
 datetime_str = strftime("%Y%m%d_%H%M%S")
 
@@ -286,11 +287,11 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     print("DTGEN error analysis")
     dt_gen_r2,dt_gen_mae,dt_gen_mse,dt_gen_Erel, dt_gen_r2_all,dt_gen_mae_all,dt_gen_mse_all,dt_gen_Erel_all = calc_RMSE_MAE_MSE_Erel(y_test,y_pred_dtgen, my_x)    
     
-    #%% save ML models, test and train data ===================================
-    # Save in Python format
-    variable_name_list = ['rf', 'dt', 'dt_gen',                           
-                          'X_train', 'X_new_train', 'X_test', 
-                          'y_train', 'y_new_train', 'y_test',
-                          'n_gen', 'train_data_size_fraction', 'my_x', 'scaling_factors']
-    for variable_name in variable_name_list:
-        joblib.dump(globals()[variable_name], save_folder+variable_name+'.joblib')        
+    # #%% save ML models, test and train data ===================================
+    # # Save in Python format
+    # variable_name_list = ['rf', 'dt', 'dt_gen',                           
+    #                       'X_train', 'X_new_train', 'X_test', 
+    #                       'y_train', 'y_new_train', 'y_test',
+    #                       'n_gen', 'train_data_size_fraction', 'my_x', 'scaling_factors']
+    # for variable_name in variable_name_list:
+    #     joblib.dump(globals()[variable_name], save_folder+variable_name+'.joblib')        
