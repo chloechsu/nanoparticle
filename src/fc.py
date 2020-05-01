@@ -10,12 +10,13 @@ class OneLayerFC(nn.Module):
         super(OneLayerFC, self).__init__()
         self.classifier = nn.Sequential(
             nn.Dropout(),
-            nn.Linear(799, 512),
+            nn.Linear(400*4, 512),
             nn.ReLU(inplace=True),
             nn.Linear(512, n_logits),
         )
 
     def forward(self, x):
+        x = torch.flatten(x, 1)
         return self.classifier(x)
 
 
@@ -26,7 +27,7 @@ class TwoLayerFC(nn.Module):
         super(TwoLayerFC, self).__init__()
         self.classifier = nn.Sequential(
             nn.Dropout(),
-            nn.Linear(799, 512),
+            nn.Linear(400*4, 512),
             nn.ReLU(inplace=True),
             nn.Dropout(),
             nn.Linear(512, 128),
@@ -35,6 +36,7 @@ class TwoLayerFC(nn.Module):
         )
 
     def forward(self, x):
+        x = torch.flatten(x, 1)
         return self.classifier(x)
 
 
@@ -45,7 +47,7 @@ class ThreeLayerFC(nn.Module):
         super(ThreeLayerFC, self).__init__()
         self.classifier = nn.Sequential(
             nn.Dropout(),
-            nn.Linear(799, 512),
+            nn.Linear(400*4, 512),
             nn.ReLU(inplace=True),
             nn.Dropout(),
             nn.Linear(512, 256),
@@ -57,4 +59,5 @@ class ThreeLayerFC(nn.Module):
         )
 
     def forward(self, x):
+        x = torch.flatten(x, 1)
         return self.classifier(x)
