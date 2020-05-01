@@ -224,74 +224,85 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     X_train_all_columns = data_featurized.loc[X_train.index,:]
     start_time = time()
     n_gen = int(len(X_train_all_columns) * n_gen_to_data_ratio)
-    X_gen = gen_data_P1_P2_P3_Elzouka(X_train_all_columns,n_gen);
-    X_gen = pd.DataFrame(X_gen,columns=X_train.columns).astype(np.float64)
-    X_gen = X_gen[feature_set]
-    end_time = time() 
-    print('done generating input features for DTGEN in {0} seconds'.format(end_time-start_time))
-    time_DTGEN_feature_creation = end_time - start_time
-    
-    # predicting emissivity using RF for the generated data ------------------
-    start_time = time()
-    if use_log_emissivity:    
-        y_gen = np.exp(rf.predict(X_gen))  
-    else:
-        y_gen = spectra_prediction_corrector(rf.predict(X_gen))
-    end_time = time() 
-    print('done predicting emissivity using the input features using RF in {0} seconds'.format(end_time-start_time))
-    time_DTGEN_label_creation = end_time - start_time
+    for material in [None, 'Au', 'SiN', 'SiO2']:
+        X_gen = gen_data_P1_P2_P3_Elzouka(X_train_all_columns,n_gen,
+                material=material)
+        X_gen = pd.DataFrame(X_gen,columns=X_train.columns).astype(np.float64)
+        X_gen = X_gen[feature_set]
+        end_time = time() 
+        print('done generating input features for DTGEN in {0} seconds'.format(end_time-start_time))
+        time_DTGEN_feature_creation = end_time - start_time
+        
+        # predicting emissivity using RF for the generated data ------------------
+        start_time = time()
+        if use_log_emissivity:    
+            y_gen = np.exp(rf.predict(X_gen))  
+        else:
+            y_gen = spectra_prediction_corrector(rf.predict(X_gen))
+        end_time = time() 
+        print('done predicting emissivity using the input features using RF in {0} seconds'.format(end_time-start_time))
+        time_DTGEN_label_creation = end_time - start_time
 
-    split_and_write_to_csv(X_train, 'data/sim_train_geom_%s.csv' %
-            spectral_or_scalar_calc)
-    split_and_write_to_csv(y_train, 'data/sim_train_emi_%s.csv' %
-            spectral_or_scalar_calc)
-    split_and_write_to_csv(X_gen, 'data/gen_geom_%s.csv' %
-            spectral_or_scalar_calc)
-    split_and_write_to_csv(y_gen, 'data/gen_emi_%s.csv' %
-            spectral_or_scalar_calc)
-    # Split test into half validation and half test.
-    X_val, X_test, y_val, y_test = train_test_split(X_test, y_test,
-            test_size=0.5, stratify=X_test[feature_set_geom_mat])
-    split_and_write_to_csv(X_val,
-            'data/sim_validation_geom_%s.csv' % spectral_or_scalar_calc)
-    split_and_write_to_csv(y_val,
-            'data/sim_validation_emi_%s.csv' % spectral_or_scalar_calc)
-    split_and_write_to_csv(X_test,
-            'data/sim_test_geom_%s.csv' % spectral_or_scalar_calc)
-    split_and_write_to_csv(y_test,
-            'data/sim_test_emi_%s.csv' % spectral_or_scalar_calc)
+        if material is None:
+            material = 'all'
+        else:
+            mask = (X_train['Material_' + material] == 1)
+            X_train, y_train = X_train[mask], y_train[mask] 
+            mask = (X_test['Material_' + material] == 1)
+            X_test, y_test = X_test[mask], y_test[mask] 
+
+        split_and_write_to_csv(X_train, 'data/sim_train_labels_%s.csv' %
+                material)
+        split_and_write_to_csv(y_train, 'data/sim_train_spectrum_%s.csv' %
+                material)
+        split_and_write_to_csv(X_gen, 'data/gen_labels_%s.csv' %
+                material)
+        split_and_write_to_csv(y_gen, 'data/gen_spectrum_%s.csv' %
+                material)
+        # Split test into half validation and half test.
+        X_val, X_test, y_val, y_test = train_test_split(X_test, y_test,
+                test_size=0.5, stratify=X_test[feature_set_geom_mat])
+        split_and_write_to_csv(X_val,
+                'data/sim_validation_labels_%s.csv' % material)
+        split_and_write_to_csv(y_val,
+                'data/sim_validation_spectrum_%s.csv' % material)
+        split_and_write_to_csv(X_test,
+                'data/sim_test_labels_%s.csv' % material)
+        split_and_write_to_csv(y_test,
+                'data/sim_test_spectrum_%s.csv' % material)
     
-    # adding the generated emissivity to original training emissivity ------------------
-    if use_log_emissivity:
-        X_new_train,y_new_train = pd.concat([X_gen,X_train]),np.concatenate([np.log(y_gen),y_train])        
-    else:
-        X_new_train,y_new_train = pd.concat([X_gen,X_train]),np.concatenate([y_gen,y_train])
-    
-    # creating a single decision tree trained on generated and original training emissivity
-    new_n_train = n_gen + n_train
-    dt_gen = DecisionTreeRegressor(min_samples_leaf=3)
-    
-    start_time = time()
-    dt_gen.fit(X_new_train,y_new_train)
-    time_train['DTGEN_'+spectral_or_scalar_calc] = time() - start_time
-    
-    start_time = time()
-    if use_log_emissivity:
-        y_pred_dtgen    = np.exp(dt_gen.predict(X_test))
-        y_new_train     = np.exp(y_new_train)
-        y_train         = np.exp(y_train)
-    else:
-        y_pred_dtgen = dt_gen.predict(X_test)
-    time_pred['DTGEN_'+spectral_or_scalar_calc] = time() - start_time        
-    
-    print("DTGEN error analysis")
-    dt_gen_r2,dt_gen_mae,dt_gen_mse,dt_gen_Erel, dt_gen_r2_all,dt_gen_mae_all,dt_gen_mse_all,dt_gen_Erel_all = calc_RMSE_MAE_MSE_Erel(y_test,y_pred_dtgen, my_x)    
-    
-    # #%% save ML models, test and train data ===================================
-    # # Save in Python format
-    # variable_name_list = ['rf', 'dt', 'dt_gen',                           
-    #                       'X_train', 'X_new_train', 'X_test', 
-    #                       'y_train', 'y_new_train', 'y_test',
-    #                       'n_gen', 'train_data_size_fraction', 'my_x', 'scaling_factors']
-    # for variable_name in variable_name_list:
-    #     joblib.dump(globals()[variable_name], save_folder+variable_name+'.joblib')        
+        # adding the generated emissivity to original training emissivity ------------------
+        if use_log_emissivity:
+            X_new_train,y_new_train = pd.concat([X_gen,X_train]),np.concatenate([np.log(y_gen),y_train])        
+        else:
+            X_new_train,y_new_train = pd.concat([X_gen,X_train]),np.concatenate([y_gen,y_train])
+        
+        # creating a single decision tree trained on generated and original training emissivity
+        new_n_train = n_gen + n_train
+        dt_gen = DecisionTreeRegressor(min_samples_leaf=3)
+        
+        start_time = time()
+        dt_gen.fit(X_new_train,y_new_train)
+        time_train['DTGEN_'+spectral_or_scalar_calc] = time() - start_time
+        
+        start_time = time()
+        if use_log_emissivity:
+            y_pred_dtgen    = np.exp(dt_gen.predict(X_test))
+            y_new_train     = np.exp(y_new_train)
+            y_train         = np.exp(y_train)
+        else:
+            y_pred_dtgen = dt_gen.predict(X_test)
+        time_pred['DTGEN_'+spectral_or_scalar_calc] = time() - start_time        
+        
+        print("DTGEN error analysis")
+        dt_gen_r2,dt_gen_mae,dt_gen_mse,dt_gen_Erel, dt_gen_r2_all,dt_gen_mae_all,dt_gen_mse_all,dt_gen_Erel_all = calc_RMSE_MAE_MSE_Erel(y_test,y_pred_dtgen, my_x)    
+        
+        #%% save ML models, test and train data ===================================
+        # Save in Python format
+        variable_name_list = ['rf', 'dt', 'dt_gen',                           
+                              'X_train', 'X_new_train', 'X_test', 
+                              'y_train', 'y_new_train', 'y_test',
+                              'n_gen', 'train_data_size_fraction', 'my_x', 'scaling_factors']
+        for variable_name in variable_name_list:
+            joblib.dump(globals()[variable_name+'_'+material_name],
+                    save_folder+variable_name+'_'+material_name+'.joblib')        

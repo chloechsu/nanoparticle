@@ -90,7 +90,7 @@ class OriginalTrainDataset(DatasetFromFilepath):
 
     def __init__(self):
         super(OriginalTrainDataset, self).__init__(
-            'data/sim_train_emi_spectral.csv', 'data/sim_train_geom_spectral.csv')
+            'data/sim_train_spectrum_all.csv', 'data/sim_train_labels_all.csv')
 
 
 class ValidationDataset(DatasetFromFilepath):
@@ -98,8 +98,8 @@ class ValidationDataset(DatasetFromFilepath):
 
     def __init__(self):
         super(ValidationDataset, self).__init__(
-            'data/sim_validation_emi_spectral.csv',
-            'data/sim_validation_geom_spectral.csv')
+            'data/sim_validation_spectrum_all.csv',
+            'data/sim_validation_labels_all.csv')
 
 
 class TestDataset(DatasetFromFilepath):
@@ -107,15 +107,15 @@ class TestDataset(DatasetFromFilepath):
 
     def __init__(self):
         super(TestDataset, self).__init__(
-            'data/sim_test_emi_spectral.csv', 'data/sim_test_geom_spectral.csv')
+            'data/sim_test_spectrum_all.csv', 'data/sim_test_labels_all.csv')
 
 
 class GeneratedDataset(ConcatDataset):
     """The dataset generated from random forest."""
 
     def __init__(self):
-        in_files = glob.glob('data/gen_emi_spectral_*-of-*.csv')
-        label_files = glob.glob('data/gen_geom_spectral_*-of-*.csv')
+        in_files = glob.glob('data/gen_spectrum_all_*-of-*.csv')
+        label_files = glob.glob('data/gen_labels_all_*-of-*.csv')
         in_files.sort()
         label_files.sort()
         assert len(in_files) == len(label_files)

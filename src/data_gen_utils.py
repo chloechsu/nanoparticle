@@ -7,7 +7,7 @@ import pandas as pd
 from math import pi
 
 ### --- Generating Random Samples --- ###
-def gen_data_P1_P2_P3_Elzouka(X,n=10**5):
+def gen_data_P1_P2_P3_Elzouka(X, n=10**5, material=None):
     """This is different from "gen_data". Here, random pick is based on the geometry parameters P1,P2 and P3.
     After picking all the data, we will calculate the required feature columns    
     """
@@ -20,7 +20,13 @@ def gen_data_P1_P2_P3_Elzouka(X,n=10**5):
 
     # picking material, uniform random
     feature_set_mat = [x for x in cols if "Material" in x]    
-    mat_idx = np.random.choice(np.arange(len(feature_set_mat)),size=n)        
+    if material is None:
+        mat_idx = np.random.choice(np.arange(len(feature_set_mat)),size=n)        
+    else:
+        for i, x in enumerate(feature_set_mat):
+            if x == "Material_" + material:
+                mat_idx = i + np.zeros(n, dtype=int)
+                break
     mat = pd.get_dummies(pd.Series(mat_idx)).values
     X_gen[feature_set_mat] = mat    
     
