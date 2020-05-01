@@ -35,3 +35,2324 @@ Parsed 9765 rows from data/gen_labels_Au_15-of-16.
 Parsed 1302 rows from data/sim_validation_spectrum_Au.
 Parsed 1302 rows from data/sim_validation_labels_Au.
 Logging training progress to tensorboard dir runs/twolayerfc-lr_0.000100-trainsize_158844-05_01_2020_05:00.
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/twolayerfc-lr_0.000500-trainsize_158844-05_01_2020_05:00.
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/threelayerfc-lr_0.000500-trainsize_158844-05_01_2020_05:01.
+[epoch 0, batch    99] avg loss: 1.376086
+[epoch 0, batch   199] avg loss: 1.340726
+[epoch 0, batch   299] avg loss: 1.315909
+[epoch 0, batch   399] avg loss: 1.290918
+[epoch 0, batch   499] avg loss: 1.254088
+[epoch 0, batch   599] avg loss: 1.215268
+[epoch 0, batch   699] avg loss: 1.174448
+[epoch 0, batch   799] avg loss: 1.144305
+[epoch 0, batch   899] avg loss: 1.113671
+[epoch 0, batch   999] avg loss: 1.088352
+[epoch 0, batch  1099] avg loss: 1.063860
+[epoch 0, batch  1199] avg loss: 1.058254
+[epoch 0, batch  1299] avg loss: 1.040853
+[epoch 0, batch  1399] avg loss: 1.028107
+[epoch 0, batch  1499] avg loss: 1.011085
+[epoch 0, batch  1599] avg loss: 1.023628
+[epoch 0, batch  1699] avg loss: 1.018928
+[epoch 0, batch  1799] avg loss: 1.005630
+[epoch 0, batch  1899] avg loss: 1.011800
+[epoch 0, batch  1999] avg loss: 0.994825
+[epoch 0, batch  2099] avg loss: 0.987086
+[epoch 0, batch  2199] avg loss: 0.990912
+[epoch 0, batch  2299] avg loss: 0.990405
+[epoch 0, batch  2399] avg loss: 0.991630
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/threelayerfc-lr_0.000100-trainsize_158844-05_01_2020_05:02.
+[epoch 0, batch    99] avg loss: 1.320386
+[epoch 0, batch   199] avg loss: 1.175005
+[epoch 0, batch   299] avg loss: 1.077593
+[epoch 0, batch   399] avg loss: 1.041673
+[epoch 0, batch   499] avg loss: 1.028999
+[epoch 0, batch   599] avg loss: 1.006037
+[epoch 0, batch   699] avg loss: 1.001163
+[epoch 0, batch   799] avg loss: 0.988105
+[epoch 0, batch   899] avg loss: 0.992391
+[epoch 0, batch   999] avg loss: 0.956609
+[epoch 0, batch  1099] avg loss: 0.964948
+[epoch 0, batch  1199] avg loss: 0.955774
+[epoch 0, batch  1299] avg loss: 0.974483
+[epoch 0, batch  1399] avg loss: 0.950922
+[epoch 0, batch  1499] avg loss: 0.933633
+[epoch 0, batch  1599] avg loss: 0.957593
+[epoch 0, batch  1699] avg loss: 0.944981
+[epoch 0, batch  1799] avg loss: 0.938476
+[epoch 0, batch  1899] avg loss: 0.938260
+[epoch 0, batch  1999] avg loss: 0.938537
+[epoch 0, batch  2099] avg loss: 0.932775
+[epoch 0, batch  2199] avg loss: 0.925271
+[epoch 0, batch  2299] avg loss: 0.934906
+[epoch 0, batch  2399] avg loss: 0.928252
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/alexnet-lr_0.000100-trainsize_158844-05_01_2020_05:04.
+[epoch 0, batch    99] avg loss: 1.330026
+[epoch 0, batch   199] avg loss: 1.145081
+[epoch 0, batch   299] avg loss: 1.056452
+[epoch 0, batch   399] avg loss: 1.023080
+[epoch 0, batch   499] avg loss: 1.008089
+[epoch 0, batch   599] avg loss: 1.001680
+[epoch 0, batch   699] avg loss: 0.984192
+[epoch 0, batch   799] avg loss: 0.982813
+[epoch 0, batch   899] avg loss: 0.981375
+[epoch 0, batch   999] avg loss: 0.970324
+[epoch 0, batch  1099] avg loss: 0.959612
+[epoch 0, batch  1199] avg loss: 0.943823
+[epoch 0, batch  1299] avg loss: 0.940796
+[epoch 0, batch  1399] avg loss: 0.958508
+[epoch 0, batch  1499] avg loss: 0.941262
+[epoch 0, batch  1599] avg loss: 0.952311
+[epoch 0, batch  1699] avg loss: 0.926568
+[epoch 0, batch  1799] avg loss: 0.936705
+[epoch 0, batch  1899] avg loss: 0.939403
+[epoch 0, batch  1999] avg loss: 0.924305
+[epoch 0, batch  2099] avg loss: 0.914107
+[epoch 0, batch  2199] avg loss: 0.912833
+[epoch 0, batch  2299] avg loss: 0.908778
+[epoch 0, batch  2399] avg loss: 0.910484
+[epoch 1, batch    99] avg loss: 0.981582
+[epoch 1, batch   199] avg loss: 0.974146
+[epoch 1, batch   299] avg loss: 0.969640
+[epoch 1, batch   399] avg loss: 0.979417
+[epoch 1, batch   499] avg loss: 0.966440
+[epoch 1, batch   599] avg loss: 0.965576
+[epoch 1, batch   699] avg loss: 0.964308
+[epoch 1, batch   799] avg loss: 0.965757
+[epoch 1, batch   899] avg loss: 0.963747
+[epoch 1, batch   999] avg loss: 0.951407
+[epoch 1, batch  1099] avg loss: 0.956513
+[epoch 1, batch  1199] avg loss: 0.951848
+[epoch 1, batch  1299] avg loss: 0.947281
+[epoch 1, batch  1399] avg loss: 0.968329
+[epoch 1, batch  1499] avg loss: 0.963515
+[epoch 1, batch  1599] avg loss: 0.965321
+[epoch 1, batch  1699] avg loss: 0.956166
+[epoch 1, batch  1799] avg loss: 0.935279
+[epoch 1, batch  1899] avg loss: 0.950550
+[epoch 1, batch  1999] avg loss: 0.952529
+[epoch 1, batch  2099] avg loss: 0.947126
+[epoch 1, batch  2199] avg loss: 0.943172
+[epoch 1, batch  2299] avg loss: 0.945701
+[epoch 1, batch  2399] avg loss: 0.943864
+[epoch 0, batch    99] avg loss: 1.378770
+[epoch 0, batch   199] avg loss: 1.350084
+[epoch 0, batch   299] avg loss: 1.315741
+[epoch 0, batch   399] avg loss: 1.270987
+[epoch 0, batch   499] avg loss: 1.218765
+[epoch 0, batch   599] avg loss: 1.148726
+[epoch 0, batch   699] avg loss: 1.110291
+[epoch 0, batch   799] avg loss: 1.084905
+[epoch 0, batch   899] avg loss: 1.082350
+[epoch 0, batch   999] avg loss: 1.058557
+[epoch 0, batch  1099] avg loss: 1.037851
+[epoch 0, batch  1199] avg loss: 1.046174
+[epoch 0, batch  1299] avg loss: 1.021815
+[epoch 0, batch  1399] avg loss: 1.013314
+[epoch 0, batch  1499] avg loss: 1.018151
+[epoch 0, batch  1599] avg loss: 1.007567
+[epoch 0, batch  1699] avg loss: 1.016264
+[epoch 0, batch  1799] avg loss: 0.995790
+[epoch 0, batch  1899] avg loss: 0.994202
+[epoch 0, batch  1999] avg loss: 1.004442
+[epoch 0, batch  2099] avg loss: 0.985640
+[epoch 0, batch  2199] avg loss: 0.993096
+[epoch 0, batch  2299] avg loss: 0.978619
+[epoch 0, batch  2399] avg loss: 0.988995
+[epoch 1, batch    99] avg loss: 0.916677
+[epoch 1, batch   199] avg loss: 0.900229
+[epoch 1, batch   299] avg loss: 0.925760
+[epoch 1, batch   399] avg loss: 0.909043
+[epoch 1, batch   499] avg loss: 0.901835
+[epoch 1, batch   599] avg loss: 0.901545
+[epoch 1, batch   699] avg loss: 0.908827
+[epoch 1, batch   799] avg loss: 0.904073
+[epoch 1, batch   899] avg loss: 0.905779
+[epoch 1, batch   999] avg loss: 0.901734
+[epoch 1, batch  1099] avg loss: 0.899648
+[epoch 1, batch  1199] avg loss: 0.882264
+[epoch 1, batch  1299] avg loss: 0.896191
+[epoch 1, batch  1399] avg loss: 0.888465
+[epoch 1, batch  1499] avg loss: 0.897795
+[epoch 1, batch  1599] avg loss: 0.907022
+[epoch 1, batch  1699] avg loss: 0.896235
+[epoch 1, batch  1799] avg loss: 0.892633
+[epoch 1, batch  1899] avg loss: 0.884917
+[epoch 1, batch  1999] avg loss: 0.876534
+[epoch 1, batch  2099] avg loss: 0.878856
+[epoch 1, batch  2199] avg loss: 0.877936
+[epoch 1, batch  2299] avg loss: 0.878672
+[epoch 1, batch  2399] avg loss: 0.883720
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/alexnet-lr_0.000500-trainsize_158844-05_01_2020_05:06.
+[epoch 2, batch    99] avg loss: 0.955515
+[epoch 2, batch   199] avg loss: 0.936634
+[epoch 2, batch   299] avg loss: 0.931682
+[epoch 2, batch   399] avg loss: 0.930535
+[epoch 2, batch   499] avg loss: 0.930007
+[epoch 2, batch   599] avg loss: 0.919302
+[epoch 2, batch   699] avg loss: 0.932401
+[epoch 2, batch   799] avg loss: 0.949604
+[epoch 2, batch   899] avg loss: 0.937029
+[epoch 2, batch   999] avg loss: 0.925782
+[epoch 2, batch  1099] avg loss: 0.943963
+[epoch 2, batch  1199] avg loss: 0.934420
+[epoch 2, batch  1299] avg loss: 0.922168
+[epoch 2, batch  1399] avg loss: 0.922947
+[epoch 2, batch  1499] avg loss: 0.923413
+[epoch 2, batch  1599] avg loss: 0.932676
+[epoch 2, batch  1699] avg loss: 0.925954
+[epoch 2, batch  1799] avg loss: 0.934303
+[epoch 2, batch  1899] avg loss: 0.932122
+[epoch 2, batch  1999] avg loss: 0.930217
+[epoch 2, batch  2099] avg loss: 0.913820
+[epoch 2, batch  2199] avg loss: 0.924788
+[epoch 2, batch  2299] avg loss: 0.926253
+[epoch 2, batch  2399] avg loss: 0.921405
+[epoch 1, batch    99] avg loss: 0.899178
+[epoch 1, batch   199] avg loss: 0.906866
+[epoch 1, batch   299] avg loss: 0.902942
+[epoch 1, batch   399] avg loss: 0.901114
+[epoch 1, batch   499] avg loss: 0.902332
+[epoch 1, batch   599] avg loss: 0.908624
+[epoch 1, batch   699] avg loss: 0.894877
+[epoch 1, batch   799] avg loss: 0.906798
+[epoch 1, batch   899] avg loss: 0.901938
+[epoch 1, batch   999] avg loss: 0.900115
+[epoch 1, batch  1099] avg loss: 0.903488
+[epoch 1, batch  1199] avg loss: 0.901252
+[epoch 1, batch  1299] avg loss: 0.889571
+[epoch 1, batch  1399] avg loss: 0.892454
+[epoch 1, batch  1499] avg loss: 0.884501
+[epoch 1, batch  1599] avg loss: 0.883848
+[epoch 1, batch  1699] avg loss: 0.885499
+[epoch 1, batch  1799] avg loss: 0.889055
+[epoch 1, batch  1899] avg loss: 0.881114
+[epoch 1, batch  1999] avg loss: 0.884767
+[epoch 1, batch  2099] avg loss: 0.881990
+[epoch 1, batch  2199] avg loss: 0.892263
+[epoch 1, batch  2299] avg loss: 0.892075
+[epoch 1, batch  2399] avg loss: 0.885720
+[epoch 1, batch    99] avg loss: 0.977831
+[epoch 1, batch   199] avg loss: 0.965617
+[epoch 1, batch   299] avg loss: 0.978161
+[epoch 1, batch   399] avg loss: 0.970319
+[epoch 1, batch   499] avg loss: 0.963191
+[epoch 1, batch   599] avg loss: 0.957796
+[epoch 1, batch   699] avg loss: 0.958788
+[epoch 1, batch   799] avg loss: 0.970480
+[epoch 1, batch   899] avg loss: 0.961759
+[epoch 1, batch   999] avg loss: 0.958931
+[epoch 1, batch  1099] avg loss: 0.955646
+[epoch 1, batch  1199] avg loss: 0.959041
+[epoch 1, batch  1299] avg loss: 0.961810
+[epoch 1, batch  1399] avg loss: 0.946469
+[epoch 1, batch  1499] avg loss: 0.956813
+[epoch 1, batch  1599] avg loss: 0.951828
+[epoch 1, batch  1699] avg loss: 0.950852
+[epoch 1, batch  1799] avg loss: 0.950668
+[epoch 1, batch  1899] avg loss: 0.942115
+[epoch 1, batch  1999] avg loss: 0.939371
+[epoch 1, batch  2099] avg loss: 0.950818
+[epoch 1, batch  2199] avg loss: 0.958465
+[epoch 1, batch  2299] avg loss: 0.938479
+[epoch 1, batch  2399] avg loss: 0.940891
+[epoch 2, batch    99] avg loss: 0.873802
+[epoch 2, batch   199] avg loss: 0.877296
+[epoch 2, batch   299] avg loss: 0.888152
+[epoch 2, batch   399] avg loss: 0.866367
+[epoch 2, batch   499] avg loss: 0.877636
+[epoch 2, batch   599] avg loss: 0.869641
+[epoch 2, batch   699] avg loss: 0.883365
+[epoch 2, batch   799] avg loss: 0.873879
+[epoch 2, batch   899] avg loss: 0.867862
+[epoch 2, batch   999] avg loss: 0.875493
+[epoch 2, batch  1099] avg loss: 0.878706
+[epoch 2, batch  1199] avg loss: 0.882902
+[epoch 2, batch  1299] avg loss: 0.877525
+[epoch 2, batch  1399] avg loss: 0.877915
+[epoch 2, batch  1499] avg loss: 0.867487
+[epoch 2, batch  1599] avg loss: 0.876213
+[epoch 2, batch  1699] avg loss: 0.870672
+[epoch 2, batch  1799] avg loss: 0.879553
+[epoch 2, batch  1899] avg loss: 0.859377
+[epoch 2, batch  1999] avg loss: 0.866310
+[epoch 2, batch  2099] avg loss: 0.880271
+[epoch 2, batch  2199] avg loss: 0.877819
+[epoch 2, batch  2299] avg loss: 0.859377
+[epoch 2, batch  2399] avg loss: 0.873111
+[epoch 3, batch    99] avg loss: 0.912467
+[epoch 3, batch   199] avg loss: 0.920487
+[epoch 3, batch   299] avg loss: 0.923051
+[epoch 3, batch   399] avg loss: 0.927308
+[epoch 3, batch   499] avg loss: 0.931379
+[epoch 3, batch   599] avg loss: 0.917062
+[epoch 3, batch   699] avg loss: 0.921973
+[epoch 3, batch   799] avg loss: 0.913042
+[epoch 3, batch   899] avg loss: 0.914397
+[epoch 3, batch   999] avg loss: 0.909991
+[epoch 3, batch  1099] avg loss: 0.907556
+[epoch 3, batch  1199] avg loss: 0.912893
+[epoch 3, batch  1299] avg loss: 0.920781
+[epoch 3, batch  1399] avg loss: 0.906560
+[epoch 3, batch  1499] avg loss: 0.892378
+[epoch 3, batch  1599] avg loss: 0.912669
+[epoch 3, batch  1699] avg loss: 0.921240
+[epoch 3, batch  1799] avg loss: 0.905721
+[epoch 3, batch  1899] avg loss: 0.904152
+[epoch 3, batch  1999] avg loss: 0.903008
+[epoch 3, batch  2099] avg loss: 0.907853
+[epoch 3, batch  2199] avg loss: 0.907697
+[epoch 3, batch  2299] avg loss: 0.917608
+[epoch 3, batch  2399] avg loss: 0.888775
+[epoch 2, batch    99] avg loss: 0.877742
+[epoch 2, batch   199] avg loss: 0.906376
+[epoch 2, batch   299] avg loss: 0.883459
+[epoch 2, batch   399] avg loss: 0.872392
+[epoch 2, batch   499] avg loss: 0.860857
+[epoch 2, batch   599] avg loss: 0.885326
+[epoch 2, batch   699] avg loss: 0.870923
+[epoch 2, batch   799] avg loss: 0.867206
+[epoch 2, batch   899] avg loss: 0.859572
+[epoch 2, batch   999] avg loss: 0.875179
+[epoch 2, batch  1099] avg loss: 0.871508
+[epoch 2, batch  1199] avg loss: 0.870976
+[epoch 2, batch  1299] avg loss: 0.889508
+[epoch 2, batch  1399] avg loss: 0.878997
+[epoch 2, batch  1499] avg loss: 0.863464
+[epoch 2, batch  1599] avg loss: 0.860330
+[epoch 2, batch  1699] avg loss: 0.874149
+[epoch 2, batch  1799] avg loss: 0.862691
+[epoch 2, batch  1899] avg loss: 0.866107
+[epoch 2, batch  1999] avg loss: 0.873406
+[epoch 2, batch  2099] avg loss: 0.872500
+[epoch 2, batch  2199] avg loss: 0.863571
+[epoch 2, batch  2299] avg loss: 0.869557
+[epoch 2, batch  2399] avg loss: 0.860899
+[epoch 2, batch    99] avg loss: 0.942363
+[epoch 2, batch   199] avg loss: 0.936544
+[epoch 2, batch   299] avg loss: 0.943998
+[epoch 2, batch   399] avg loss: 0.931741
+[epoch 2, batch   499] avg loss: 0.922088
+[epoch 2, batch   599] avg loss: 0.927344
+[epoch 2, batch   699] avg loss: 0.933940
+[epoch 2, batch   799] avg loss: 0.939250
+[epoch 2, batch   899] avg loss: 0.931992
+[epoch 2, batch   999] avg loss: 0.930069
+[epoch 2, batch  1099] avg loss: 0.936855
+[epoch 2, batch  1199] avg loss: 0.939975
+[epoch 2, batch  1299] avg loss: 0.925713
+[epoch 2, batch  1399] avg loss: 0.928083
+[epoch 2, batch  1499] avg loss: 0.924650
+[epoch 2, batch  1599] avg loss: 0.914284
+[epoch 2, batch  1699] avg loss: 0.926662
+[epoch 2, batch  1799] avg loss: 0.940488
+[epoch 2, batch  1899] avg loss: 0.917928
+[epoch 2, batch  1999] avg loss: 0.921618
+[epoch 2, batch  2099] avg loss: 0.927453
+[epoch 2, batch  2199] avg loss: 0.912586
+[epoch 2, batch  2299] avg loss: 0.922311
+[epoch 2, batch  2399] avg loss: 0.921377
+[epoch 3, batch    99] avg loss: 0.869980
+[epoch 3, batch   199] avg loss: 0.888555
+[epoch 3, batch   299] avg loss: 0.859178
+[epoch 3, batch   399] avg loss: 0.859548
+[epoch 3, batch   499] avg loss: 0.851466
+[epoch 3, batch   599] avg loss: 0.844227
+[epoch 3, batch   699] avg loss: 0.858893
+[epoch 3, batch   799] avg loss: 0.863676
+[epoch 3, batch   899] avg loss: 0.873915
+[epoch 3, batch   999] avg loss: 0.860757
+[epoch 3, batch  1099] avg loss: 0.868626
+[epoch 3, batch  1199] avg loss: 0.836670
+[epoch 3, batch  1299] avg loss: 0.870557
+[epoch 3, batch  1399] avg loss: 0.839674
+[epoch 3, batch  1499] avg loss: 0.856458
+[epoch 3, batch  1599] avg loss: 0.873609
+[epoch 3, batch  1699] avg loss: 0.860022
+[epoch 3, batch  1799] avg loss: 0.846785
+[epoch 3, batch  1899] avg loss: 0.854613
+[epoch 3, batch  1999] avg loss: 0.857310
+[epoch 3, batch  2099] avg loss: 0.857032
+[epoch 3, batch  2199] avg loss: 0.849576
+[epoch 3, batch  2299] avg loss: 0.859237
+[epoch 3, batch  2399] avg loss: 0.854994
+[epoch 4, batch    99] avg loss: 0.897735
+[epoch 4, batch   199] avg loss: 0.898251
+[epoch 4, batch   299] avg loss: 0.904541
+[epoch 4, batch   399] avg loss: 0.892455
+[epoch 4, batch   499] avg loss: 0.901174
+[epoch 4, batch   599] avg loss: 0.906036
+[epoch 4, batch   699] avg loss: 0.898681
+[epoch 4, batch   799] avg loss: 0.892692
+[epoch 4, batch   899] avg loss: 0.898537
+[epoch 4, batch   999] avg loss: 0.903647
+[epoch 4, batch  1099] avg loss: 0.906681
+[epoch 4, batch  1199] avg loss: 0.910159
+[epoch 4, batch  1299] avg loss: 0.900729
+[epoch 4, batch  1399] avg loss: 0.890527
+[epoch 4, batch  1499] avg loss: 0.880970
+[epoch 4, batch  1599] avg loss: 0.882018
+[epoch 4, batch  1699] avg loss: 0.878127
+[epoch 4, batch  1799] avg loss: 0.893059
+[epoch 4, batch  1899] avg loss: 0.905009
+[epoch 4, batch  1999] avg loss: 0.905529
+[epoch 4, batch  2099] avg loss: 0.881253
+[epoch 4, batch  2199] avg loss: 0.896391
+[epoch 4, batch  2299] avg loss: 0.876834
+[epoch 4, batch  2399] avg loss: 0.899216
+[epoch 3, batch    99] avg loss: 0.856942
+[epoch 3, batch   199] avg loss: 0.864748
+[epoch 3, batch   299] avg loss: 0.854434
+[epoch 3, batch   399] avg loss: 0.862497
+[epoch 3, batch   499] avg loss: 0.854729
+[epoch 3, batch   599] avg loss: 0.867454
+[epoch 3, batch   699] avg loss: 0.864408
+[epoch 3, batch   799] avg loss: 0.873246
+[epoch 3, batch   899] avg loss: 0.855860
+[epoch 3, batch   999] avg loss: 0.877288
+[epoch 3, batch  1099] avg loss: 0.860631
+[epoch 3, batch  1199] avg loss: 0.855864
+[epoch 3, batch  1299] avg loss: 0.854802
+[epoch 3, batch  1399] avg loss: 0.837691
+[epoch 3, batch  1499] avg loss: 0.858870
+[epoch 3, batch  1599] avg loss: 0.854285
+[epoch 3, batch  1699] avg loss: 0.847258
+[epoch 3, batch  1799] avg loss: 0.848007
+[epoch 3, batch  1899] avg loss: 0.848421
+[epoch 3, batch  1999] avg loss: 0.850848
+[epoch 3, batch  2099] avg loss: 0.839451
+[epoch 3, batch  2199] avg loss: 0.838360
+[epoch 3, batch  2299] avg loss: 0.835921
+[epoch 3, batch  2399] avg loss: 0.840199
+[epoch 3, batch    99] avg loss: 0.914033
+[epoch 3, batch   199] avg loss: 0.919393
+[epoch 3, batch   299] avg loss: 0.896809
+[epoch 3, batch   399] avg loss: 0.927347
+[epoch 3, batch   499] avg loss: 0.903319
+[epoch 3, batch   599] avg loss: 0.906510
+[epoch 3, batch   699] avg loss: 0.913473
+[epoch 3, batch   799] avg loss: 0.905807
+[epoch 3, batch   899] avg loss: 0.911956
+[epoch 3, batch   999] avg loss: 0.895959
+[epoch 3, batch  1099] avg loss: 0.889272
+[epoch 3, batch  1199] avg loss: 0.897094
+[epoch 3, batch  1299] avg loss: 0.901877
+[epoch 3, batch  1399] avg loss: 0.906430
+[epoch 3, batch  1499] avg loss: 0.906400
+[epoch 3, batch  1599] avg loss: 0.906496
+[epoch 3, batch  1699] avg loss: 0.907454
+[epoch 3, batch  1799] avg loss: 0.897789
+[epoch 3, batch  1899] avg loss: 0.892090
+[epoch 3, batch  1999] avg loss: 0.897094
+[epoch 3, batch  2099] avg loss: 0.889840
+[epoch 3, batch  2199] avg loss: 0.898189
+[epoch 3, batch  2299] avg loss: 0.901771
+[epoch 3, batch  2399] avg loss: 0.895346
+[epoch 4, batch    99] avg loss: 0.865094
+[epoch 4, batch   199] avg loss: 0.849020
+[epoch 4, batch   299] avg loss: 0.854108
+[epoch 4, batch   399] avg loss: 0.862761
+[epoch 4, batch   499] avg loss: 0.832965
+[epoch 4, batch   599] avg loss: 0.849207
+[epoch 4, batch   699] avg loss: 0.855433
+[epoch 4, batch   799] avg loss: 0.842121
+[epoch 4, batch   899] avg loss: 0.843388
+[epoch 4, batch   999] avg loss: 0.865628
+[epoch 4, batch  1099] avg loss: 0.865968
+[epoch 4, batch  1199] avg loss: 0.849214
+[epoch 4, batch  1299] avg loss: 0.858601
+[epoch 4, batch  1399] avg loss: 0.849777
+[epoch 4, batch  1499] avg loss: 0.843238
+[epoch 4, batch  1599] avg loss: 0.849525
+[epoch 4, batch  1699] avg loss: 0.846082
+[epoch 4, batch  1799] avg loss: 0.851085
+[epoch 4, batch  1899] avg loss: 0.842221
+[epoch 4, batch  1999] avg loss: 0.849803
+[epoch 4, batch  2099] avg loss: 0.851760
+[epoch 4, batch  2199] avg loss: 0.844166
+[epoch 4, batch  2299] avg loss: 0.838785
+[epoch 4, batch  2399] avg loss: 0.854665
+[epoch 5, batch    99] avg loss: 0.884303
+[epoch 5, batch   199] avg loss: 0.890702
+[epoch 5, batch   299] avg loss: 0.894033
+[epoch 5, batch   399] avg loss: 0.886309
+[epoch 5, batch   499] avg loss: 0.892636
+[epoch 5, batch   599] avg loss: 0.888541
+[epoch 5, batch   699] avg loss: 0.887813
+[epoch 5, batch   799] avg loss: 0.884832
+[epoch 5, batch   899] avg loss: 0.891336
+[epoch 5, batch   999] avg loss: 0.884238
+[epoch 5, batch  1099] avg loss: 0.891265
+[epoch 5, batch  1199] avg loss: 0.884022
+[epoch 5, batch  1299] avg loss: 0.876905
+[epoch 5, batch  1399] avg loss: 0.882682
+[epoch 5, batch  1499] avg loss: 0.885413
+[epoch 5, batch  1599] avg loss: 0.877557
+[epoch 5, batch  1699] avg loss: 0.888604
+[epoch 5, batch  1799] avg loss: 0.882576
+[epoch 5, batch  1899] avg loss: 0.888641
+[epoch 5, batch  1999] avg loss: 0.880946
+[epoch 5, batch  2099] avg loss: 0.891234
+[epoch 5, batch  2199] avg loss: 0.886755
+[epoch 5, batch  2299] avg loss: 0.874230
+[epoch 5, batch  2399] avg loss: 0.875604
+[epoch 5, batch    99] avg loss: 0.841810
+[epoch 5, batch   199] avg loss: 0.850408
+[epoch 5, batch   299] avg loss: 0.839858
+[epoch 5, batch   399] avg loss: 0.838821
+[epoch 5, batch   499] avg loss: 0.851083
+[epoch 5, batch   599] avg loss: 0.847975
+[epoch 5, batch   699] avg loss: 0.840619
+[epoch 5, batch   799] avg loss: 0.844418
+[epoch 5, batch   899] avg loss: 0.835101
+[epoch 5, batch   999] avg loss: 0.848983
+[epoch 5, batch  1099] avg loss: 0.844427
+[epoch 5, batch  1199] avg loss: 0.836396
+[epoch 5, batch  1299] avg loss: 0.836402
+[epoch 5, batch  1399] avg loss: 0.846197
+[epoch 5, batch  1499] avg loss: 0.839333
+[epoch 5, batch  1599] avg loss: 0.850753
+[epoch 5, batch  1699] avg loss: 0.825379
+[epoch 5, batch  1799] avg loss: 0.838785
+[epoch 5, batch  1899] avg loss: 0.839299
+[epoch 5, batch  1999] avg loss: 0.836700
+[epoch 5, batch  2099] avg loss: 0.835083
+[epoch 5, batch  2199] avg loss: 0.826572
+[epoch 5, batch  2299] avg loss: 0.842714
+[epoch 5, batch  2399] avg loss: 0.824966
+[epoch 4, batch    99] avg loss: 0.892604
+[epoch 4, batch   199] avg loss: 0.895675
+[epoch 4, batch   299] avg loss: 0.905065
+[epoch 4, batch   399] avg loss: 0.907710
+[epoch 4, batch   499] avg loss: 0.901574
+[epoch 4, batch   599] avg loss: 0.891900
+[epoch 4, batch   699] avg loss: 0.891521
+[epoch 4, batch   799] avg loss: 0.900373
+[epoch 4, batch   899] avg loss: 0.899335
+[epoch 4, batch   999] avg loss: 0.904641
+[epoch 4, batch  1099] avg loss: 0.884328
+[epoch 4, batch  1199] avg loss: 0.883035
+[epoch 4, batch  1299] avg loss: 0.887584
+[epoch 4, batch  1399] avg loss: 0.882024
+[epoch 4, batch  1499] avg loss: 0.890205
+[epoch 4, batch  1599] avg loss: 0.892119
+[epoch 4, batch  1699] avg loss: 0.885160
+[epoch 4, batch  1799] avg loss: 0.878020
+[epoch 4, batch  1899] avg loss: 0.883081
+[epoch 4, batch  1999] avg loss: 0.877851
+[epoch 4, batch  2099] avg loss: 0.888578
+[epoch 4, batch  2199] avg loss: 0.877774
+[epoch 4, batch  2299] avg loss: 0.900386
+[epoch 4, batch  2399] avg loss: 0.884685
+[epoch 4, batch    99] avg loss: 0.852747
+[epoch 4, batch   199] avg loss: 0.849477
+[epoch 4, batch   299] avg loss: 0.856117
+[epoch 4, batch   399] avg loss: 0.848449
+[epoch 4, batch   499] avg loss: 0.841127
+[epoch 4, batch   599] avg loss: 0.854758
+[epoch 4, batch   699] avg loss: 0.835753
+[epoch 4, batch   799] avg loss: 0.850280
+[epoch 4, batch   899] avg loss: 0.849088
+[epoch 4, batch   999] avg loss: 0.846179
+[epoch 4, batch  1099] avg loss: 0.841945
+[epoch 4, batch  1199] avg loss: 0.850653
+[epoch 4, batch  1299] avg loss: 0.832178
+[epoch 4, batch  1399] avg loss: 0.843941
+[epoch 4, batch  1499] avg loss: 0.849020
+[epoch 4, batch  1599] avg loss: 0.845211
+[epoch 4, batch  1699] avg loss: 0.847764
+[epoch 4, batch  1799] avg loss: 0.827223
+[epoch 4, batch  1899] avg loss: 0.839236
+[epoch 4, batch  1999] avg loss: 0.842200
+[epoch 4, batch  2099] avg loss: 0.839424
+[epoch 4, batch  2199] avg loss: 0.848760
+[epoch 4, batch  2299] avg loss: 0.835407
+[epoch 4, batch  2399] avg loss: 0.838774
+[epoch 6, batch    99] avg loss: 0.877903
+[epoch 6, batch   199] avg loss: 0.879704
+[epoch 6, batch   299] avg loss: 0.874961
+[epoch 6, batch   399] avg loss: 0.871394
+[epoch 6, batch   499] avg loss: 0.888796
+[epoch 6, batch   599] avg loss: 0.874365
+[epoch 6, batch   699] avg loss: 0.874053
+[epoch 6, batch   799] avg loss: 0.888001
+[epoch 6, batch   899] avg loss: 0.886477
+[epoch 6, batch   999] avg loss: 0.872041
+[epoch 6, batch  1099] avg loss: 0.876337
+[epoch 6, batch  1199] avg loss: 0.887332
+[epoch 6, batch  1299] avg loss: 0.894933
+[epoch 6, batch  1399] avg loss: 0.884254
+[epoch 6, batch  1499] avg loss: 0.874572
+[epoch 6, batch  1599] avg loss: 0.888031
+[epoch 6, batch  1699] avg loss: 0.871152
+[epoch 6, batch  1799] avg loss: 0.883392
+[epoch 6, batch  1899] avg loss: 0.870570
+[epoch 6, batch  1999] avg loss: 0.863651
+[epoch 6, batch  2099] avg loss: 0.861529
+[epoch 6, batch  2199] avg loss: 0.885139
+[epoch 6, batch  2299] avg loss: 0.872404
+[epoch 6, batch  2399] avg loss: 0.864167
+[epoch 6, batch    99] avg loss: 0.838111
+[epoch 6, batch   199] avg loss: 0.836169
+[epoch 6, batch   299] avg loss: 0.826803
+[epoch 6, batch   399] avg loss: 0.821310
+[epoch 6, batch   499] avg loss: 0.828511
+[epoch 6, batch   599] avg loss: 0.846599
+[epoch 6, batch   699] avg loss: 0.845617
+[epoch 6, batch   799] avg loss: 0.827537
+[epoch 6, batch   899] avg loss: 0.830386
+[epoch 6, batch   999] avg loss: 0.840168
+[epoch 6, batch  1099] avg loss: 0.839282
+[epoch 6, batch  1199] avg loss: 0.836426
+[epoch 6, batch  1299] avg loss: 0.834970
+[epoch 6, batch  1399] avg loss: 0.830171
+[epoch 6, batch  1499] avg loss: 0.849656
+[epoch 6, batch  1599] avg loss: 0.845020
+[epoch 6, batch  1699] avg loss: 0.828790
+[epoch 6, batch  1799] avg loss: 0.822990
+[epoch 6, batch  1899] avg loss: 0.840271
+[epoch 6, batch  1999] avg loss: 0.820702
+[epoch 6, batch  2099] avg loss: 0.845337
+[epoch 6, batch  2199] avg loss: 0.822147
+[epoch 6, batch  2299] avg loss: 0.843062
+[epoch 6, batch  2399] avg loss: 0.824232
+[epoch 5, batch    99] avg loss: 0.884136
+[epoch 5, batch   199] avg loss: 0.883827
+[epoch 5, batch   299] avg loss: 0.883685
+[epoch 5, batch   399] avg loss: 0.879085
+[epoch 5, batch   499] avg loss: 0.886294
+[epoch 5, batch   599] avg loss: 0.874493
+[epoch 5, batch   699] avg loss: 0.884290
+[epoch 5, batch   799] avg loss: 0.889143
+[epoch 5, batch   899] avg loss: 0.893340
+[epoch 5, batch   999] avg loss: 0.899022
+[epoch 5, batch  1099] avg loss: 0.882115
+[epoch 5, batch  1199] avg loss: 0.877689
+[epoch 5, batch  1299] avg loss: 0.876157
+[epoch 5, batch  1399] avg loss: 0.875131
+[epoch 5, batch  1499] avg loss: 0.878374
+[epoch 5, batch  1599] avg loss: 0.872079
+[epoch 5, batch  1699] avg loss: 0.892147
+[epoch 5, batch  1799] avg loss: 0.884054
+[epoch 5, batch  1899] avg loss: 0.884169
+[epoch 5, batch  1999] avg loss: 0.863851
+[epoch 5, batch  2099] avg loss: 0.881370
+[epoch 5, batch  2199] avg loss: 0.881709
+[epoch 5, batch  2299] avg loss: 0.876786
+[epoch 5, batch  2399] avg loss: 0.879678
+[epoch 5, batch    99] avg loss: 0.823785
+[epoch 5, batch   199] avg loss: 0.843950
+[epoch 5, batch   299] avg loss: 0.836083
+[epoch 5, batch   399] avg loss: 0.830018
+[epoch 5, batch   499] avg loss: 0.846153
+[epoch 5, batch   599] avg loss: 0.837685
+[epoch 5, batch   699] avg loss: 0.821278
+[epoch 5, batch   799] avg loss: 0.841842
+[epoch 5, batch   899] avg loss: 0.837093
+[epoch 5, batch   999] avg loss: 0.842239
+[epoch 5, batch  1099] avg loss: 0.846957
+[epoch 5, batch  1199] avg loss: 0.830647
+[epoch 5, batch  1299] avg loss: 0.831197
+[epoch 5, batch  1399] avg loss: 0.836362
+[epoch 5, batch  1499] avg loss: 0.833246
+[epoch 5, batch  1599] avg loss: 0.846965
+[epoch 5, batch  1699] avg loss: 0.837632
+[epoch 5, batch  1799] avg loss: 0.834591
+[epoch 5, batch  1899] avg loss: 0.830671
+[epoch 5, batch  1999] avg loss: 0.838625
+[epoch 5, batch  2099] avg loss: 0.832549
+[epoch 5, batch  2199] avg loss: 0.851570
+[epoch 5, batch  2299] avg loss: 0.832474
+[epoch 5, batch  2399] avg loss: 0.832017
+[epoch 7, batch    99] avg loss: 0.870407
+[epoch 7, batch   199] avg loss: 0.879478
+[epoch 7, batch   299] avg loss: 0.867356
+[epoch 7, batch   399] avg loss: 0.875280
+[epoch 7, batch   499] avg loss: 0.857813
+[epoch 7, batch   599] avg loss: 0.871715
+[epoch 7, batch   699] avg loss: 0.872352
+[epoch 7, batch   799] avg loss: 0.881701
+[epoch 7, batch   899] avg loss: 0.880328
+[epoch 7, batch   999] avg loss: 0.872438
+[epoch 7, batch  1099] avg loss: 0.867827
+[epoch 7, batch  1199] avg loss: 0.870040
+[epoch 7, batch  1299] avg loss: 0.890574
+[epoch 7, batch  1399] avg loss: 0.877123
+[epoch 7, batch  1499] avg loss: 0.874108
+[epoch 7, batch  1599] avg loss: 0.869581
+[epoch 7, batch  1699] avg loss: 0.870379
+[epoch 7, batch  1799] avg loss: 0.859574
+[epoch 7, batch  1899] avg loss: 0.872114
+[epoch 7, batch  1999] avg loss: 0.865611
+[epoch 7, batch  2099] avg loss: 0.855024
+[epoch 7, batch  2199] avg loss: 0.886589
+[epoch 7, batch  2299] avg loss: 0.879327
+[epoch 7, batch  2399] avg loss: 0.872090
+[epoch 7, batch    99] avg loss: 0.826717
+[epoch 7, batch   199] avg loss: 0.831324
+[epoch 7, batch   299] avg loss: 0.817964
+[epoch 7, batch   399] avg loss: 0.825523
+[epoch 7, batch   499] avg loss: 0.832012
+[epoch 7, batch   599] avg loss: 0.834144
+[epoch 7, batch   699] avg loss: 0.822018
+[epoch 7, batch   799] avg loss: 0.844679
+[epoch 7, batch   899] avg loss: 0.834749
+[epoch 7, batch   999] avg loss: 0.830908
+[epoch 7, batch  1099] avg loss: 0.818186
+[epoch 7, batch  1199] avg loss: 0.835333
+[epoch 7, batch  1299] avg loss: 0.818680
+[epoch 7, batch  1399] avg loss: 0.832153
+[epoch 7, batch  1499] avg loss: 0.818701
+[epoch 7, batch  1599] avg loss: 0.825953
+[epoch 7, batch  1699] avg loss: 0.817955
+[epoch 7, batch  1799] avg loss: 0.834501
+[epoch 7, batch  1899] avg loss: 0.849359
+[epoch 7, batch  1999] avg loss: 0.830374
+[epoch 7, batch  2099] avg loss: 0.819212
+[epoch 7, batch  2199] avg loss: 0.827156
+[epoch 7, batch  2299] avg loss: 0.820919
+[epoch 7, batch  2399] avg loss: 0.836392
+[epoch 6, batch    99] avg loss: 0.887259
+[epoch 6, batch   199] avg loss: 0.882452
+[epoch 6, batch   299] avg loss: 0.881511
+[epoch 6, batch   399] avg loss: 0.879871
+[epoch 6, batch   499] avg loss: 0.869678
+[epoch 6, batch   599] avg loss: 0.868241
+[epoch 6, batch   699] avg loss: 0.876646
+[epoch 6, batch   799] avg loss: 0.877120
+[epoch 6, batch   899] avg loss: 0.870356
+[epoch 6, batch   999] avg loss: 0.887474
+[epoch 6, batch  1099] avg loss: 0.866519
+[epoch 6, batch  1199] avg loss: 0.887663
+[epoch 6, batch  1299] avg loss: 0.884432
+[epoch 6, batch  1399] avg loss: 0.879338
+[epoch 6, batch  1499] avg loss: 0.877602
+[epoch 6, batch  1599] avg loss: 0.859249
+[epoch 6, batch  1699] avg loss: 0.889284
+[epoch 6, batch  1799] avg loss: 0.878352
+[epoch 6, batch  1899] avg loss: 0.882552
+[epoch 6, batch  1999] avg loss: 0.882063
+[epoch 6, batch  2099] avg loss: 0.872927
+[epoch 6, batch  2199] avg loss: 0.867360
+[epoch 6, batch  2299] avg loss: 0.867044
+[epoch 6, batch  2399] avg loss: 0.874218
+[epoch 6, batch    99] avg loss: 0.833184
+[epoch 6, batch   199] avg loss: 0.833111
+[epoch 6, batch   299] avg loss: 0.847735
+[epoch 6, batch   399] avg loss: 0.832860
+[epoch 6, batch   499] avg loss: 0.845811
+[epoch 6, batch   599] avg loss: 0.830172
+[epoch 6, batch   699] avg loss: 0.835043
+[epoch 6, batch   799] avg loss: 0.817303
+[epoch 6, batch   899] avg loss: 0.834117
+[epoch 6, batch   999] avg loss: 0.817251
+[epoch 6, batch  1099] avg loss: 0.818293
+[epoch 6, batch  1199] avg loss: 0.822563
+[epoch 6, batch  1299] avg loss: 0.815488
+[epoch 6, batch  1399] avg loss: 0.824385
+[epoch 6, batch  1499] avg loss: 0.846061
+[epoch 6, batch  1599] avg loss: 0.821047
+[epoch 6, batch  1699] avg loss: 0.822351
+[epoch 6, batch  1799] avg loss: 0.841096
+[epoch 6, batch  1899] avg loss: 0.836456
+[epoch 6, batch  1999] avg loss: 0.845260
+[epoch 6, batch  2099] avg loss: 0.832860
+[epoch 6, batch  2199] avg loss: 0.838311
+[epoch 6, batch  2299] avg loss: 0.834089
+[epoch 6, batch  2399] avg loss: 0.838573
+[epoch 8, batch    99] avg loss: 0.876413
+[epoch 8, batch   199] avg loss: 0.864238
+[epoch 8, batch   299] avg loss: 0.869851
+[epoch 8, batch   399] avg loss: 0.884611
+[epoch 8, batch   499] avg loss: 0.883135
+[epoch 8, batch   599] avg loss: 0.883591
+[epoch 8, batch   699] avg loss: 0.873025
+[epoch 8, batch   799] avg loss: 0.877417
+[epoch 8, batch   899] avg loss: 0.845173
+[epoch 8, batch   999] avg loss: 0.876778
+[epoch 8, batch  1099] avg loss: 0.856001
+[epoch 8, batch  1199] avg loss: 0.862271
+[epoch 8, batch  1299] avg loss: 0.875097
+[epoch 8, batch  1399] avg loss: 0.866525
+[epoch 8, batch  1499] avg loss: 0.879451
+[epoch 8, batch  1599] avg loss: 0.865705
+[epoch 8, batch  1699] avg loss: 0.873834
+[epoch 8, batch  1799] avg loss: 0.876911
+[epoch 8, batch  1899] avg loss: 0.864251
+[epoch 8, batch  1999] avg loss: 0.862692
+[epoch 8, batch  2099] avg loss: 0.872576
+[epoch 8, batch  2199] avg loss: 0.858228
+[epoch 8, batch  2299] avg loss: 0.860547
+[epoch 8, batch  2399] avg loss: 0.868846
+[epoch 8, batch    99] avg loss: 0.822581
+[epoch 8, batch   199] avg loss: 0.820214
+[epoch 8, batch   299] avg loss: 0.799619
+[epoch 8, batch   399] avg loss: 0.832428
+[epoch 8, batch   499] avg loss: 0.823004
+[epoch 8, batch   599] avg loss: 0.828338
+[epoch 8, batch   699] avg loss: 0.822740
+[epoch 8, batch   799] avg loss: 0.819426
+[epoch 8, batch   899] avg loss: 0.818296
+[epoch 8, batch   999] avg loss: 0.820811
+[epoch 8, batch  1099] avg loss: 0.823019
+[epoch 8, batch  1199] avg loss: 0.836078
+[epoch 8, batch  1299] avg loss: 0.820695
+[epoch 8, batch  1399] avg loss: 0.824767
+[epoch 8, batch  1499] avg loss: 0.804567
+[epoch 8, batch  1599] avg loss: 0.811598
+[epoch 8, batch  1699] avg loss: 0.840069
+[epoch 8, batch  1799] avg loss: 0.828779
+[epoch 8, batch  1899] avg loss: 0.816188
+[epoch 8, batch  1999] avg loss: 0.817322
+[epoch 8, batch  2099] avg loss: 0.818695
+[epoch 8, batch  2199] avg loss: 0.829701
+[epoch 8, batch  2299] avg loss: 0.816001
+[epoch 8, batch  2399] avg loss: 0.826221
+[epoch 7, batch    99] avg loss: 0.855975
+[epoch 7, batch   199] avg loss: 0.872094
+[epoch 7, batch   299] avg loss: 0.871094
+[epoch 7, batch   399] avg loss: 0.879750
+[epoch 7, batch   499] avg loss: 0.876677
+[epoch 7, batch   599] avg loss: 0.869113
+[epoch 7, batch   699] avg loss: 0.883975
+[epoch 7, batch   799] avg loss: 0.884851
+[epoch 7, batch   899] avg loss: 0.867567
+[epoch 7, batch   999] avg loss: 0.877232
+[epoch 7, batch  1099] avg loss: 0.881336
+[epoch 7, batch  1199] avg loss: 0.879505
+[epoch 7, batch  1299] avg loss: 0.870441
+[epoch 7, batch  1399] avg loss: 0.856344
+[epoch 7, batch  1499] avg loss: 0.863713
+[epoch 7, batch  1599] avg loss: 0.870021
+[epoch 7, batch  1699] avg loss: 0.858668
+[epoch 7, batch  1799] avg loss: 0.871364
+[epoch 7, batch  1899] avg loss: 0.864157
+[epoch 7, batch  1999] avg loss: 0.865389
+[epoch 7, batch  2099] avg loss: 0.861833
+[epoch 7, batch  2199] avg loss: 0.863382
+[epoch 7, batch  2299] avg loss: 0.870952
+[epoch 7, batch  2399] avg loss: 0.868608
+[epoch 9, batch    99] avg loss: 0.850249
+[epoch 9, batch   199] avg loss: 0.866746
+[epoch 9, batch   299] avg loss: 0.859054
+[epoch 9, batch   399] avg loss: 0.884656
+[epoch 9, batch   499] avg loss: 0.873848
+[epoch 9, batch   599] avg loss: 0.861127
+[epoch 9, batch   699] avg loss: 0.853417
+[epoch 9, batch   799] avg loss: 0.866608
+[epoch 9, batch   899] avg loss: 0.862097
+[epoch 9, batch   999] avg loss: 0.862476
+[epoch 9, batch  1099] avg loss: 0.877216
+[epoch 9, batch  1199] avg loss: 0.853241
+[epoch 9, batch  1299] avg loss: 0.876693
+[epoch 9, batch  1399] avg loss: 0.862731
+[epoch 9, batch  1499] avg loss: 0.857120
+[epoch 9, batch  1599] avg loss: 0.861014
+[epoch 9, batch  1699] avg loss: 0.860878
+[epoch 9, batch  1799] avg loss: 0.876386
+[epoch 9, batch  1899] avg loss: 0.883177
+[epoch 9, batch  1999] avg loss: 0.876168
+[epoch 9, batch  2099] avg loss: 0.865326
+[epoch 9, batch  2199] avg loss: 0.853632
+[epoch 9, batch  2299] avg loss: 0.873182
+[epoch 9, batch  2399] avg loss: 0.870029
+[epoch 7, batch    99] avg loss: 0.817782
+[epoch 7, batch   199] avg loss: 0.832920
+[epoch 7, batch   299] avg loss: 0.838640
+[epoch 7, batch   399] avg loss: 0.832813
+[epoch 7, batch   499] avg loss: 0.823841
+[epoch 7, batch   599] avg loss: 0.828094
+[epoch 7, batch   699] avg loss: 0.848404
+[epoch 7, batch   799] avg loss: 0.827973
+[epoch 7, batch   899] avg loss: 0.818119
+[epoch 7, batch   999] avg loss: 0.823286
+[epoch 7, batch  1099] avg loss: 0.843295
+[epoch 7, batch  1199] avg loss: 0.830062
+[epoch 7, batch  1299] avg loss: 0.828510
+[epoch 7, batch  1399] avg loss: 0.827468
+[epoch 7, batch  1499] avg loss: 0.824841
+[epoch 7, batch  1599] avg loss: 0.846481
+[epoch 7, batch  1699] avg loss: 0.831950
+[epoch 7, batch  1799] avg loss: 0.822892
+[epoch 7, batch  1899] avg loss: 0.823169
+[epoch 7, batch  1999] avg loss: 0.818104
+[epoch 7, batch  2099] avg loss: 0.809871
+[epoch 7, batch  2199] avg loss: 0.814584
+[epoch 7, batch  2299] avg loss: 0.819598
+[epoch 7, batch  2399] avg loss: 0.835038
+[epoch 9, batch    99] avg loss: 0.813670
+[epoch 9, batch   199] avg loss: 0.830753
+[epoch 9, batch   299] avg loss: 0.824373
+[epoch 9, batch   399] avg loss: 0.829308
+[epoch 9, batch   499] avg loss: 0.812950
+[epoch 9, batch   599] avg loss: 0.814875
+[epoch 9, batch   699] avg loss: 0.823441
+[epoch 9, batch   799] avg loss: 0.811345
+[epoch 9, batch   899] avg loss: 0.820445
+[epoch 9, batch   999] avg loss: 0.819729
+[epoch 9, batch  1099] avg loss: 0.814764
+[epoch 9, batch  1199] avg loss: 0.818665
+[epoch 9, batch  1299] avg loss: 0.822948
+[epoch 9, batch  1399] avg loss: 0.805793
+[epoch 9, batch  1499] avg loss: 0.814551
+[epoch 9, batch  1599] avg loss: 0.825260
+[epoch 9, batch  1699] avg loss: 0.822648
+[epoch 9, batch  1799] avg loss: 0.805924
+[epoch 9, batch  1899] avg loss: 0.818915
+[epoch 9, batch  1999] avg loss: 0.822900
+[epoch 9, batch  2099] avg loss: 0.816895
+[epoch 9, batch  2199] avg loss: 0.810679
+[epoch 9, batch  2299] avg loss: 0.811697
+[epoch 9, batch  2399] avg loss: 0.819187
+[epoch 10, batch    99] avg loss: 0.856601
+[epoch 10, batch   199] avg loss: 0.862551
+[epoch 10, batch   299] avg loss: 0.880823
+[epoch 10, batch   399] avg loss: 0.850474
+[epoch 10, batch   499] avg loss: 0.854139
+[epoch 10, batch   599] avg loss: 0.870295
+[epoch 10, batch   699] avg loss: 0.863043
+[epoch 10, batch   799] avg loss: 0.869261
+[epoch 10, batch   899] avg loss: 0.863028
+[epoch 10, batch   999] avg loss: 0.860038
+[epoch 10, batch  1099] avg loss: 0.861316
+[epoch 10, batch  1199] avg loss: 0.854527
+[epoch 10, batch  1299] avg loss: 0.870004
+[epoch 10, batch  1399] avg loss: 0.867722
+[epoch 10, batch  1499] avg loss: 0.863029
+[epoch 10, batch  1599] avg loss: 0.852445
+[epoch 10, batch  1699] avg loss: 0.858125
+[epoch 10, batch  1799] avg loss: 0.858266
+[epoch 10, batch  1899] avg loss: 0.845012
+[epoch 10, batch  1999] avg loss: 0.856582
+[epoch 10, batch  2099] avg loss: 0.852364
+[epoch 10, batch  2199] avg loss: 0.871463
+[epoch 10, batch  2299] avg loss: 0.859511
+[epoch 10, batch  2399] avg loss: 0.867375
+[epoch 8, batch    99] avg loss: 0.868753
+[epoch 8, batch   199] avg loss: 0.867986
+[epoch 8, batch   299] avg loss: 0.873443
+[epoch 8, batch   399] avg loss: 0.862014
+[epoch 8, batch   499] avg loss: 0.865513
+[epoch 8, batch   599] avg loss: 0.852332
+[epoch 8, batch   699] avg loss: 0.864973
+[epoch 8, batch   799] avg loss: 0.861687
+[epoch 8, batch   899] avg loss: 0.872017
+[epoch 8, batch   999] avg loss: 0.874207
+[epoch 8, batch  1099] avg loss: 0.866976
+[epoch 8, batch  1199] avg loss: 0.866416
+[epoch 8, batch  1299] avg loss: 0.852194
+[epoch 8, batch  1399] avg loss: 0.879075
+[epoch 8, batch  1499] avg loss: 0.853820
+[epoch 8, batch  1599] avg loss: 0.868955
+[epoch 8, batch  1699] avg loss: 0.865189
+[epoch 8, batch  1799] avg loss: 0.868138
+[epoch 8, batch  1899] avg loss: 0.855451
+[epoch 8, batch  1999] avg loss: 0.863659
+[epoch 8, batch  2099] avg loss: 0.869860
+[epoch 8, batch  2199] avg loss: 0.866862
+[epoch 8, batch  2299] avg loss: 0.867713
+[epoch 8, batch  2399] avg loss: 0.867501
+[epoch 8, batch    99] avg loss: 0.812760
+[epoch 8, batch   199] avg loss: 0.828407
+[epoch 8, batch   299] avg loss: 0.814773
+[epoch 8, batch   399] avg loss: 0.812868
+[epoch 8, batch   499] avg loss: 0.817816
+[epoch 8, batch   599] avg loss: 0.841414
+[epoch 8, batch   699] avg loss: 0.826201
+[epoch 8, batch   799] avg loss: 0.832554
+[epoch 8, batch   899] avg loss: 0.818672
+[epoch 8, batch   999] avg loss: 0.829646
+[epoch 8, batch  1099] avg loss: 0.831649
+[epoch 8, batch  1199] avg loss: 0.823500
+[epoch 8, batch  1299] avg loss: 0.831025
+[epoch 8, batch  1399] avg loss: 0.819939
+[epoch 8, batch  1499] avg loss: 0.810987
+[epoch 8, batch  1599] avg loss: 0.827228
+[epoch 8, batch  1699] avg loss: 0.821499
+[epoch 8, batch  1799] avg loss: 0.814688
+[epoch 8, batch  1899] avg loss: 0.827528
+[epoch 8, batch  1999] avg loss: 0.810688
+[epoch 8, batch  2099] avg loss: 0.815969
+[epoch 8, batch  2199] avg loss: 0.806639
+[epoch 8, batch  2299] avg loss: 0.823744
+[epoch 8, batch  2399] avg loss: 0.829112
+[epoch 10, batch    99] avg loss: 0.824802
+[epoch 10, batch   199] avg loss: 0.807116
+[epoch 10, batch   299] avg loss: 0.821671
+[epoch 10, batch   399] avg loss: 0.821508
+[epoch 10, batch   499] avg loss: 0.790572
+[epoch 10, batch   599] avg loss: 0.828299
+[epoch 10, batch   699] avg loss: 0.812992
+[epoch 10, batch   799] avg loss: 0.802955
+[epoch 10, batch   899] avg loss: 0.823825
+[epoch 10, batch   999] avg loss: 0.810839
+[epoch 10, batch  1099] avg loss: 0.822073
+[epoch 10, batch  1199] avg loss: 0.821059
+[epoch 10, batch  1299] avg loss: 0.826055
+[epoch 10, batch  1399] avg loss: 0.835273
+[epoch 10, batch  1499] avg loss: 0.795896
+[epoch 10, batch  1599] avg loss: 0.819987
+[epoch 10, batch  1699] avg loss: 0.812512
+[epoch 10, batch  1799] avg loss: 0.815285
+[epoch 10, batch  1899] avg loss: 0.803841
+[epoch 10, batch  1999] avg loss: 0.815140
+[epoch 10, batch  2099] avg loss: 0.815821
+[epoch 10, batch  2199] avg loss: 0.796278
+[epoch 10, batch  2299] avg loss: 0.804938
+[epoch 10, batch  2399] avg loss: 0.820855
+[epoch 11, batch    99] avg loss: 0.858894
+[epoch 11, batch   199] avg loss: 0.848765
+[epoch 11, batch   299] avg loss: 0.854102
+[epoch 11, batch   399] avg loss: 0.861446
+[epoch 11, batch   499] avg loss: 0.851613
+[epoch 11, batch   599] avg loss: 0.878367
+[epoch 11, batch   699] avg loss: 0.874773
+[epoch 11, batch   799] avg loss: 0.869716
+[epoch 11, batch   899] avg loss: 0.854241
+[epoch 11, batch   999] avg loss: 0.860737
+[epoch 11, batch  1099] avg loss: 0.857400
+[epoch 11, batch  1199] avg loss: 0.868636
+[epoch 11, batch  1299] avg loss: 0.846509
+[epoch 11, batch  1399] avg loss: 0.861909
+[epoch 11, batch  1499] avg loss: 0.860391
+[epoch 11, batch  1599] avg loss: 0.848982
+[epoch 11, batch  1699] avg loss: 0.848989
+[epoch 11, batch  1799] avg loss: 0.863183
+[epoch 11, batch  1899] avg loss: 0.856454
+[epoch 11, batch  1999] avg loss: 0.850790
+[epoch 11, batch  2099] avg loss: 0.846543
+[epoch 11, batch  2199] avg loss: 0.848702
+[epoch 11, batch  2299] avg loss: 0.852213
+[epoch 11, batch  2399] avg loss: 0.865393
+[epoch 9, batch    99] avg loss: 0.871294
+[epoch 9, batch   199] avg loss: 0.862670
+[epoch 9, batch   299] avg loss: 0.857880
+[epoch 9, batch   399] avg loss: 0.855624
+[epoch 9, batch   499] avg loss: 0.879136
+[epoch 9, batch   599] avg loss: 0.871321
+[epoch 9, batch   699] avg loss: 0.867805
+[epoch 9, batch   799] avg loss: 0.871132
+[epoch 9, batch   899] avg loss: 0.850652
+[epoch 9, batch   999] avg loss: 0.855053
+[epoch 9, batch  1099] avg loss: 0.860231
+[epoch 9, batch  1199] avg loss: 0.854015
+[epoch 9, batch  1299] avg loss: 0.862463
+[epoch 9, batch  1399] avg loss: 0.843438
+[epoch 9, batch  1499] avg loss: 0.850417
+[epoch 9, batch  1599] avg loss: 0.853113
+[epoch 9, batch  1699] avg loss: 0.857849
+[epoch 9, batch  1799] avg loss: 0.862218
+[epoch 9, batch  1899] avg loss: 0.856761
+[epoch 9, batch  1999] avg loss: 0.869708
+[epoch 9, batch  2099] avg loss: 0.855009
+[epoch 9, batch  2199] avg loss: 0.858476
+[epoch 9, batch  2299] avg loss: 0.847476
+[epoch 9, batch  2399] avg loss: 0.860631
+[epoch 9, batch    99] avg loss: 0.824384
+[epoch 9, batch   199] avg loss: 0.841554
+[epoch 9, batch   299] avg loss: 0.824147
+[epoch 9, batch   399] avg loss: 0.826397
+[epoch 9, batch   499] avg loss: 0.813975
+[epoch 9, batch   599] avg loss: 0.816988
+[epoch 9, batch   699] avg loss: 0.819802
+[epoch 9, batch   799] avg loss: 0.810247
+[epoch 9, batch   899] avg loss: 0.813076
+[epoch 9, batch   999] avg loss: 0.812557
+[epoch 9, batch  1099] avg loss: 0.833290
+[epoch 9, batch  1199] avg loss: 0.825748
+[epoch 9, batch  1299] avg loss: 0.828963
+[epoch 9, batch  1399] avg loss: 0.835350
+[epoch 9, batch  1499] avg loss: 0.816025
+[epoch 9, batch  1599] avg loss: 0.812082
+[epoch 9, batch  1699] avg loss: 0.843873
+[epoch 9, batch  1799] avg loss: 0.814116
+[epoch 9, batch  1899] avg loss: 0.816110
+[epoch 9, batch  1999] avg loss: 0.838367
+[epoch 9, batch  2099] avg loss: 0.824216
+[epoch 9, batch  2199] avg loss: 0.819833
+[epoch 9, batch  2299] avg loss: 0.817363
+[epoch 9, batch  2399] avg loss: 0.814711
+[epoch 12, batch    99] avg loss: 0.862288
+[epoch 12, batch   199] avg loss: 0.854452
+[epoch 12, batch   299] avg loss: 0.849996
+[epoch 12, batch   399] avg loss: 0.872163
+[epoch 12, batch   499] avg loss: 0.857548
+[epoch 12, batch   599] avg loss: 0.839223
+[epoch 12, batch   699] avg loss: 0.865693
+[epoch 12, batch   799] avg loss: 0.852278
+[epoch 12, batch   899] avg loss: 0.856761
+[epoch 12, batch   999] avg loss: 0.850731
+[epoch 12, batch  1099] avg loss: 0.843562
+[epoch 12, batch  1199] avg loss: 0.849972
+[epoch 12, batch  1299] avg loss: 0.855571
+[epoch 12, batch  1399] avg loss: 0.850489
+[epoch 12, batch  1499] avg loss: 0.855533
+[epoch 12, batch  1599] avg loss: 0.846886
+[epoch 12, batch  1699] avg loss: 0.873499
+[epoch 12, batch  1799] avg loss: 0.847717
+[epoch 12, batch  1899] avg loss: 0.848424
+[epoch 12, batch  1999] avg loss: 0.844493
+[epoch 12, batch  2099] avg loss: 0.852690
+[epoch 12, batch  2199] avg loss: 0.854409
+[epoch 12, batch  2299] avg loss: 0.851445
+[epoch 12, batch  2399] avg loss: 0.847817
+[epoch 11, batch    99] avg loss: 0.801853
+[epoch 11, batch   199] avg loss: 0.810979
+[epoch 11, batch   299] avg loss: 0.801149
+[epoch 11, batch   399] avg loss: 0.809818
+[epoch 11, batch   499] avg loss: 0.803150
+[epoch 11, batch   599] avg loss: 0.813457
+[epoch 11, batch   699] avg loss: 0.821110
+[epoch 11, batch   799] avg loss: 0.817585
+[epoch 11, batch   899] avg loss: 0.809839
+[epoch 11, batch   999] avg loss: 0.802564
+[epoch 11, batch  1099] avg loss: 0.814684
+[epoch 11, batch  1199] avg loss: 0.808470
+[epoch 11, batch  1299] avg loss: 0.814769
+[epoch 11, batch  1399] avg loss: 0.827839
+[epoch 11, batch  1499] avg loss: 0.822883
+[epoch 11, batch  1599] avg loss: 0.817840
+[epoch 11, batch  1699] avg loss: 0.809752
+[epoch 11, batch  1799] avg loss: 0.810862
+[epoch 11, batch  1899] avg loss: 0.804537
+[epoch 11, batch  1999] avg loss: 0.816927
+[epoch 11, batch  2099] avg loss: 0.805932
+[epoch 11, batch  2199] avg loss: 0.802601
+[epoch 11, batch  2299] avg loss: 0.809639
+[epoch 11, batch  2399] avg loss: 0.813640
+[epoch 10, batch    99] avg loss: 0.858438
+[epoch 10, batch   199] avg loss: 0.845719
+[epoch 10, batch   299] avg loss: 0.866249
+[epoch 10, batch   399] avg loss: 0.843862
+[epoch 10, batch   499] avg loss: 0.840673
+[epoch 10, batch   599] avg loss: 0.857676
+[epoch 10, batch   699] avg loss: 0.854735
+[epoch 10, batch   799] avg loss: 0.851976
+[epoch 10, batch   899] avg loss: 0.852568
+[epoch 10, batch   999] avg loss: 0.846131
+[epoch 10, batch  1099] avg loss: 0.854846
+[epoch 10, batch  1199] avg loss: 0.860374
+[epoch 10, batch  1299] avg loss: 0.857102
+[epoch 10, batch  1399] avg loss: 0.856275
+[epoch 10, batch  1499] avg loss: 0.851922
+[epoch 10, batch  1599] avg loss: 0.849744
+[epoch 10, batch  1699] avg loss: 0.852150
+[epoch 10, batch  1799] avg loss: 0.858148
+[epoch 10, batch  1899] avg loss: 0.848252
+[epoch 10, batch  1999] avg loss: 0.853650
+[epoch 10, batch  2099] avg loss: 0.842236
+[epoch 10, batch  2199] avg loss: 0.854971
+[epoch 10, batch  2299] avg loss: 0.848009
+[epoch 10, batch  2399] avg loss: 0.854669
+[epoch 10, batch    99] avg loss: 0.821231
+[epoch 10, batch   199] avg loss: 0.811257
+[epoch 10, batch   299] avg loss: 0.819574
+[epoch 10, batch   399] avg loss: 0.841454
+[epoch 10, batch   499] avg loss: 0.822340
+[epoch 10, batch   599] avg loss: 0.824502
+[epoch 10, batch   699] avg loss: 0.832679
+[epoch 10, batch   799] avg loss: 0.819301
+[epoch 10, batch   899] avg loss: 0.807085
+[epoch 10, batch   999] avg loss: 0.829669
+[epoch 10, batch  1099] avg loss: 0.824182
+[epoch 10, batch  1199] avg loss: 0.819989
+[epoch 10, batch  1299] avg loss: 0.809481
+[epoch 10, batch  1399] avg loss: 0.803710
+[epoch 10, batch  1499] avg loss: 0.817779
+[epoch 10, batch  1599] avg loss: 0.825259
+[epoch 10, batch  1699] avg loss: 0.816264
+[epoch 10, batch  1799] avg loss: 0.827967
+[epoch 10, batch  1899] avg loss: 0.814708
+[epoch 10, batch  1999] avg loss: 0.804042
+[epoch 10, batch  2099] avg loss: 0.815370
+[epoch 10, batch  2199] avg loss: 0.802355
+[epoch 10, batch  2299] avg loss: 0.815839
+[epoch 10, batch  2399] avg loss: 0.819922
+[epoch 12, batch    99] avg loss: 0.811746
+[epoch 12, batch   199] avg loss: 0.800972
+[epoch 12, batch   299] avg loss: 0.794993
+[epoch 12, batch   399] avg loss: 0.819009
+[epoch 12, batch   499] avg loss: 0.795485
+[epoch 12, batch   599] avg loss: 0.803664
+[epoch 12, batch   699] avg loss: 0.814824
+[epoch 12, batch   799] avg loss: 0.801339
+[epoch 12, batch   899] avg loss: 0.814315
+[epoch 12, batch   999] avg loss: 0.814155
+[epoch 12, batch  1099] avg loss: 0.829671
+[epoch 12, batch  1199] avg loss: 0.803075
+[epoch 12, batch  1299] avg loss: 0.802608
+[epoch 12, batch  1399] avg loss: 0.820043
+[epoch 12, batch  1499] avg loss: 0.820897
+[epoch 12, batch  1599] avg loss: 0.808124
+[epoch 12, batch  1699] avg loss: 0.801447
+[epoch 12, batch  1799] avg loss: 0.796586
+[epoch 12, batch  1899] avg loss: 0.808064
+[epoch 12, batch  1999] avg loss: 0.809090
+[epoch 12, batch  2099] avg loss: 0.817730
+[epoch 12, batch  2199] avg loss: 0.808730
+[epoch 12, batch  2299] avg loss: 0.801807
+[epoch 12, batch  2399] avg loss: 0.814257
+[epoch 13, batch    99] avg loss: 0.866212
+[epoch 13, batch   199] avg loss: 0.852256
+[epoch 13, batch   299] avg loss: 0.853634
+[epoch 13, batch   399] avg loss: 0.854262
+[epoch 13, batch   499] avg loss: 0.847094
+[epoch 13, batch   599] avg loss: 0.857929
+[epoch 13, batch   699] avg loss: 0.849925
+[epoch 13, batch   799] avg loss: 0.845088
+[epoch 13, batch   899] avg loss: 0.848688
+[epoch 13, batch   999] avg loss: 0.847726
+[epoch 13, batch  1099] avg loss: 0.859075
+[epoch 13, batch  1199] avg loss: 0.865560
+[epoch 13, batch  1299] avg loss: 0.848570
+[epoch 13, batch  1399] avg loss: 0.828713
+[epoch 13, batch  1499] avg loss: 0.855354
+[epoch 13, batch  1599] avg loss: 0.841960
+[epoch 13, batch  1699] avg loss: 0.842194
+[epoch 13, batch  1799] avg loss: 0.840046
+[epoch 13, batch  1899] avg loss: 0.860270
+[epoch 13, batch  1999] avg loss: 0.859160
+[epoch 13, batch  2099] avg loss: 0.841697
+[epoch 13, batch  2199] avg loss: 0.856219
+[epoch 13, batch  2299] avg loss: 0.836030
+[epoch 13, batch  2399] avg loss: 0.852817
+[epoch 11, batch    99] avg loss: 0.805254
+[epoch 11, batch   199] avg loss: 0.815681
+[epoch 11, batch   299] avg loss: 0.810496
+[epoch 11, batch   399] avg loss: 0.821482
+[epoch 11, batch   499] avg loss: 0.807108
+[epoch 11, batch   599] avg loss: 0.811424
+[epoch 11, batch   699] avg loss: 0.810206
+[epoch 11, batch   799] avg loss: 0.810511
+[epoch 11, batch   899] avg loss: 0.805249
+[epoch 11, batch   999] avg loss: 0.825608
+[epoch 11, batch  1099] avg loss: 0.808950
+[epoch 11, batch  1199] avg loss: 0.801788
+[epoch 11, batch  1299] avg loss: 0.815718
+[epoch 11, batch  1399] avg loss: 0.821187
+[epoch 11, batch  1499] avg loss: 0.817814
+[epoch 11, batch  1599] avg loss: 0.842952
+[epoch 11, batch  1699] avg loss: 0.816953
+[epoch 11, batch  1799] avg loss: 0.825757
+[epoch 11, batch  1899] avg loss: 0.803402
+[epoch 11, batch  1999] avg loss: 0.824004
+[epoch 11, batch  2099] avg loss: 0.795839
+[epoch 11, batch  2199] avg loss: 0.810056
+[epoch 11, batch  2299] avg loss: 0.799131
+[epoch 11, batch  2399] avg loss: 0.806074
+[epoch 11, batch    99] avg loss: 0.846507
+[epoch 11, batch   199] avg loss: 0.832537
+[epoch 11, batch   299] avg loss: 0.847764
+[epoch 11, batch   399] avg loss: 0.847143
+[epoch 11, batch   499] avg loss: 0.856902
+[epoch 11, batch   599] avg loss: 0.845567
+[epoch 11, batch   699] avg loss: 0.831948
+[epoch 11, batch   799] avg loss: 0.865709
+[epoch 11, batch   899] avg loss: 0.841236
+[epoch 11, batch   999] avg loss: 0.845869
+[epoch 11, batch  1099] avg loss: 0.844112
+[epoch 11, batch  1199] avg loss: 0.837635
+[epoch 11, batch  1299] avg loss: 0.849230
+[epoch 11, batch  1399] avg loss: 0.849862
+[epoch 11, batch  1499] avg loss: 0.852151
+[epoch 11, batch  1599] avg loss: 0.850337
+[epoch 11, batch  1699] avg loss: 0.860153
+[epoch 11, batch  1799] avg loss: 0.836681
+[epoch 11, batch  1899] avg loss: 0.845886
+[epoch 11, batch  1999] avg loss: 0.845276
+[epoch 11, batch  2099] avg loss: 0.848433
+[epoch 11, batch  2199] avg loss: 0.856167
+[epoch 11, batch  2299] avg loss: 0.841830
+[epoch 11, batch  2399] avg loss: 0.848785
+[epoch 14, batch    99] avg loss: 0.860178
+[epoch 14, batch   199] avg loss: 0.850832
+[epoch 14, batch   299] avg loss: 0.842754
+[epoch 14, batch   399] avg loss: 0.847349
+[epoch 14, batch   499] avg loss: 0.853505
+[epoch 14, batch   599] avg loss: 0.863570
+[epoch 14, batch   699] avg loss: 0.846126
+[epoch 14, batch   799] avg loss: 0.837575
+[epoch 14, batch   899] avg loss: 0.830120
+[epoch 14, batch   999] avg loss: 0.852605
+[epoch 14, batch  1099] avg loss: 0.838089
+[epoch 14, batch  1199] avg loss: 0.846989
+[epoch 14, batch  1299] avg loss: 0.837468
+[epoch 14, batch  1399] avg loss: 0.843589
+[epoch 14, batch  1499] avg loss: 0.846118
+[epoch 14, batch  1599] avg loss: 0.840657
+[epoch 14, batch  1699] avg loss: 0.844388
+[epoch 14, batch  1799] avg loss: 0.842126
+[epoch 14, batch  1899] avg loss: 0.854633
+[epoch 14, batch  1999] avg loss: 0.847101
+[epoch 14, batch  2099] avg loss: 0.857340
+[epoch 14, batch  2199] avg loss: 0.852634
+[epoch 14, batch  2299] avg loss: 0.850271
+[epoch 14, batch  2399] avg loss: 0.837978
+[epoch 13, batch    99] avg loss: 0.802603
+[epoch 13, batch   199] avg loss: 0.817484
+[epoch 13, batch   299] avg loss: 0.806269
+[epoch 13, batch   399] avg loss: 0.788347
+[epoch 13, batch   499] avg loss: 0.802227
+[epoch 13, batch   599] avg loss: 0.813681
+[epoch 13, batch   699] avg loss: 0.875280
+[epoch 13, batch   799] avg loss: 0.821572
+[epoch 13, batch   899] avg loss: 0.804976
+[epoch 13, batch   999] avg loss: 0.807490
+[epoch 13, batch  1099] avg loss: 0.822941
+[epoch 13, batch  1199] avg loss: 0.793908
+[epoch 13, batch  1299] avg loss: 0.794631
+[epoch 13, batch  1399] avg loss: 0.798017
+[epoch 13, batch  1499] avg loss: 0.800400
+[epoch 13, batch  1599] avg loss: 0.808512
+[epoch 13, batch  1699] avg loss: 0.829680
+[epoch 13, batch  1799] avg loss: 0.799330
+[epoch 13, batch  1899] avg loss: 0.807432
+[epoch 13, batch  1999] avg loss: 0.805066
+[epoch 13, batch  2099] avg loss: 0.818112
+[epoch 13, batch  2199] avg loss: 0.792582
+[epoch 13, batch  2299] avg loss: 0.803757
+[epoch 13, batch  2399] avg loss: 0.805912
+[epoch 12, batch    99] avg loss: 0.849365
+[epoch 12, batch   199] avg loss: 0.837202
+[epoch 12, batch   299] avg loss: 0.850953
+[epoch 12, batch   399] avg loss: 0.841405
+[epoch 12, batch   499] avg loss: 0.844511
+[epoch 12, batch   599] avg loss: 0.840879
+[epoch 12, batch   699] avg loss: 0.841891
+[epoch 12, batch   799] avg loss: 0.843148
+[epoch 12, batch   899] avg loss: 0.856241
+[epoch 12, batch   999] avg loss: 0.853281
+[epoch 12, batch  1099] avg loss: 0.854046
+[epoch 12, batch  1199] avg loss: 0.845118
+[epoch 12, batch  1299] avg loss: 0.830505
+[epoch 12, batch  1399] avg loss: 0.851296
+[epoch 12, batch  1499] avg loss: 0.842034
+[epoch 12, batch  1599] avg loss: 0.846099
+[epoch 12, batch  1699] avg loss: 0.843710
+[epoch 12, batch  1799] avg loss: 0.844193
+[epoch 12, batch  1899] avg loss: 0.823814
+[epoch 12, batch  1999] avg loss: 0.826816
+[epoch 12, batch  2099] avg loss: 0.852291
+[epoch 12, batch  2199] avg loss: 0.836598
+[epoch 12, batch  2299] avg loss: 0.835053
+[epoch 12, batch  2399] avg loss: 0.851020
+[epoch 12, batch    99] avg loss: 0.812658
+[epoch 12, batch   199] avg loss: 0.800780
+[epoch 12, batch   299] avg loss: 0.814671
+[epoch 12, batch   399] avg loss: 0.796178
+[epoch 12, batch   499] avg loss: 0.804946
+[epoch 12, batch   599] avg loss: 0.802336
+[epoch 12, batch   699] avg loss: 0.814200
+[epoch 12, batch   799] avg loss: 0.828507
+[epoch 12, batch   899] avg loss: 0.813821
+[epoch 12, batch   999] avg loss: 0.802942
+[epoch 12, batch  1099] avg loss: 0.807495
+[epoch 12, batch  1199] avg loss: 0.825204
+[epoch 12, batch  1299] avg loss: 0.806667
+[epoch 12, batch  1399] avg loss: 0.802877
+[epoch 12, batch  1499] avg loss: 0.818600
+[epoch 12, batch  1599] avg loss: 0.815058
+[epoch 12, batch  1699] avg loss: 0.810772
+[epoch 12, batch  1799] avg loss: 0.801643
+[epoch 12, batch  1899] avg loss: 0.803343
+[epoch 12, batch  1999] avg loss: 0.795011
+[epoch 12, batch  2099] avg loss: 0.817232
+[epoch 12, batch  2199] avg loss: 0.820104
+[epoch 12, batch  2299] avg loss: 0.814332
+[epoch 12, batch  2399] avg loss: 0.811341
+[epoch 15, batch    99] avg loss: 0.850018
+[epoch 15, batch   199] avg loss: 0.837118
+[epoch 15, batch   299] avg loss: 0.840405
+[epoch 15, batch   399] avg loss: 0.848188
+[epoch 15, batch   499] avg loss: 0.836076
+[epoch 15, batch   599] avg loss: 0.849131
+[epoch 15, batch   699] avg loss: 0.856297
+[epoch 15, batch   799] avg loss: 0.858367
+[epoch 15, batch   899] avg loss: 0.846622
+[epoch 15, batch   999] avg loss: 0.842101
+[epoch 15, batch  1099] avg loss: 0.846011
+[epoch 15, batch  1199] avg loss: 0.835773
+[epoch 15, batch  1299] avg loss: 0.828374
+[epoch 15, batch  1399] avg loss: 0.856784
+[epoch 15, batch  1499] avg loss: 0.843546
+[epoch 15, batch  1599] avg loss: 0.852417
+[epoch 15, batch  1699] avg loss: 0.839936
+[epoch 15, batch  1799] avg loss: 0.846569
+[epoch 15, batch  1899] avg loss: 0.843395
+[epoch 15, batch  1999] avg loss: 0.853749
+[epoch 15, batch  2099] avg loss: 0.843793
+[epoch 15, batch  2199] avg loss: 0.835148
+[epoch 15, batch  2299] avg loss: 0.832314
+[epoch 15, batch  2399] avg loss: 0.835484
+[epoch 14, batch    99] avg loss: 0.808695
+[epoch 14, batch   199] avg loss: 0.795078
+[epoch 14, batch   299] avg loss: 0.806872
+[epoch 14, batch   399] avg loss: 0.803116
+[epoch 14, batch   499] avg loss: 0.804471
+[epoch 14, batch   599] avg loss: 0.796671
+[epoch 14, batch   699] avg loss: 0.837675
+[epoch 14, batch   799] avg loss: 0.800801
+[epoch 14, batch   899] avg loss: 0.806767
+[epoch 14, batch   999] avg loss: 0.807745
+[epoch 14, batch  1099] avg loss: 0.804609
+[epoch 14, batch  1199] avg loss: 0.801218
+[epoch 14, batch  1299] avg loss: 0.800144
+[epoch 14, batch  1399] avg loss: 0.792647
+[epoch 14, batch  1499] avg loss: 0.806526
+[epoch 14, batch  1599] avg loss: 0.795334
+[epoch 14, batch  1699] avg loss: 0.797664
+[epoch 14, batch  1799] avg loss: 0.812990
+[epoch 14, batch  1899] avg loss: 0.813572
+[epoch 14, batch  1999] avg loss: 0.813194
+[epoch 14, batch  2099] avg loss: 0.785420
+[epoch 14, batch  2199] avg loss: 0.793278
+[epoch 14, batch  2299] avg loss: 0.798217
+[epoch 14, batch  2399] avg loss: 0.801711
+[epoch 16, batch    99] avg loss: 0.830590
+[epoch 16, batch   199] avg loss: 0.853673
+[epoch 16, batch   299] avg loss: 0.856888
+[epoch 16, batch   399] avg loss: 0.836002
+[epoch 16, batch   499] avg loss: 0.831053
+[epoch 16, batch   599] avg loss: 0.829281
+[epoch 16, batch   699] avg loss: 0.840672
+[epoch 16, batch   799] avg loss: 0.842831
+[epoch 16, batch   899] avg loss: 0.843175
+[epoch 16, batch   999] avg loss: 0.837733
+[epoch 16, batch  1099] avg loss: 0.834078
+[epoch 16, batch  1199] avg loss: 0.850842
+[epoch 16, batch  1299] avg loss: 0.845532
+[epoch 16, batch  1399] avg loss: 0.831502
+[epoch 16, batch  1499] avg loss: 0.839650
+[epoch 16, batch  1599] avg loss: 0.839299
+[epoch 16, batch  1699] avg loss: 0.844171
+[epoch 16, batch  1799] avg loss: 0.836863
+[epoch 16, batch  1899] avg loss: 0.830424
+[epoch 16, batch  1999] avg loss: 0.829581
+[epoch 16, batch  2099] avg loss: 0.842203
+[epoch 16, batch  2199] avg loss: 0.845667
+[epoch 16, batch  2299] avg loss: 0.834849
+[epoch 16, batch  2399] avg loss: 0.842372
+[epoch 13, batch    99] avg loss: 0.844725
+[epoch 13, batch   199] avg loss: 0.849839
+[epoch 13, batch   299] avg loss: 0.832788
+[epoch 13, batch   399] avg loss: 0.836587
+[epoch 13, batch   499] avg loss: 0.836139
+[epoch 13, batch   599] avg loss: 0.838435
+[epoch 13, batch   699] avg loss: 0.830917
+[epoch 13, batch   799] avg loss: 0.832017
+[epoch 13, batch   899] avg loss: 0.831717
+[epoch 13, batch   999] avg loss: 0.820661
+[epoch 13, batch  1099] avg loss: 0.836593
+[epoch 13, batch  1199] avg loss: 0.842234
+[epoch 13, batch  1299] avg loss: 0.828646
+[epoch 13, batch  1399] avg loss: 0.829122
+[epoch 13, batch  1499] avg loss: 0.843581
+[epoch 13, batch  1599] avg loss: 0.834557
+[epoch 13, batch  1699] avg loss: 0.839430
+[epoch 13, batch  1799] avg loss: 0.836351
+[epoch 13, batch  1899] avg loss: 0.833663
+[epoch 13, batch  1999] avg loss: 0.820221
+[epoch 13, batch  2099] avg loss: 0.847754
+[epoch 13, batch  2199] avg loss: 0.843510
+[epoch 13, batch  2299] avg loss: 0.854882
+[epoch 13, batch  2399] avg loss: 0.836244
+[epoch 15, batch    99] avg loss: 0.811385
+[epoch 15, batch   199] avg loss: 0.786583
+[epoch 15, batch   299] avg loss: 0.792729
+[epoch 15, batch   399] avg loss: 0.805114
+[epoch 15, batch   499] avg loss: 0.796167
+[epoch 15, batch   599] avg loss: 0.798885
+[epoch 15, batch   699] avg loss: 0.802009
+[epoch 15, batch   799] avg loss: 0.799585
+[epoch 15, batch   899] avg loss: 0.807606
+[epoch 15, batch   999] avg loss: 0.799940
+[epoch 15, batch  1099] avg loss: 0.789216
+[epoch 15, batch  1199] avg loss: 0.798024
+[epoch 15, batch  1299] avg loss: 0.798811
+[epoch 15, batch  1399] avg loss: 0.815099
+[epoch 15, batch  1499] avg loss: 0.799891
+[epoch 15, batch  1599] avg loss: 0.807998
+[epoch 15, batch  1699] avg loss: 0.791997
+[epoch 15, batch  1799] avg loss: 0.807555
+[epoch 15, batch  1899] avg loss: 0.804164
+[epoch 15, batch  1999] avg loss: 0.801315
+[epoch 15, batch  2099] avg loss: 0.809348
+[epoch 15, batch  2199] avg loss: 0.802371
+[epoch 15, batch  2299] avg loss: 0.803487
+[epoch 15, batch  2399] avg loss: 0.810178
+[epoch 13, batch    99] avg loss: 0.815027
+[epoch 13, batch   199] avg loss: 0.805529
+[epoch 13, batch   299] avg loss: 0.811944
+[epoch 13, batch   399] avg loss: 0.809012
+[epoch 13, batch   499] avg loss: 0.805006
+[epoch 13, batch   599] avg loss: 0.807576
+[epoch 13, batch   699] avg loss: 0.806649
+[epoch 13, batch   799] avg loss: 0.815274
+[epoch 13, batch   899] avg loss: 0.796080
+[epoch 13, batch   999] avg loss: 0.803547
+[epoch 13, batch  1099] avg loss: 0.820207
+[epoch 13, batch  1199] avg loss: 0.819840
+[epoch 13, batch  1299] avg loss: 0.802031
+[epoch 13, batch  1399] avg loss: 0.801634
+[epoch 13, batch  1499] avg loss: 0.813380
+[epoch 13, batch  1599] avg loss: 0.792930
+[epoch 13, batch  1699] avg loss: 0.807546
+[epoch 13, batch  1799] avg loss: 0.810692
+[epoch 13, batch  1899] avg loss: 0.801533
+[epoch 13, batch  1999] avg loss: 0.811266
+[epoch 13, batch  2099] avg loss: 0.806984
+[epoch 13, batch  2199] avg loss: 0.811354
+[epoch 13, batch  2299] avg loss: 0.795939
+[epoch 13, batch  2399] avg loss: 0.813658
+[epoch 0, batch    99] avg loss: 1.387926
+[epoch 0, batch   199] avg loss: 1.389369
+[epoch 0, batch   299] avg loss: 1.387436
+[epoch 0, batch   399] avg loss: 1.387692
+[epoch 0, batch   499] avg loss: 1.385651
+[epoch 0, batch   599] avg loss: 1.375678
+[epoch 0, batch   699] avg loss: 1.352415
+[epoch 0, batch   799] avg loss: 1.305866
+[epoch 0, batch   899] avg loss: 1.233226
+[epoch 0, batch   999] avg loss: 1.193335
+[epoch 0, batch  1099] avg loss: 1.157666
+[epoch 0, batch  1199] avg loss: 1.122325
+[epoch 0, batch  1299] avg loss: 1.093546
+[epoch 0, batch  1399] avg loss: 1.089465
+[epoch 0, batch  1499] avg loss: 1.055921
+[epoch 0, batch  1599] avg loss: 1.073323
+[epoch 0, batch  1699] avg loss: 1.037865
+[epoch 0, batch  1799] avg loss: 1.036238
+[epoch 0, batch  1899] avg loss: 1.029797
+[epoch 0, batch  1999] avg loss: 1.015472
+[epoch 0, batch  2099] avg loss: 1.012303
+[epoch 0, batch  2199] avg loss: 1.003779
+[epoch 0, batch  2299] avg loss: 0.994787
+[epoch 0, batch  2399] avg loss: 0.989123
+[epoch 17, batch    99] avg loss: 0.842539
+[epoch 17, batch   199] avg loss: 0.828363
+[epoch 17, batch   299] avg loss: 0.827464
+[epoch 17, batch   399] avg loss: 0.850704
+[epoch 17, batch   499] avg loss: 0.823865
+[epoch 17, batch   599] avg loss: 0.838745
+[epoch 17, batch   699] avg loss: 0.831274
+[epoch 17, batch   799] avg loss: 0.835066
+[epoch 17, batch   899] avg loss: 0.841883
+[epoch 17, batch   999] avg loss: 0.840935
+[epoch 17, batch  1099] avg loss: 0.831824
+[epoch 17, batch  1199] avg loss: 0.848058
+[epoch 17, batch  1299] avg loss: 0.845956
+[epoch 17, batch  1399] avg loss: 0.844967
+[epoch 17, batch  1499] avg loss: 0.844642
+[epoch 17, batch  1599] avg loss: 0.835178
+[epoch 17, batch  1699] avg loss: 0.836074
+[epoch 17, batch  1799] avg loss: 0.834827
+[epoch 17, batch  1899] avg loss: 0.838439
+[epoch 17, batch  1999] avg loss: 0.848839
+[epoch 17, batch  2099] avg loss: 0.829524
+[epoch 17, batch  2199] avg loss: 0.829445
+[epoch 17, batch  2299] avg loss: 0.834706
+[epoch 17, batch  2399] avg loss: 0.838226
+[epoch 16, batch    99] avg loss: 0.815678
+[epoch 16, batch   199] avg loss: 0.803586
+[epoch 16, batch   299] avg loss: 0.815498
+[epoch 16, batch   399] avg loss: 0.792297
+[epoch 16, batch   499] avg loss: 0.781402
+[epoch 16, batch   599] avg loss: 0.794065
+[epoch 16, batch   699] avg loss: 0.790889
+[epoch 16, batch   799] avg loss: 0.788213
+[epoch 16, batch   899] avg loss: 0.810649
+[epoch 16, batch   999] avg loss: 0.795380
+[epoch 16, batch  1099] avg loss: 0.798471
+[epoch 16, batch  1199] avg loss: 0.812766
+[epoch 16, batch  1299] avg loss: 0.779113
+[epoch 16, batch  1399] avg loss: 0.807200
+[epoch 16, batch  1499] avg loss: 0.790640
+[epoch 16, batch  1599] avg loss: 0.804344
+[epoch 16, batch  1699] avg loss: 0.797457
+[epoch 16, batch  1799] avg loss: 0.808106
+[epoch 16, batch  1899] avg loss: 0.788188
+[epoch 16, batch  1999] avg loss: 0.800254
+[epoch 16, batch  2099] avg loss: 0.787442
+[epoch 16, batch  2199] avg loss: 0.806962
+[epoch 16, batch  2299] avg loss: 0.811695
+[epoch 16, batch  2399] avg loss: 0.797579
+[epoch 14, batch    99] avg loss: 0.840400
+[epoch 14, batch   199] avg loss: 0.840865
+[epoch 14, batch   299] avg loss: 0.830911
+[epoch 14, batch   399] avg loss: 0.830600
+[epoch 14, batch   499] avg loss: 0.839743
+[epoch 14, batch   599] avg loss: 0.832974
+[epoch 14, batch   699] avg loss: 0.832528
+[epoch 14, batch   799] avg loss: 0.835767
+[epoch 14, batch   899] avg loss: 0.840268
+[epoch 14, batch   999] avg loss: 0.813779
+[epoch 14, batch  1099] avg loss: 0.843218
+[epoch 14, batch  1199] avg loss: 0.818259
+[epoch 14, batch  1299] avg loss: 0.827715
+[epoch 14, batch  1399] avg loss: 0.821685
+[epoch 14, batch  1499] avg loss: 0.826135
+[epoch 14, batch  1599] avg loss: 0.824122
+[epoch 14, batch  1699] avg loss: 0.838383
+[epoch 14, batch  1799] avg loss: 0.850172
+[epoch 14, batch  1899] avg loss: 0.827824
+[epoch 14, batch  1999] avg loss: 0.838468
+[epoch 14, batch  2099] avg loss: 0.827422
+[epoch 14, batch  2199] avg loss: 0.847257
+[epoch 14, batch  2299] avg loss: 0.840268
+[epoch 14, batch  2399] avg loss: 0.831672
+[epoch 14, batch    99] avg loss: 0.806193
+[epoch 14, batch   199] avg loss: 0.806335
+[epoch 14, batch   299] avg loss: 0.804090
+[epoch 14, batch   399] avg loss: 0.816505
+[epoch 14, batch   499] avg loss: 0.803192
+[epoch 14, batch   599] avg loss: 0.792817
+[epoch 14, batch   699] avg loss: 0.806141
+[epoch 14, batch   799] avg loss: 0.802031
+[epoch 14, batch   899] avg loss: 0.797674
+[epoch 14, batch   999] avg loss: 0.815031
+[epoch 14, batch  1099] avg loss: 0.824135
+[epoch 14, batch  1199] avg loss: 0.812407
+[epoch 14, batch  1299] avg loss: 0.790262
+[epoch 14, batch  1399] avg loss: 0.804723
+[epoch 14, batch  1499] avg loss: 0.808137
+[epoch 14, batch  1599] avg loss: 0.811868
+[epoch 14, batch  1699] avg loss: 0.806364
+[epoch 14, batch  1799] avg loss: 0.808689
+[epoch 14, batch  1899] avg loss: 0.806715
+[epoch 14, batch  1999] avg loss: 0.806105
+[epoch 14, batch  2099] avg loss: 0.796596
+[epoch 14, batch  2199] avg loss: 0.789179
+[epoch 14, batch  2299] avg loss: 0.812787
+[epoch 14, batch  2399] avg loss: 0.804144
+[epoch 0, batch    99] avg loss: 1.390440
+[epoch 0, batch   199] avg loss: 1.373869
+[epoch 0, batch   299] avg loss: 1.307654
+[epoch 0, batch   399] avg loss: 1.170558
+[epoch 0, batch   499] avg loss: 1.062678
+[epoch 0, batch   599] avg loss: 0.983365
+[epoch 0, batch   699] avg loss: 0.956551
+[epoch 0, batch   799] avg loss: 0.953533
+[epoch 0, batch   899] avg loss: 0.938549
+[epoch 0, batch   999] avg loss: 0.940706
+[epoch 0, batch  1099] avg loss: 0.919725
+[epoch 0, batch  1199] avg loss: 0.912153
+[epoch 0, batch  1299] avg loss: 0.923457
+[epoch 0, batch  1399] avg loss: 0.911463
+[epoch 0, batch  1499] avg loss: 0.907554
+[epoch 0, batch  1599] avg loss: 0.889583
+[epoch 0, batch  1699] avg loss: 0.883754
+[epoch 0, batch  1799] avg loss: 0.880996
+[epoch 0, batch  1899] avg loss: 0.895676
+[epoch 0, batch  1999] avg loss: 0.882828
+[epoch 0, batch  2099] avg loss: 0.869709
+[epoch 0, batch  2199] avg loss: 0.877107
+[epoch 0, batch  2299] avg loss: 0.864860
+[epoch 0, batch  2399] avg loss: 0.866545
+[epoch 18, batch    99] avg loss: 0.825775
+[epoch 18, batch   199] avg loss: 0.837163
+[epoch 18, batch   299] avg loss: 0.822894
+[epoch 18, batch   399] avg loss: 0.824932
+[epoch 18, batch   499] avg loss: 0.829717
+[epoch 18, batch   599] avg loss: 0.829854
+[epoch 18, batch   699] avg loss: 0.840176
+[epoch 18, batch   799] avg loss: 0.836855
+[epoch 18, batch   899] avg loss: 0.849089
+[epoch 18, batch   999] avg loss: 0.846626
+[epoch 18, batch  1099] avg loss: 0.844662
+[epoch 18, batch  1199] avg loss: 0.838090
+[epoch 18, batch  1299] avg loss: 0.838817
+[epoch 18, batch  1399] avg loss: 0.833503
+[epoch 18, batch  1499] avg loss: 0.833942
+[epoch 18, batch  1599] avg loss: 0.842560
+[epoch 18, batch  1699] avg loss: 0.833927
+[epoch 18, batch  1799] avg loss: 0.825409
+[epoch 18, batch  1899] avg loss: 0.831438
+[epoch 18, batch  1999] avg loss: 0.830016
+[epoch 18, batch  2099] avg loss: 0.827029
+[epoch 18, batch  2199] avg loss: 0.832212
+[epoch 18, batch  2299] avg loss: 0.833129
+[epoch 18, batch  2399] avg loss: 0.840723
+[epoch 17, batch    99] avg loss: 0.796934
+[epoch 17, batch   199] avg loss: 0.794784
+[epoch 17, batch   299] avg loss: 0.802382
+[epoch 17, batch   399] avg loss: 0.798877
+[epoch 17, batch   499] avg loss: 0.800894
+[epoch 17, batch   599] avg loss: 0.805797
+[epoch 17, batch   699] avg loss: 0.807088
+[epoch 17, batch   799] avg loss: 0.793368
+[epoch 17, batch   899] avg loss: 0.787437
+[epoch 17, batch   999] avg loss: 0.794355
+[epoch 17, batch  1099] avg loss: 0.801779
+[epoch 17, batch  1199] avg loss: 0.805923
+[epoch 17, batch  1299] avg loss: 0.810823
+[epoch 17, batch  1399] avg loss: 0.789629
+[epoch 17, batch  1499] avg loss: 0.792179
+[epoch 17, batch  1599] avg loss: 0.793310
+[epoch 17, batch  1699] avg loss: 0.795085
+[epoch 17, batch  1799] avg loss: 0.798517
+[epoch 17, batch  1899] avg loss: 0.789776
+[epoch 17, batch  1999] avg loss: 0.788386
+[epoch 17, batch  2099] avg loss: 0.799995
+[epoch 17, batch  2199] avg loss: 0.803328
+[epoch 17, batch  2299] avg loss: 0.799144
+[epoch 17, batch  2399] avg loss: 0.800955
+[epoch 15, batch    99] avg loss: 0.828186
+[epoch 15, batch   199] avg loss: 0.819235
+[epoch 15, batch   299] avg loss: 0.820110
+[epoch 15, batch   399] avg loss: 0.831964
+[epoch 15, batch   499] avg loss: 0.839301
+[epoch 15, batch   599] avg loss: 0.844407
+[epoch 15, batch   699] avg loss: 0.815520
+[epoch 15, batch   799] avg loss: 0.837550
+[epoch 15, batch   899] avg loss: 0.840053
+[epoch 15, batch   999] avg loss: 0.854803
+[epoch 15, batch  1099] avg loss: 0.827590
+[epoch 15, batch  1199] avg loss: 0.816090
+[epoch 15, batch  1299] avg loss: 0.826493
+[epoch 15, batch  1399] avg loss: 0.841720
+[epoch 15, batch  1499] avg loss: 0.833187
+[epoch 15, batch  1599] avg loss: 0.826277
+[epoch 15, batch  1699] avg loss: 0.829022
+[epoch 15, batch  1799] avg loss: 0.811669
+[epoch 15, batch  1899] avg loss: 0.833195
+[epoch 15, batch  1999] avg loss: 0.836185
+[epoch 15, batch  2099] avg loss: 0.826524
+[epoch 15, batch  2199] avg loss: 0.834282
+[epoch 15, batch  2299] avg loss: 0.818898
+[epoch 15, batch  2399] avg loss: 0.831147
+[epoch 15, batch    99] avg loss: 0.790225
+[epoch 15, batch   199] avg loss: 0.802833
+[epoch 15, batch   299] avg loss: 0.807616
+[epoch 15, batch   399] avg loss: 0.798659
+[epoch 15, batch   499] avg loss: 0.786496
+[epoch 15, batch   599] avg loss: 0.822398
+[epoch 15, batch   699] avg loss: 0.807878
+[epoch 15, batch   799] avg loss: 0.805550
+[epoch 15, batch   899] avg loss: 0.810888
+[epoch 15, batch   999] avg loss: 0.807857
+[epoch 15, batch  1099] avg loss: 0.795977
+[epoch 15, batch  1199] avg loss: 0.798562
+[epoch 15, batch  1299] avg loss: 0.803032
+[epoch 15, batch  1399] avg loss: 0.803690
+[epoch 15, batch  1499] avg loss: 0.812528
+[epoch 15, batch  1599] avg loss: 0.813269
+[epoch 15, batch  1699] avg loss: 0.798982
+[epoch 15, batch  1799] avg loss: 0.809832
+[epoch 15, batch  1899] avg loss: 0.792570
+[epoch 15, batch  1999] avg loss: 0.795966
+[epoch 15, batch  2099] avg loss: 0.806422
+[epoch 15, batch  2199] avg loss: 0.796393
+[epoch 15, batch  2299] avg loss: 0.805396
+[epoch 15, batch  2399] avg loss: 0.790103
+[epoch 19, batch    99] avg loss: 0.830534
+[epoch 19, batch   199] avg loss: 0.836071
+[epoch 19, batch   299] avg loss: 0.851091
+[epoch 19, batch   399] avg loss: 0.832987
+[epoch 19, batch   499] avg loss: 0.824164
+[epoch 19, batch   599] avg loss: 0.842557
+[epoch 19, batch   699] avg loss: 0.824485
+[epoch 19, batch   799] avg loss: 0.832964
+[epoch 19, batch   899] avg loss: 0.837736
+[epoch 19, batch   999] avg loss: 0.842627
+[epoch 19, batch  1099] avg loss: 0.832728
+[epoch 19, batch  1199] avg loss: 0.829471
+[epoch 19, batch  1299] avg loss: 0.829667
+[epoch 19, batch  1399] avg loss: 0.834995
+[epoch 19, batch  1499] avg loss: 0.839489
+[epoch 19, batch  1599] avg loss: 0.829763
+[epoch 19, batch  1699] avg loss: 0.820107
+[epoch 19, batch  1799] avg loss: 0.827944
+[epoch 19, batch  1899] avg loss: 0.826504
+[epoch 19, batch  1999] avg loss: 0.821266
+[epoch 19, batch  2099] avg loss: 0.828550
+[epoch 19, batch  2199] avg loss: 0.833352
+[epoch 19, batch  2299] avg loss: 0.835628
+[epoch 19, batch  2399] avg loss: 0.826352
+Model saved to model/20200501-110528.pth.
+accuracy/TriangPrismIsosc : 0.39
+n_examples/TriangPrismIsosc : 500.0
+accuracy/parallelepiped : 0.44
+n_examples/parallelepiped : 500.0
+accuracy/sphere : 0.9607843137254902
+n_examples/sphere : 102.0
+accuracy/wire : 0.565
+n_examples/wire : 200.0
+accuracy/avg_geom : 0.4807987711213518
+loss/validation_geom : 1.104712637155653
+accuracy/Au : 0.0
+n_examples/Au : 1302.0
+accuracy/SiN : 0.0
+n_examples/SiN : 0.0
+accuracy/SiO2 : 0.0
+n_examples/SiO2 : 0.0
+accuracy/avg_mat : 0.0
+loss/validation_mat : 2.839630109373875
+MSE/ShortestDim : 23.625236065889467
+MAE/ShortestDim : 2.1557730427169215
+MSE/MiddleDim : 35.94037659816478
+MAE/MiddleDim : 3.2576717253654235
+MSE/LongDim : 122.61166395899338
+MAE/LongDim : 6.57759287610032
+MSE/log Area/Vol : 13.290245853078346
+MAE/log Area/Vol : 3.197651126234579
+loss/validation_dim : 195.46752247612596
+loss/validation : 199.41186522265548
+Metrics saved to model/20200501-110528_metrics.csv.
+[epoch 18, batch    99] avg loss: 0.791954
+[epoch 18, batch   199] avg loss: 0.797464
+[epoch 18, batch   299] avg loss: 0.809671
+[epoch 18, batch   399] avg loss: 0.794760
+[epoch 18, batch   499] avg loss: 0.799141
+[epoch 18, batch   599] avg loss: 0.792500
+[epoch 18, batch   699] avg loss: 0.789014
+[epoch 18, batch   799] avg loss: 0.797913
+[epoch 18, batch   899] avg loss: 0.793889
+[epoch 18, batch   999] avg loss: 0.799617
+[epoch 18, batch  1099] avg loss: 0.796525
+[epoch 18, batch  1199] avg loss: 0.808377
+[epoch 18, batch  1299] avg loss: 0.777135
+[epoch 18, batch  1399] avg loss: 0.794185
+[epoch 18, batch  1499] avg loss: 0.795384
+[epoch 18, batch  1599] avg loss: 0.796696
+[epoch 18, batch  1699] avg loss: 0.796815
+[epoch 18, batch  1799] avg loss: 0.795160
+[epoch 18, batch  1899] avg loss: 0.795077
+[epoch 18, batch  1999] avg loss: 0.785808
+[epoch 18, batch  2099] avg loss: 0.802090
+[epoch 18, batch  2199] avg loss: 0.790130
+[epoch 18, batch  2299] avg loss: 0.785480
+[epoch 18, batch  2399] avg loss: 0.770296
+[epoch 16, batch    99] avg loss: 0.828571
+[epoch 16, batch   199] avg loss: 0.826402
+[epoch 16, batch   299] avg loss: 0.819690
+[epoch 16, batch   399] avg loss: 0.838181
+[epoch 16, batch   499] avg loss: 0.837972
+[epoch 16, batch   599] avg loss: 0.820678
+[epoch 16, batch   699] avg loss: 0.819270
+[epoch 16, batch   799] avg loss: 0.838948
+[epoch 16, batch   899] avg loss: 0.826446
+[epoch 16, batch   999] avg loss: 0.833040
+[epoch 16, batch  1099] avg loss: 0.825305
+[epoch 16, batch  1199] avg loss: 0.827571
+[epoch 16, batch  1299] avg loss: 0.826319
+[epoch 16, batch  1399] avg loss: 0.812722
+[epoch 16, batch  1499] avg loss: 0.845760
+[epoch 16, batch  1599] avg loss: 0.812328
+[epoch 16, batch  1699] avg loss: 0.830694
+[epoch 16, batch  1799] avg loss: 0.822585
+[epoch 16, batch  1899] avg loss: 0.824131
+[epoch 16, batch  1999] avg loss: 0.821558
+[epoch 16, batch  2099] avg loss: 0.821123
+[epoch 16, batch  2199] avg loss: 0.828418
+[epoch 16, batch  2299] avg loss: 0.825850
+[epoch 16, batch  2399] avg loss: 0.809759
+[epoch 16, batch    99] avg loss: 0.799677
+[epoch 16, batch   199] avg loss: 0.802214
+[epoch 16, batch   299] avg loss: 0.813982
+[epoch 16, batch   399] avg loss: 0.797115
+[epoch 16, batch   499] avg loss: 0.812231
+[epoch 16, batch   599] avg loss: 0.799770
+[epoch 16, batch   699] avg loss: 0.800360
+[epoch 16, batch   799] avg loss: 0.788869
+[epoch 16, batch   899] avg loss: 0.791511
+[epoch 16, batch   999] avg loss: 0.802333
+[epoch 16, batch  1099] avg loss: 0.798343
+[epoch 16, batch  1199] avg loss: 0.795905
+[epoch 16, batch  1299] avg loss: 0.818709
+[epoch 16, batch  1399] avg loss: 0.793522
+[epoch 16, batch  1499] avg loss: 0.800482
+[epoch 16, batch  1599] avg loss: 0.800102
+[epoch 16, batch  1699] avg loss: 0.795676
+[epoch 16, batch  1799] avg loss: 0.807209
+[epoch 16, batch  1899] avg loss: 0.804012
+[epoch 16, batch  1999] avg loss: 0.797430
+[epoch 16, batch  2099] avg loss: 0.811743
+[epoch 16, batch  2199] avg loss: 0.786183
+[epoch 16, batch  2299] avg loss: 0.794402
+[epoch 16, batch  2399] avg loss: 0.808279
+[epoch 19, batch    99] avg loss: 0.807233
+[epoch 19, batch   199] avg loss: 0.805548
+[epoch 19, batch   299] avg loss: 0.798019
+[epoch 19, batch   399] avg loss: 0.800639
+[epoch 19, batch   499] avg loss: 0.790041
+[epoch 19, batch   599] avg loss: 0.800974
+[epoch 19, batch   699] avg loss: 0.799569
+[epoch 19, batch   799] avg loss: 0.799721
+[epoch 19, batch   899] avg loss: 0.798013
+[epoch 19, batch   999] avg loss: 0.790174
+[epoch 19, batch  1099] avg loss: 0.798146
+[epoch 19, batch  1199] avg loss: 0.791980
+[epoch 19, batch  1299] avg loss: 0.800325
+[epoch 19, batch  1399] avg loss: 0.802448
+[epoch 19, batch  1499] avg loss: 0.796205
+[epoch 19, batch  1599] avg loss: 0.790605
+[epoch 19, batch  1699] avg loss: 0.788927
+[epoch 19, batch  1799] avg loss: 0.813186
+[epoch 19, batch  1899] avg loss: 0.784517
+[epoch 19, batch  1999] avg loss: 0.787072
+[epoch 19, batch  2099] avg loss: 0.787897
+[epoch 19, batch  2199] avg loss: 0.785883
+[epoch 19, batch  2299] avg loss: 0.784661
+[epoch 19, batch  2399] avg loss: 0.798773
+Model saved to model/20200501-114515.pth.
+accuracy/TriangPrismIsosc : 0.432
+n_examples/TriangPrismIsosc : 500.0
+accuracy/parallelepiped : 0.466
+n_examples/parallelepiped : 500.0
+accuracy/sphere : 0.9509803921568627
+n_examples/sphere : 102.0
+accuracy/wire : 0.565
+n_examples/wire : 200.0
+accuracy/avg_geom : 0.5061443932411674
+loss/validation_geom : 1.084825824848884
+accuracy/Au : 0.37327188940092165
+n_examples/Au : 1302.0
+accuracy/SiN : 0.0
+n_examples/SiN : 0.0
+accuracy/SiO2 : 0.0
+n_examples/SiO2 : 0.0
+accuracy/avg_mat : 0.37327188940092165
+loss/validation_mat : 0.9601588388375606
+MSE/ShortestDim : 2.37833982898343
+MAE/ShortestDim : 0.7964190382012574
+MSE/MiddleDim : 4.453970643964964
+MAE/MiddleDim : 1.3659219214443787
+MSE/LongDim : 105.90997117565524
+MAE/LongDim : 6.307276818060106
+MSE/log Area/Vol : 8.58477805470175
+MAE/log Area/Vol : 2.7007243072931666
+loss/validation_dim : 121.3270597033054
+loss/validation : 123.37204436699184
+Metrics saved to model/20200501-114515_metrics.csv.
+[epoch 17, batch    99] avg loss: 0.823074
+[epoch 17, batch   199] avg loss: 0.822002
+[epoch 17, batch   299] avg loss: 0.820162
+[epoch 17, batch   399] avg loss: 0.831753
+[epoch 17, batch   499] avg loss: 0.824075
+[epoch 17, batch   599] avg loss: 0.824779
+[epoch 17, batch   699] avg loss: 0.832996
+[epoch 17, batch   799] avg loss: 0.833606
+[epoch 17, batch   899] avg loss: 0.827202
+[epoch 17, batch   999] avg loss: 0.830261
+[epoch 17, batch  1099] avg loss: 0.822132
+[epoch 17, batch  1199] avg loss: 0.827434
+[epoch 17, batch  1299] avg loss: 0.804748
+[epoch 17, batch  1399] avg loss: 0.816372
+[epoch 17, batch  1499] avg loss: 0.822337
+[epoch 17, batch  1599] avg loss: 0.821528
+[epoch 17, batch  1699] avg loss: 0.826918
+[epoch 17, batch  1799] avg loss: 0.824688
+[epoch 17, batch  1899] avg loss: 0.829219
+[epoch 17, batch  1999] avg loss: 0.819494
+[epoch 17, batch  2099] avg loss: 0.819982
+[epoch 17, batch  2199] avg loss: 0.816023
+[epoch 17, batch  2299] avg loss: 0.841641
+[epoch 17, batch  2399] avg loss: 0.827477
+[epoch 17, batch    99] avg loss: 0.794927
+[epoch 17, batch   199] avg loss: 0.789238
+[epoch 17, batch   299] avg loss: 0.801141
+[epoch 17, batch   399] avg loss: 0.793031
+[epoch 17, batch   499] avg loss: 0.796453
+[epoch 17, batch   599] avg loss: 0.798030
+[epoch 17, batch   699] avg loss: 0.794155
+[epoch 17, batch   799] avg loss: 0.787543
+[epoch 17, batch   899] avg loss: 0.804576
+[epoch 17, batch   999] avg loss: 0.799954
+[epoch 17, batch  1099] avg loss: 0.799329
+[epoch 17, batch  1199] avg loss: 0.809625
+[epoch 17, batch  1299] avg loss: 0.796253
+[epoch 17, batch  1399] avg loss: 0.789467
+[epoch 17, batch  1499] avg loss: 0.811597
+[epoch 17, batch  1599] avg loss: 0.799209
+[epoch 17, batch  1699] avg loss: 0.804833
+[epoch 17, batch  1799] avg loss: 0.815821
+[epoch 17, batch  1899] avg loss: 0.797640
+[epoch 17, batch  1999] avg loss: 0.787413
+[epoch 17, batch  2099] avg loss: 0.801781
+[epoch 17, batch  2199] avg loss: 0.799944
+[epoch 17, batch  2299] avg loss: 0.791130
+[epoch 17, batch  2399] avg loss: 0.790633
+[epoch 18, batch    99] avg loss: 0.828055
+[epoch 18, batch   199] avg loss: 0.819013
+[epoch 18, batch   299] avg loss: 0.839085
+[epoch 18, batch   399] avg loss: 0.825915
+[epoch 18, batch   499] avg loss: 0.824795
+[epoch 18, batch   599] avg loss: 0.815178
+[epoch 18, batch   699] avg loss: 0.818941
+[epoch 18, batch   799] avg loss: 0.822932
+[epoch 18, batch   899] avg loss: 0.814944
+[epoch 18, batch   999] avg loss: 0.827587
+[epoch 18, batch  1099] avg loss: 0.824352
+[epoch 18, batch  1199] avg loss: 0.830994
+[epoch 18, batch  1299] avg loss: 0.804851
+[epoch 18, batch  1399] avg loss: 0.819664
+[epoch 18, batch  1499] avg loss: 0.811203
+[epoch 18, batch  1599] avg loss: 0.846129
+[epoch 18, batch  1699] avg loss: 0.809973
+[epoch 18, batch  1799] avg loss: 0.820049
+[epoch 18, batch  1899] avg loss: 0.805259
+[epoch 18, batch  1999] avg loss: 0.811052
+[epoch 18, batch  2099] avg loss: 0.808378
+[epoch 18, batch  2199] avg loss: 0.831361
+[epoch 18, batch  2299] avg loss: 0.821877
+[epoch 18, batch  2399] avg loss: 0.816650
+[epoch 18, batch    99] avg loss: 0.796682
+[epoch 18, batch   199] avg loss: 0.801084
+[epoch 18, batch   299] avg loss: 0.806207
+[epoch 18, batch   399] avg loss: 0.781909
+[epoch 18, batch   499] avg loss: 0.806955
+[epoch 18, batch   599] avg loss: 0.786282
+[epoch 18, batch   699] avg loss: 0.806604
+[epoch 18, batch   799] avg loss: 0.802004
+[epoch 18, batch   899] avg loss: 0.802843
+[epoch 18, batch   999] avg loss: 0.795970
+[epoch 18, batch  1099] avg loss: 0.793787
+[epoch 18, batch  1199] avg loss: 0.794434
+[epoch 18, batch  1299] avg loss: 0.785162
+[epoch 18, batch  1399] avg loss: 0.809525
+[epoch 18, batch  1499] avg loss: 0.803776
+[epoch 18, batch  1599] avg loss: 0.791761
+[epoch 18, batch  1699] avg loss: 0.807815
+[epoch 18, batch  1799] avg loss: 0.789457
+[epoch 18, batch  1899] avg loss: 0.799278
+[epoch 18, batch  1999] avg loss: 0.797561
+[epoch 18, batch  2099] avg loss: 0.801634
+[epoch 18, batch  2199] avg loss: 0.790825
+[epoch 18, batch  2299] avg loss: 0.803929
+[epoch 18, batch  2399] avg loss: 0.797091
+[epoch 19, batch    99] avg loss: 0.812716
+[epoch 19, batch   199] avg loss: 0.813490
+[epoch 19, batch   299] avg loss: 0.834726
+[epoch 19, batch   399] avg loss: 0.808494
+[epoch 19, batch   499] avg loss: 0.828210
+[epoch 19, batch   599] avg loss: 0.821421
+[epoch 19, batch   699] avg loss: 0.824243
+[epoch 19, batch   799] avg loss: 0.811456
+[epoch 19, batch   899] avg loss: 0.806364
+[epoch 19, batch   999] avg loss: 0.828458
+[epoch 19, batch  1099] avg loss: 0.817841
+[epoch 19, batch  1199] avg loss: 0.820911
+[epoch 19, batch  1299] avg loss: 0.817639
+[epoch 19, batch  1399] avg loss: 0.808750
+[epoch 19, batch  1499] avg loss: 0.812968
+[epoch 19, batch  1599] avg loss: 0.824202
+[epoch 19, batch  1699] avg loss: 0.815345
+[epoch 19, batch  1799] avg loss: 0.824126
+[epoch 19, batch  1899] avg loss: 0.817189
+[epoch 19, batch  1999] avg loss: 0.829025
+[epoch 19, batch  2099] avg loss: 0.812479
+[epoch 19, batch  2199] avg loss: 0.815156
+[epoch 19, batch  2299] avg loss: 0.820445
+[epoch 19, batch  2399] avg loss: 0.813611
+Model saved to model/20200501-131523.pth.
+accuracy/TriangPrismIsosc : 0.448
+n_examples/TriangPrismIsosc : 500.0
+accuracy/parallelepiped : 0.404
+n_examples/parallelepiped : 500.0
+accuracy/sphere : 0.9705882352941176
+n_examples/sphere : 102.0
+accuracy/wire : 0.565
+n_examples/wire : 200.0
+accuracy/avg_geom : 0.49001536098310294
+loss/validation_geom : 1.0919052877001316
+accuracy/Au : 0.0015360983102918587
+n_examples/Au : 1302.0
+accuracy/SiN : 0.0
+n_examples/SiN : 0.0
+accuracy/SiO2 : 0.0
+n_examples/SiO2 : 0.0
+accuracy/avg_mat : 0.0015360983102918587
+loss/validation_mat : 2.7254139479770454
+MSE/ShortestDim : 1.6354401862383254
+MAE/ShortestDim : 0.689842223388625
+MSE/MiddleDim : 5.209422192082793
+MAE/MiddleDim : 1.5264594023861278
+MSE/LongDim : 96.86413142941149
+MAE/LongDim : 5.513236999511719
+MSE/log Area/Vol : 4.954841109831029
+MAE/log Area/Vol : 1.8308718955278762
+loss/validation_dim : 108.66383491756363
+loss/validation : 112.48115415324081
+Metrics saved to model/20200501-131523_metrics.csv.
+[epoch 19, batch    99] avg loss: 0.796957
+[epoch 19, batch   199] avg loss: 0.777877
+[epoch 19, batch   299] avg loss: 0.788018
+[epoch 19, batch   399] avg loss: 0.800504
+[epoch 19, batch   499] avg loss: 0.797680
+[epoch 19, batch   599] avg loss: 0.807036
+[epoch 19, batch   699] avg loss: 0.794673
+[epoch 19, batch   799] avg loss: 0.813473
+[epoch 19, batch   899] avg loss: 0.825249
+[epoch 19, batch   999] avg loss: 0.797219
+[epoch 19, batch  1099] avg loss: 0.788193
+[epoch 19, batch  1199] avg loss: 0.776865
+[epoch 19, batch  1299] avg loss: 0.791640
+[epoch 19, batch  1399] avg loss: 0.797155
+[epoch 19, batch  1499] avg loss: 0.786587
+[epoch 19, batch  1599] avg loss: 0.781500
+[epoch 19, batch  1699] avg loss: 0.803671
+[epoch 19, batch  1799] avg loss: 0.773972
+[epoch 19, batch  1899] avg loss: 0.789959
+[epoch 19, batch  1999] avg loss: 0.790823
+[epoch 19, batch  2099] avg loss: 0.793835
+[epoch 19, batch  2199] avg loss: 0.789771
+[epoch 19, batch  2299] avg loss: 0.794215
+[epoch 19, batch  2399] avg loss: 0.807954
+Model saved to model/20200501-132019.pth.
+accuracy/TriangPrismIsosc : 0.482
+n_examples/TriangPrismIsosc : 500.0
+accuracy/parallelepiped : 0.368
+n_examples/parallelepiped : 500.0
+accuracy/sphere : 0.9901960784313726
+n_examples/sphere : 102.0
+accuracy/wire : 0.58
+n_examples/wire : 200.0
+accuracy/avg_geom : 0.4930875576036866
+loss/validation_geom : 1.05111876720657
+accuracy/Au : 0.45314900153609833
+n_examples/Au : 1302.0
+accuracy/SiN : 0.0
+n_examples/SiN : 0.0
+accuracy/SiO2 : 0.0
+n_examples/SiO2 : 0.0
+accuracy/avg_mat : 0.45314900153609833
+loss/validation_mat : 1.41005794536866
+MSE/ShortestDim : 2.6003100370298697
+MAE/ShortestDim : 0.9467152933920583
+MSE/MiddleDim : 7.527383168538411
+MAE/MiddleDim : 1.5328002203078497
+MSE/LongDim : 99.42814783896169
+MAE/LongDim : 5.941410844044019
+MSE/log Area/Vol : 8.998098429080711
+MAE/log Area/Vol : 2.67130608858967
+loss/validation_dim : 118.55393947361068
+loss/validation : 121.0151161861859
+Metrics saved to model/20200501-132019_metrics.csv.
+[epoch 1, batch    99] avg loss: 0.974944
+[epoch 1, batch   199] avg loss: 0.973925
+[epoch 1, batch   299] avg loss: 0.978498
+[epoch 1, batch   399] avg loss: 0.973362
+[epoch 1, batch   499] avg loss: 0.973386
+[epoch 1, batch   599] avg loss: 0.959000
+[epoch 1, batch   699] avg loss: 0.947759
+[epoch 1, batch   799] avg loss: 0.970654
+[epoch 1, batch   899] avg loss: 0.947268
+[epoch 1, batch   999] avg loss: 0.949116
+[epoch 1, batch  1099] avg loss: 0.952799
+[epoch 1, batch  1199] avg loss: 0.949657
+[epoch 1, batch  1299] avg loss: 0.954462
+[epoch 1, batch  1399] avg loss: 0.950398
+[epoch 1, batch  1499] avg loss: 0.942320
+[epoch 1, batch  1599] avg loss: 0.946719
+[epoch 1, batch  1699] avg loss: 0.945642
+[epoch 1, batch  1799] avg loss: 0.944713
+[epoch 1, batch  1899] avg loss: 0.937884
+[epoch 1, batch  1999] avg loss: 0.926820
+[epoch 1, batch  2099] avg loss: 0.935085
+[epoch 1, batch  2199] avg loss: 0.932771
+[epoch 1, batch  2299] avg loss: 0.918229
+[epoch 1, batch  2399] avg loss: 0.929762
+[epoch 1, batch    99] avg loss: 0.861061
+[epoch 1, batch   199] avg loss: 0.860461
+[epoch 1, batch   299] avg loss: 0.847458
+[epoch 1, batch   399] avg loss: 0.841558
+[epoch 1, batch   499] avg loss: 0.847283
+[epoch 1, batch   599] avg loss: 0.860427
+[epoch 1, batch   699] avg loss: 0.835855
+[epoch 1, batch   799] avg loss: 0.846888
+[epoch 1, batch   899] avg loss: 0.848873
+[epoch 1, batch   999] avg loss: 0.833301
+[epoch 1, batch  1099] avg loss: 0.822590
+[epoch 1, batch  1199] avg loss: 0.827556
+[epoch 1, batch  1299] avg loss: 0.830491
+[epoch 1, batch  1399] avg loss: 0.832456
+[epoch 1, batch  1499] avg loss: 0.828978
+[epoch 1, batch  1599] avg loss: 0.827164
+[epoch 1, batch  1699] avg loss: 0.814492
+[epoch 1, batch  1799] avg loss: 0.826423
+[epoch 1, batch  1899] avg loss: 0.824895
+[epoch 1, batch  1999] avg loss: 0.822362
+[epoch 1, batch  2099] avg loss: 0.819350
+[epoch 1, batch  2199] avg loss: 0.810505
+[epoch 1, batch  2299] avg loss: 0.822985
+[epoch 1, batch  2399] avg loss: 0.832931

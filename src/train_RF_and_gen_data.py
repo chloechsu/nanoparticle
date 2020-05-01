@@ -224,6 +224,12 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     X_train_all_columns = data_featurized.loc[X_train.index,:]
     start_time = time()
     n_gen = int(len(X_train_all_columns) * n_gen_to_data_ratio)
+
+    X_train_all_materials = X_train
+    y_train_all_materials = y_train
+    X_test_all_materials = X_test
+    y_test_all_materials = y_test
+
     for material in [None, 'Au', 'SiN', 'SiO2']:
         X_gen = gen_data_P1_P2_P3_Elzouka(X_train_all_columns,n_gen,
                 material=material)
@@ -242,41 +248,22 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
         end_time = time() 
         print('done predicting emissivity using the input features using RF in {0} seconds'.format(end_time-start_time))
         time_DTGEN_label_creation = end_time - start_time
-
+    
         if material is None:
             material = 'all'
+            X_train, y_train = X_train_all_materials, y_train_all_materials
+            X_test, y_test = X_test_all_materials, y_test_all_materials
         else:
-            mask = (X_train['Material_' + material] == 1)
-            X_train, y_train = X_train[mask], y_train[mask] 
-            mask = (X_test['Material_' + material] == 1)
-            X_test, y_test = X_test[mask], y_test[mask] 
-
-        split_and_write_to_csv(X_train, 'data/sim_train_labels_%s.csv' %
-                material)
-        split_and_write_to_csv(y_train, 'data/sim_train_spectrum_%s.csv' %
-                material)
-        split_and_write_to_csv(X_gen, 'data/gen_labels_%s.csv' %
-                material)
-        split_and_write_to_csv(y_gen, 'data/gen_spectrum_%s.csv' %
-                material)
-        # Split test into half validation and half test.
-        X_val, X_test, y_val, y_test = train_test_split(X_test, y_test,
-                test_size=0.5, stratify=X_test[feature_set_geom_mat])
-        split_and_write_to_csv(X_val,
-                'data/sim_validation_labels_%s.csv' % material)
-        split_and_write_to_csv(y_val,
-                'data/sim_validation_spectrum_%s.csv' % material)
-        split_and_write_to_csv(X_test,
-                'data/sim_test_labels_%s.csv' % material)
-        split_and_write_to_csv(y_test,
-                'data/sim_test_spectrum_%s.csv' % material)
-    
+            mask = (X_train_all_materials['Material_' + material] == 1)
+            X_train, y_train = X_train_all_materials[mask], y_train_all_materials[mask] 
+            mask = (X_test_all_materials['Material_' + material] == 1)
+            X_test, y_test = X_test_all_materials[mask], y_test_all_materials[mask] 
         # adding the generated emissivity to original training emissivity ------------------
         if use_log_emissivity:
             X_new_train,y_new_train = pd.concat([X_gen,X_train]),np.concatenate([np.log(y_gen),y_train])        
         else:
             X_new_train,y_new_train = pd.concat([X_gen,X_train]),np.concatenate([y_gen,y_train])
-        
+
         # creating a single decision tree trained on generated and original training emissivity
         new_n_train = n_gen + n_train
         dt_gen = DecisionTreeRegressor(min_samples_leaf=3)
@@ -296,6 +283,27 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
         
         print("DTGEN error analysis")
         dt_gen_r2,dt_gen_mae,dt_gen_mse,dt_gen_Erel, dt_gen_r2_all,dt_gen_mae_all,dt_gen_mse_all,dt_gen_Erel_all = calc_RMSE_MAE_MSE_Erel(y_test,y_pred_dtgen, my_x)    
+
+        split_and_write_to_csv(X_train, 'data/sim_train_labels_%s.csv' %
+                material)
+        split_and_write_to_csv(y_train, 'data/sim_train_spectrum_%s.csv' %
+                material)
+        split_and_write_to_csv(X_gen, 'data/gen_labels_%s.csv' %
+                material)
+        split_and_write_to_csv(y_gen, 'data/gen_spectrum_%s.csv' %
+                material)
+        # Split test into half validation and half test.
+        X_val, X_test_split, y_val, y_test_split = train_test_split(X_test, y_test,
+                test_size=0.5, stratify=X_test[feature_set_geom_mat])
+        split_and_write_to_csv(X_val,
+                'data/sim_validation_labels_%s.csv' % material)
+        split_and_write_to_csv(y_val,
+                'data/sim_validation_spectrum_%s.csv' % material)
+        split_and_write_to_csv(X_test_split,
+                'data/sim_test_labels_%s.csv' % material)
+        split_and_write_to_csv(y_test_split,
+                'data/sim_test_spectrum_%s.csv' % material)
+        
         
         #%% save ML models, test and train data ===================================
         # Save in Python format
