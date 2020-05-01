@@ -36,8 +36,13 @@ class DatasetFromFilepath(Dataset):
     def __init__(self, input_filepath, label_filepath):
         super(DatasetFromFilepath).__init__()
         self.X = read_split_files(input_filepath)
-        self.X_diff = self.X[:, 1:] - self.X[:, :-1]
-        self.X = np.concatenate([self.X, self.X_diff], axis=1)
+        self.X_diff = self.X
+        self.X_diff[:, 1:] = self.X[:, 1:] - self.X[:, :-1]
+        self.X_log = np.log(self.X + 1e-10)
+        self.X_log_diff = self.X_log
+        self.X_log_diff[:, 1:] = self.X_log[:, 1:] - self.X_log[:, :-1]
+        self.X = np.stack([self.X, self.X_diff, self.X_log,
+            self.X_log_diff], axis=-1)
         df_y = read_split_files(label_filepath, is_pandas=True)
         # Check X and y have the same number of rows.
         self.n_samples = self.X.shape[0]
@@ -88,34 +93,36 @@ class DatasetFromFilepath(Dataset):
 class OriginalTrainDataset(DatasetFromFilepath):
     """The original simulated training dataset for training random forest."""
 
-    def __init__(self):
+    def __init__(self, material):
         super(OriginalTrainDataset, self).__init__(
-            'data/sim_train_emi_spectral.csv', 'data/sim_train_geom_spectral.csv')
+            'data/sim_train_spectrum_%s.csv' % material,
+            'data/sim_train_labels_%s.csv' % material)
 
 
 class ValidationDataset(DatasetFromFilepath):
     """The original simulated test dataset."""
 
-    def __init__(self):
+    def __init__(self, material):
         super(ValidationDataset, self).__init__(
-            'data/sim_validation_emi_spectral.csv',
-            'data/sim_validation_geom_spectral.csv')
+            'data/sim_validation_spectrum_%s.csv' % material,
+            'data/sim_validation_labels_%s.csv' % material)
 
 
 class TestDataset(DatasetFromFilepath):
     """The original simulated test dataset."""
 
-    def __init__(self):
+    def __init__(self, material):
         super(TestDataset, self).__init__(
-            'data/sim_test_emi_spectral.csv', 'data/sim_test_geom_spectral.csv')
+            'data/sim_test_spectrum_%s.csv' % material,
+            'data/sim_test_labels_%s.csv' % material)
 
 
 class GeneratedDataset(ConcatDataset):
     """The dataset generated from random forest."""
 
-    def __init__(self):
-        in_files = glob.glob('data/gen_emi_spectral_*-of-*.csv')
-        label_files = glob.glob('data/gen_geom_spectral_*-of-*.csv')
+    def __init__(self, material):
+        in_files = glob.glob('data/gen_spectrum_%s_*-of-*.csv' % material)
+        label_files = glob.glob('data/gen_labels_%s_*-of-*.csv' % material)
         in_files.sort()
         label_files.sort()
         assert len(in_files) == len(label_files)
@@ -127,9 +134,9 @@ class GeneratedDataset(ConcatDataset):
 class CombinedTrainDataset(ConcatDataset):
     """Generated dataset combined with original train dataset."""
     
-    def __init__(self):
+    def __init__(self, material):
         super(CombinedTrainDataset, self).__init__(
-                [OriginalTrainDataset(), GeneratedDataset()])
+                [OriginalTrainDataset(material), GeneratedDataset(material)])
         
 
 def main():
