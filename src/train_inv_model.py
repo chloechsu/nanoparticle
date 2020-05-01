@@ -184,10 +184,10 @@ def main():
     args = parser.parse_args()
 
     if args.exclude_gen_data:
-        train_set = OriginalTrainDataset()
+        train_set = OriginalTrainDataset(args.material)
     else:
-        train_set = CombinedTrainDataset()
-    validation_set = ValidationDataset()
+        train_set = CombinedTrainDataset(args.material)
+    validation_set = ValidationDataset(args.material)
 
     try:
         model_cls = MODEL_NAME_TO_CLASS_MAP[args.model_name.lower()]
