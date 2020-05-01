@@ -2356,3 +2356,929 @@ Metrics saved to model/20200501-132019_metrics.csv.
 [epoch 1, batch  2199] avg loss: 0.810505
 [epoch 1, batch  2299] avg loss: 0.822985
 [epoch 1, batch  2399] avg loss: 0.832931
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/twolayerfc-lr_0.000100-trainsize_158844-05_01_2020_17:05.
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/twolayerfc-lr_0.000500-trainsize_158844-05_01_2020_17:06.
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/alexnet-lr_0.000100-trainsize_158844-05_01_2020_17:10.
+[epoch 0, batch    99] avg loss: 1.369815
+[epoch 0, batch   199] avg loss: 1.312733
+[epoch 0, batch   299] avg loss: 1.283210
+[epoch 0, batch   399] avg loss: 1.254867
+[epoch 0, batch   499] avg loss: 1.250489
+[epoch 0, batch   599] avg loss: 1.234361
+[epoch 0, batch   699] avg loss: 1.222180
+[epoch 0, batch   799] avg loss: 1.209098
+[epoch 0, batch   899] avg loss: 1.206594
+[epoch 0, batch   999] avg loss: 1.198172
+[epoch 0, batch  1099] avg loss: 1.185749
+[epoch 0, batch  1199] avg loss: 1.165593
+[epoch 0, batch  1299] avg loss: 1.182247
+[epoch 0, batch  1399] avg loss: 1.158139
+[epoch 0, batch  1499] avg loss: 1.146432
+[epoch 0, batch  1599] avg loss: 1.143320
+[epoch 0, batch  1699] avg loss: 1.150427
+[epoch 0, batch  1799] avg loss: 1.135649
+[epoch 0, batch  1899] avg loss: 1.132696
+[epoch 0, batch  1999] avg loss: 1.136236
+[epoch 0, batch  2099] avg loss: 1.128528
+[epoch 0, batch  2199] avg loss: 1.121542
+[epoch 0, batch  2299] avg loss: 1.124803
+[epoch 0, batch  2399] avg loss: 1.110249
+Parsed 2604 rows from data/sim_train_spectrum_SiN.
+Parsed 2604 rows from data/sim_train_labels_SiN.
+Parsed 9765 rows from data/gen_spectrum_SiN_00-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_01-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_02-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_03-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_04-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_05-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_06-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_07-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_08-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_09-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_10-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_11-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_12-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_13-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_14-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_15-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_SiN.
+Parsed 1302 rows from data/sim_validation_labels_SiN.
+Logging training progress to tensorboard dir runs/twolayerfc-lr_0.000100-trainsize_158844-05_01_2020_17:12.
+Parsed 2604 rows from data/sim_train_spectrum_SiO2.
+Parsed 2604 rows from data/sim_train_labels_SiO2.
+Parsed 9765 rows from data/gen_spectrum_SiO2_00-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_01-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_02-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_03-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_04-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_05-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_06-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_07-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_08-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_09-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_10-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_11-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_12-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_13-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_14-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiO2_15-of-16.
+Parsed 9765 rows from data/gen_labels_SiO2_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_SiO2.
+Parsed 1302 rows from data/sim_validation_labels_SiO2.
+Logging training progress to tensorboard dir runs/twolayerfc-lr_0.000100-trainsize_158844-05_01_2020_17:15.
+Parsed 2604 rows from data/sim_train_spectrum_SiN.
+Parsed 2604 rows from data/sim_train_labels_SiN.
+Parsed 9765 rows from data/gen_spectrum_SiN_00-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_01-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_02-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_03-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_04-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_05-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_06-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_07-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_08-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_09-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_10-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_11-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_12-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_13-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_14-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_SiN_15-of-16.
+Parsed 9765 rows from data/gen_labels_SiN_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_SiN.
+Parsed 1302 rows from data/sim_validation_labels_SiN.
+Logging training progress to tensorboard dir runs/alexnet-lr_0.000100-trainsize_158844-05_01_2020_17:16.
+[epoch 0, batch    99] avg loss: 1.334787
+[epoch 0, batch   199] avg loss: 1.253797
+[epoch 0, batch   299] avg loss: 1.223901
+[epoch 0, batch   399] avg loss: 1.202024
+[epoch 0, batch   499] avg loss: 1.195860
+[epoch 0, batch   599] avg loss: 1.162576
+[epoch 0, batch   699] avg loss: 1.158236
+[epoch 0, batch   799] avg loss: 1.144604
+[epoch 0, batch   899] avg loss: 1.136894
+[epoch 0, batch   999] avg loss: 1.111449
+[epoch 0, batch  1099] avg loss: 1.108116
+[epoch 0, batch  1199] avg loss: 1.104534
+[epoch 0, batch  1299] avg loss: 1.106250
+[epoch 0, batch  1399] avg loss: 1.109884
+[epoch 0, batch  1499] avg loss: 1.100587
+[epoch 0, batch  1599] avg loss: 1.099207
+[epoch 0, batch  1699] avg loss: 1.080172
+[epoch 0, batch  1799] avg loss: 1.082103
+[epoch 0, batch  1899] avg loss: 1.083053
+[epoch 0, batch  1999] avg loss: 1.065546
+[epoch 0, batch  2099] avg loss: 1.065741
+[epoch 0, batch  2199] avg loss: 1.070210
+[epoch 0, batch  2299] avg loss: 1.068218
+[epoch 0, batch  2399] avg loss: 1.057969
+[epoch 0, batch    99] avg loss: 1.403661
+[epoch 0, batch   199] avg loss: 1.319880
+[epoch 0, batch   299] avg loss: 1.227715
+[epoch 0, batch   399] avg loss: 1.130628
+[epoch 0, batch   499] avg loss: 1.095685
+[epoch 0, batch   599] avg loss: 1.074873
+[epoch 0, batch   699] avg loss: 1.037216
+[epoch 0, batch   799] avg loss: 1.022275
+[epoch 0, batch   899] avg loss: 1.025460
+[epoch 0, batch   999] avg loss: 1.023650
+[epoch 0, batch  1099] avg loss: 0.998422
+[epoch 0, batch  1199] avg loss: 1.001869
+[epoch 0, batch  1299] avg loss: 0.993719
+[epoch 0, batch  1399] avg loss: 0.991959
+[epoch 0, batch  1499] avg loss: 0.975269
+[epoch 0, batch  1599] avg loss: 0.963879
+[epoch 0, batch  1699] avg loss: 0.978352
+[epoch 0, batch  1799] avg loss: 0.976371
+[epoch 0, batch  1899] avg loss: 0.955688
+[epoch 0, batch  1999] avg loss: 0.959549
+[epoch 0, batch  2099] avg loss: 0.966866
+[epoch 0, batch  2199] avg loss: 0.942462
+[epoch 0, batch  2299] avg loss: 0.951753
+[epoch 0, batch  2399] avg loss: 0.965175
+[epoch 1, batch    99] avg loss: 1.105044
+[epoch 1, batch   199] avg loss: 1.098550
+[epoch 1, batch   299] avg loss: 1.097721
+[epoch 1, batch   399] avg loss: 1.098338
+[epoch 1, batch   499] avg loss: 1.098175
+[epoch 1, batch   599] avg loss: 1.103344
+[epoch 1, batch   699] avg loss: 1.105006
+[epoch 1, batch   799] avg loss: 1.092148
+[epoch 1, batch   899] avg loss: 1.080113
+[epoch 1, batch   999] avg loss: 1.089168
+[epoch 1, batch  1099] avg loss: 1.084857
+[epoch 1, batch  1199] avg loss: 1.089982
+[epoch 1, batch  1299] avg loss: 1.099040
+[epoch 1, batch  1399] avg loss: 1.062574
+[epoch 1, batch  1499] avg loss: 1.095913
+[epoch 1, batch  1599] avg loss: 1.075701
+[epoch 1, batch  1699] avg loss: 1.073967
+[epoch 1, batch  1799] avg loss: 1.073586
+[epoch 1, batch  1899] avg loss: 1.070017
+[epoch 1, batch  1999] avg loss: 1.057392
+[epoch 1, batch  2099] avg loss: 1.059587
+[epoch 1, batch  2199] avg loss: 1.056263
+[epoch 1, batch  2299] avg loss: 1.069547
+[epoch 1, batch  2399] avg loss: 1.062269
+[epoch 0, batch    99] avg loss: 1.063263
+[epoch 0, batch   199] avg loss: 0.887547
+[epoch 0, batch   299] avg loss: 0.862552
+[epoch 0, batch   399] avg loss: 0.850785
+[epoch 0, batch   499] avg loss: 0.835271
+[epoch 0, batch   599] avg loss: 0.845157
+[epoch 0, batch   699] avg loss: 0.831026
+[epoch 0, batch   799] avg loss: 0.811905
+[epoch 0, batch   899] avg loss: 0.811018
+[epoch 0, batch   999] avg loss: 0.811008
+[epoch 0, batch  1099] avg loss: 0.807969
+[epoch 0, batch  1199] avg loss: 0.806778
+[epoch 0, batch  1299] avg loss: 0.806030
+[epoch 0, batch  1399] avg loss: 0.790807
+[epoch 0, batch  1499] avg loss: 0.794236
+[epoch 0, batch  1599] avg loss: 0.777086
+[epoch 0, batch  1699] avg loss: 0.782727
+[epoch 0, batch  1799] avg loss: 0.774852
+[epoch 0, batch  1899] avg loss: 0.792016
+[epoch 0, batch  1999] avg loss: 0.771636
+[epoch 0, batch  2099] avg loss: 0.777747
+[epoch 0, batch  2199] avg loss: 0.787857
+[epoch 0, batch  2299] avg loss: 0.766282
+[epoch 0, batch  2399] avg loss: 0.777687
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/twolayerfc-lr_0.000100-trainsize_158844-05_01_2020_18:33.
+Parsed 2604 rows from data/sim_train_spectrum_Au.
+Parsed 2604 rows from data/sim_train_labels_Au.
+Parsed 9765 rows from data/gen_spectrum_Au_00-of-16.
+Parsed 9765 rows from data/gen_labels_Au_00-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_01-of-16.
+Parsed 9765 rows from data/gen_labels_Au_01-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_02-of-16.
+Parsed 9765 rows from data/gen_labels_Au_02-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_03-of-16.
+Parsed 9765 rows from data/gen_labels_Au_03-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_04-of-16.
+Parsed 9765 rows from data/gen_labels_Au_04-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_05-of-16.
+Parsed 9765 rows from data/gen_labels_Au_05-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_06-of-16.
+Parsed 9765 rows from data/gen_labels_Au_06-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_07-of-16.
+Parsed 9765 rows from data/gen_labels_Au_07-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_08-of-16.
+Parsed 9765 rows from data/gen_labels_Au_08-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_09-of-16.
+Parsed 9765 rows from data/gen_labels_Au_09-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_10-of-16.
+Parsed 9765 rows from data/gen_labels_Au_10-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_11-of-16.
+Parsed 9765 rows from data/gen_labels_Au_11-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_12-of-16.
+Parsed 9765 rows from data/gen_labels_Au_12-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_13-of-16.
+Parsed 9765 rows from data/gen_labels_Au_13-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_14-of-16.
+Parsed 9765 rows from data/gen_labels_Au_14-of-16.
+Parsed 9765 rows from data/gen_spectrum_Au_15-of-16.
+Parsed 9765 rows from data/gen_labels_Au_15-of-16.
+Parsed 1302 rows from data/sim_validation_spectrum_Au.
+Parsed 1302 rows from data/sim_validation_labels_Au.
+Logging training progress to tensorboard dir runs/onelayerfc-lr_0.000100-trainsize_158844-05_01_2020_18:36.
+[epoch 0, batch    99] avg loss: 1.370139
+[epoch 0, batch   199] avg loss: 1.311741
+[epoch 0, batch   299] avg loss: 1.291152
+[epoch 0, batch   399] avg loss: 1.267231
+[epoch 0, batch   499] avg loss: 1.253692
+[epoch 0, batch   599] avg loss: 1.235470
+[epoch 0, batch   699] avg loss: 1.224783
+[epoch 0, batch   799] avg loss: 1.206537
+[epoch 0, batch   899] avg loss: 1.200731
+[epoch 0, batch   999] avg loss: 1.191145
+[epoch 0, batch  1099] avg loss: 1.180589
+[epoch 0, batch  1199] avg loss: 1.172622
+[epoch 0, batch  1299] avg loss: 1.174164
+[epoch 0, batch  1399] avg loss: 1.164323
+[epoch 0, batch  1499] avg loss: 1.162578
+[epoch 0, batch  1599] avg loss: 1.157049
+[epoch 0, batch  1699] avg loss: 1.145900
+[epoch 0, batch  1799] avg loss: 1.133529
+[epoch 0, batch  1899] avg loss: 1.132233
+[epoch 0, batch  1999] avg loss: 1.121844
+[epoch 0, batch  2099] avg loss: 1.135871
+[epoch 0, batch  2199] avg loss: 1.131158
+[epoch 0, batch  2299] avg loss: 1.120799
+[epoch 0, batch  2399] avg loss: 1.125396
+[epoch 1, batch    99] avg loss: 1.100327
+[epoch 1, batch   199] avg loss: 1.114343
+[epoch 1, batch   299] avg loss: 1.112201
+[epoch 1, batch   399] avg loss: 1.110425
+[epoch 1, batch   499] avg loss: 1.098655
+[epoch 1, batch   599] avg loss: 1.082558
+[epoch 1, batch   699] avg loss: 1.084319
+[epoch 1, batch   799] avg loss: 1.096236
+[epoch 1, batch   899] avg loss: 1.095725
+[epoch 1, batch   999] avg loss: 1.087032
+[epoch 1, batch  1099] avg loss: 1.090059
+[epoch 1, batch  1199] avg loss: 1.092975
+[epoch 1, batch  1299] avg loss: 1.082209
+[epoch 1, batch  1399] avg loss: 1.070956
+[epoch 1, batch  1499] avg loss: 1.079520
+[epoch 1, batch  1599] avg loss: 1.075000
+[epoch 1, batch  1699] avg loss: 1.079405
+[epoch 1, batch  1799] avg loss: 1.071014
+[epoch 1, batch  1899] avg loss: 1.072188
+[epoch 1, batch  1999] avg loss: 1.072381
+[epoch 1, batch  2099] avg loss: 1.074285
+[epoch 1, batch  2199] avg loss: 1.073345
+[epoch 1, batch  2299] avg loss: 1.072418
+[epoch 1, batch  2399] avg loss: 1.072143
+[epoch 2, batch    99] avg loss: 1.061451
+[epoch 2, batch   199] avg loss: 1.049632
+[epoch 2, batch   299] avg loss: 1.054122
+[epoch 2, batch   399] avg loss: 1.054551
+[epoch 2, batch   499] avg loss: 1.069522
+[epoch 2, batch   599] avg loss: 1.047783
+[epoch 2, batch   699] avg loss: 1.051001
+[epoch 2, batch   799] avg loss: 1.044727
+[epoch 2, batch   899] avg loss: 1.061079
+[epoch 2, batch   999] avg loss: 1.052916
+[epoch 2, batch  1099] avg loss: 1.057686
+[epoch 2, batch  1199] avg loss: 1.038649
+[epoch 2, batch  1299] avg loss: 1.043007
+[epoch 2, batch  1399] avg loss: 1.036764
+[epoch 2, batch  1499] avg loss: 1.040315
+[epoch 2, batch  1599] avg loss: 1.034269
+[epoch 2, batch  1699] avg loss: 1.028963
+[epoch 2, batch  1799] avg loss: 1.044649
+[epoch 2, batch  1899] avg loss: 1.035920
+[epoch 2, batch  1999] avg loss: 1.035664
+[epoch 2, batch  2099] avg loss: 1.039192
+[epoch 2, batch  2199] avg loss: 1.033993
+[epoch 2, batch  2299] avg loss: 1.030313
+[epoch 2, batch  2399] avg loss: 1.031025
+[epoch 3, batch    99] avg loss: 1.031766
+[epoch 3, batch   199] avg loss: 1.025665
+[epoch 3, batch   299] avg loss: 1.041702
+[epoch 3, batch   399] avg loss: 1.039447
+[epoch 3, batch   499] avg loss: 1.039327
+[epoch 3, batch   599] avg loss: 1.030856
+[epoch 3, batch   699] avg loss: 1.028121
+[epoch 3, batch   799] avg loss: 1.026410
+[epoch 3, batch   899] avg loss: 1.018926
+[epoch 3, batch   999] avg loss: 1.021490
+[epoch 3, batch  1099] avg loss: 1.001084
+[epoch 3, batch  1199] avg loss: 1.016357
+[epoch 3, batch  1299] avg loss: 1.004636
+[epoch 3, batch  1399] avg loss: 1.027331
+[epoch 3, batch  1499] avg loss: 1.013802
+[epoch 3, batch  1599] avg loss: 1.022413
+[epoch 3, batch  1699] avg loss: 1.015343
+[epoch 3, batch  1799] avg loss: 1.018074
+[epoch 3, batch  1899] avg loss: 1.017369
+[epoch 3, batch  1999] avg loss: 1.025889
+[epoch 3, batch  2099] avg loss: 1.013359
+[epoch 3, batch  2199] avg loss: 0.998251
+[epoch 3, batch  2299] avg loss: 1.010820
+[epoch 3, batch  2399] avg loss: 1.024647
+[epoch 4, batch    99] avg loss: 1.006725
+[epoch 4, batch   199] avg loss: 1.009587
+[epoch 4, batch   299] avg loss: 1.011680
+[epoch 4, batch   399] avg loss: 1.014257
+[epoch 4, batch   499] avg loss: 1.006953
+[epoch 4, batch   599] avg loss: 1.014922
+[epoch 4, batch   699] avg loss: 1.012317
+[epoch 4, batch   799] avg loss: 1.005485
+[epoch 4, batch   899] avg loss: 1.020667
+[epoch 4, batch   999] avg loss: 1.015266
+[epoch 4, batch  1099] avg loss: 1.007179
+[epoch 4, batch  1199] avg loss: 1.000451
+[epoch 4, batch  1299] avg loss: 1.007478
+[epoch 4, batch  1399] avg loss: 1.002730
+[epoch 4, batch  1499] avg loss: 1.011390
+[epoch 4, batch  1599] avg loss: 0.995092
+[epoch 4, batch  1699] avg loss: 0.996857
+[epoch 4, batch  1799] avg loss: 0.994996
+[epoch 4, batch  1899] avg loss: 1.003964
+[epoch 4, batch  1999] avg loss: 0.985328
+[epoch 4, batch  2099] avg loss: 1.002794
+[epoch 4, batch  2199] avg loss: 0.998363
+[epoch 4, batch  2299] avg loss: 0.989720
+[epoch 4, batch  2399] avg loss: 0.987719
+[epoch 5, batch    99] avg loss: 0.988878
+[epoch 5, batch   199] avg loss: 0.999617
+[epoch 5, batch   299] avg loss: 1.001512
+[epoch 5, batch   399] avg loss: 1.002537
+[epoch 5, batch   499] avg loss: 0.996200
+[epoch 5, batch   599] avg loss: 0.999726
+[epoch 5, batch   699] avg loss: 0.991323
+[epoch 5, batch   799] avg loss: 0.991576
+[epoch 5, batch   899] avg loss: 0.992495
+[epoch 5, batch   999] avg loss: 1.003319
+[epoch 5, batch  1099] avg loss: 0.997008
+[epoch 5, batch  1199] avg loss: 0.976490
+[epoch 5, batch  1299] avg loss: 1.002776
+[epoch 5, batch  1399] avg loss: 0.986656
+[epoch 5, batch  1499] avg loss: 0.985946
+[epoch 5, batch  1599] avg loss: 0.991027
+[epoch 5, batch  1699] avg loss: 0.994835
+[epoch 5, batch  1799] avg loss: 0.989636
+[epoch 5, batch  1899] avg loss: 0.994673
+[epoch 5, batch  1999] avg loss: 0.989162
+[epoch 5, batch  2099] avg loss: 0.980572
+[epoch 5, batch  2199] avg loss: 0.999294
+[epoch 5, batch  2299] avg loss: 0.990374
+[epoch 5, batch  2399] avg loss: 0.974334
+[epoch 6, batch    99] avg loss: 0.989074
+[epoch 6, batch   199] avg loss: 0.981774
+[epoch 6, batch   299] avg loss: 0.995201
+[epoch 6, batch   399] avg loss: 0.984512
+[epoch 6, batch   499] avg loss: 0.976258
+[epoch 6, batch   599] avg loss: 0.977971
+[epoch 6, batch   699] avg loss: 0.985081
+[epoch 6, batch   799] avg loss: 0.973984
+[epoch 6, batch   899] avg loss: 0.983250
+[epoch 6, batch   999] avg loss: 0.975204
+[epoch 6, batch  1099] avg loss: 0.979978
+[epoch 6, batch  1199] avg loss: 0.973841
+[epoch 6, batch  1299] avg loss: 0.978869
+[epoch 6, batch  1399] avg loss: 0.975334
+[epoch 6, batch  1499] avg loss: 0.977558
+[epoch 6, batch  1599] avg loss: 0.985389
+[epoch 6, batch  1699] avg loss: 0.984317
+[epoch 6, batch  1799] avg loss: 0.977649
+[epoch 6, batch  1899] avg loss: 0.974219
+[epoch 6, batch  1999] avg loss: 0.970533
+[epoch 6, batch  2099] avg loss: 0.978297
+[epoch 6, batch  2199] avg loss: 0.973020
+[epoch 6, batch  2299] avg loss: 0.978788
+[epoch 6, batch  2399] avg loss: 0.975914
+[epoch 7, batch    99] avg loss: 0.968976
+[epoch 7, batch   199] avg loss: 0.978850
+[epoch 7, batch   299] avg loss: 0.981784
+[epoch 7, batch   399] avg loss: 0.973998
+[epoch 7, batch   499] avg loss: 0.965560
+[epoch 7, batch   599] avg loss: 0.962919
+[epoch 7, batch   699] avg loss: 0.952438
+[epoch 7, batch   799] avg loss: 0.970664
+[epoch 7, batch   899] avg loss: 0.978723
+[epoch 7, batch   999] avg loss: 0.970638
+[epoch 7, batch  1099] avg loss: 0.971618
+[epoch 7, batch  1199] avg loss: 0.985737
+[epoch 7, batch  1299] avg loss: 0.966980
+[epoch 7, batch  1399] avg loss: 0.968036
+[epoch 7, batch  1499] avg loss: 0.968518
+[epoch 7, batch  1599] avg loss: 0.954541
+[epoch 7, batch  1699] avg loss: 0.959479
+[epoch 7, batch  1799] avg loss: 0.975374
+[epoch 7, batch  1899] avg loss: 0.968323
+[epoch 7, batch  1999] avg loss: 0.962213
+[epoch 7, batch  2099] avg loss: 0.969914
+[epoch 7, batch  2199] avg loss: 0.960424
+[epoch 7, batch  2299] avg loss: 0.964342
+[epoch 7, batch  2399] avg loss: 0.967369
+[epoch 8, batch    99] avg loss: 0.961861
+[epoch 8, batch   199] avg loss: 0.969324
+[epoch 8, batch   299] avg loss: 0.960974
+[epoch 8, batch   399] avg loss: 0.959572
+[epoch 8, batch   499] avg loss: 0.972182
+[epoch 8, batch   599] avg loss: 0.966070
+[epoch 8, batch   699] avg loss: 0.963406
+[epoch 8, batch   799] avg loss: 0.960938
+[epoch 8, batch   899] avg loss: 0.960693
+[epoch 8, batch   999] avg loss: 0.967154
+[epoch 8, batch  1099] avg loss: 0.959204
+[epoch 8, batch  1199] avg loss: 0.969996
+[epoch 8, batch  1299] avg loss: 0.961711
+[epoch 8, batch  1399] avg loss: 0.961086
+[epoch 8, batch  1499] avg loss: 0.960643
+[epoch 8, batch  1599] avg loss: 0.960151
+[epoch 8, batch  1699] avg loss: 0.964624
+[epoch 8, batch  1799] avg loss: 0.951216
+[epoch 8, batch  1899] avg loss: 0.960338
+[epoch 8, batch  1999] avg loss: 0.958273
+[epoch 8, batch  2099] avg loss: 0.961313
+[epoch 8, batch  2199] avg loss: 0.952448
+[epoch 8, batch  2299] avg loss: 0.952958
+[epoch 8, batch  2399] avg loss: 0.935515
+[epoch 9, batch    99] avg loss: 0.957037
+[epoch 9, batch   199] avg loss: 0.958396
+[epoch 9, batch   299] avg loss: 0.957065
+[epoch 9, batch   399] avg loss: 0.957248
+[epoch 9, batch   499] avg loss: 0.952663
+[epoch 9, batch   599] avg loss: 0.954178
+[epoch 9, batch   699] avg loss: 0.957416
+[epoch 9, batch   799] avg loss: 0.965319
+[epoch 9, batch   899] avg loss: 0.963943
+[epoch 9, batch   999] avg loss: 0.940870
+[epoch 9, batch  1099] avg loss: 0.952127
+[epoch 9, batch  1199] avg loss: 0.950229
+[epoch 9, batch  1299] avg loss: 0.940993
+[epoch 9, batch  1399] avg loss: 0.949514
+[epoch 9, batch  1499] avg loss: 0.944501
+[epoch 9, batch  1599] avg loss: 0.943048
+[epoch 9, batch  1699] avg loss: 0.955776
+[epoch 9, batch  1799] avg loss: 0.956646
+[epoch 9, batch  1899] avg loss: 0.948746
+[epoch 9, batch  1999] avg loss: 0.945005
+[epoch 9, batch  2099] avg loss: 0.953187
+[epoch 9, batch  2199] avg loss: 0.949136
+[epoch 9, batch  2299] avg loss: 0.956615
+[epoch 9, batch  2399] avg loss: 0.952074
+[epoch 10, batch    99] avg loss: 0.943601
+[epoch 10, batch   199] avg loss: 0.964294
+[epoch 10, batch   299] avg loss: 0.956132
+[epoch 10, batch   399] avg loss: 0.951434
+[epoch 10, batch   499] avg loss: 0.946935
+[epoch 10, batch   599] avg loss: 0.944616
+[epoch 10, batch   699] avg loss: 0.952095
+[epoch 10, batch   799] avg loss: 0.948072
+[epoch 10, batch   899] avg loss: 0.942377
+[epoch 10, batch   999] avg loss: 0.945148
+[epoch 10, batch  1099] avg loss: 0.957664
+[epoch 10, batch  1199] avg loss: 0.937307
+[epoch 10, batch  1299] avg loss: 0.935099
+[epoch 10, batch  1399] avg loss: 0.924762
+[epoch 10, batch  1499] avg loss: 0.935609
+[epoch 10, batch  1599] avg loss: 0.934755
+[epoch 10, batch  1699] avg loss: 0.931372
+[epoch 10, batch  1799] avg loss: 0.949128
+[epoch 10, batch  1899] avg loss: 0.940235
+[epoch 10, batch  1999] avg loss: 0.955604
+[epoch 10, batch  2099] avg loss: 0.940022
+[epoch 10, batch  2199] avg loss: 0.943061
+[epoch 10, batch  2299] avg loss: 0.932141
+[epoch 10, batch  2399] avg loss: 0.931525
+[epoch 11, batch    99] avg loss: 0.939899
+[epoch 11, batch   199] avg loss: 0.931082
+[epoch 11, batch   299] avg loss: 0.938307
+[epoch 11, batch   399] avg loss: 0.939462
+[epoch 11, batch   499] avg loss: 0.930815
+[epoch 11, batch   599] avg loss: 0.917205
+[epoch 11, batch   699] avg loss: 0.941032
+[epoch 11, batch   799] avg loss: 0.942995
+[epoch 11, batch   899] avg loss: 0.942214
+[epoch 11, batch   999] avg loss: 0.943687
+[epoch 11, batch  1099] avg loss: 0.939003
+[epoch 11, batch  1199] avg loss: 0.934407
+[epoch 11, batch  1299] avg loss: 0.940519
+[epoch 11, batch  1399] avg loss: 0.925493
+[epoch 11, batch  1499] avg loss: 0.928481
+[epoch 11, batch  1599] avg loss: 0.931816
+[epoch 11, batch  1699] avg loss: 0.935519
+[epoch 11, batch  1799] avg loss: 0.932937
+[epoch 11, batch  1899] avg loss: 0.932533
+[epoch 11, batch  1999] avg loss: 0.928921
+[epoch 11, batch  2099] avg loss: 0.938984
+[epoch 11, batch  2199] avg loss: 0.941583
+[epoch 11, batch  2299] avg loss: 0.927007
+[epoch 11, batch  2399] avg loss: 0.927791
+[epoch 12, batch    99] avg loss: 0.939000
+[epoch 12, batch   199] avg loss: 0.934282
+[epoch 12, batch   299] avg loss: 0.939428
+[epoch 12, batch   399] avg loss: 0.918133
+[epoch 12, batch   499] avg loss: 0.921246
+[epoch 12, batch   599] avg loss: 0.937685
+[epoch 12, batch   699] avg loss: 0.925457
+[epoch 12, batch   799] avg loss: 0.928166
+[epoch 12, batch   899] avg loss: 0.935395
+[epoch 12, batch   999] avg loss: 0.932495
+[epoch 12, batch  1099] avg loss: 0.923779
+[epoch 12, batch  1199] avg loss: 0.928704
+[epoch 12, batch  1299] avg loss: 0.911966
+[epoch 12, batch  1399] avg loss: 0.930597
+[epoch 12, batch  1499] avg loss: 0.923672
+[epoch 12, batch  1599] avg loss: 0.927398
+[epoch 12, batch  1699] avg loss: 0.940961
+[epoch 12, batch  1799] avg loss: 0.919727
+[epoch 12, batch  1899] avg loss: 0.922606
+[epoch 12, batch  1999] avg loss: 0.930328
+[epoch 12, batch  2099] avg loss: 0.904532
+[epoch 12, batch  2199] avg loss: 0.917624
+[epoch 12, batch  2299] avg loss: 0.917175
+[epoch 12, batch  2399] avg loss: 0.918381
+[epoch 13, batch    99] avg loss: 0.921516
+[epoch 13, batch   199] avg loss: 0.914678
+[epoch 13, batch   299] avg loss: 0.921394
+[epoch 13, batch   399] avg loss: 0.911896
+[epoch 13, batch   499] avg loss: 0.907182
+[epoch 13, batch   599] avg loss: 0.926172
+[epoch 13, batch   699] avg loss: 0.919570
+[epoch 13, batch   799] avg loss: 0.928821
+[epoch 13, batch   899] avg loss: 0.922092
+[epoch 13, batch   999] avg loss: 0.919942
+[epoch 13, batch  1099] avg loss: 0.912576
+[epoch 13, batch  1199] avg loss: 0.927528
+[epoch 13, batch  1299] avg loss: 0.918187
+[epoch 13, batch  1399] avg loss: 0.917148
+[epoch 13, batch  1499] avg loss: 0.915826
+[epoch 13, batch  1599] avg loss: 0.924991
+[epoch 13, batch  1699] avg loss: 0.915687
+[epoch 13, batch  1799] avg loss: 0.909056
+[epoch 13, batch  1899] avg loss: 0.911771
+[epoch 13, batch  1999] avg loss: 0.925395
+[epoch 13, batch  2099] avg loss: 0.928331
+[epoch 13, batch  2199] avg loss: 0.916473
+[epoch 13, batch  2299] avg loss: 0.920232
+[epoch 13, batch  2399] avg loss: 0.911845
+[epoch 14, batch    99] avg loss: 0.912249
+[epoch 14, batch   199] avg loss: 0.933382
+[epoch 14, batch   299] avg loss: 0.912740
+[epoch 14, batch   399] avg loss: 0.926766
+[epoch 14, batch   499] avg loss: 0.910900
+[epoch 14, batch   599] avg loss: 0.921765
+[epoch 14, batch   699] avg loss: 0.930396
+[epoch 14, batch   799] avg loss: 0.903151
+[epoch 14, batch   899] avg loss: 0.903764
+[epoch 14, batch   999] avg loss: 0.912767
+[epoch 14, batch  1099] avg loss: 0.911998
+[epoch 14, batch  1199] avg loss: 0.905079
+[epoch 14, batch  1299] avg loss: 0.917549
+[epoch 14, batch  1399] avg loss: 0.905977
+[epoch 14, batch  1499] avg loss: 0.908033
+[epoch 14, batch  1599] avg loss: 0.896243
+[epoch 14, batch  1699] avg loss: 0.914708
+[epoch 14, batch  1799] avg loss: 0.903759
+[epoch 14, batch  1899] avg loss: 0.912510
+[epoch 14, batch  1999] avg loss: 0.919991
+[epoch 14, batch  2099] avg loss: 0.894312
+[epoch 14, batch  2199] avg loss: 0.911084
+[epoch 14, batch  2299] avg loss: 0.906262
+[epoch 14, batch  2399] avg loss: 0.916302
+[epoch 15, batch    99] avg loss: 0.911136
+[epoch 15, batch   199] avg loss: 0.901486
+[epoch 15, batch   299] avg loss: 0.912041
+[epoch 15, batch   399] avg loss: 0.919773
+[epoch 15, batch   499] avg loss: 0.898351
+[epoch 15, batch   599] avg loss: 0.912458
+[epoch 15, batch   699] avg loss: 0.912725
+[epoch 15, batch   799] avg loss: 0.892736
+[epoch 15, batch   899] avg loss: 0.904819
+[epoch 15, batch   999] avg loss: 0.897818
+[epoch 15, batch  1099] avg loss: 0.907851
+[epoch 15, batch  1199] avg loss: 0.904610
+[epoch 15, batch  1299] avg loss: 0.892546
+[epoch 15, batch  1399] avg loss: 0.912785
+[epoch 15, batch  1499] avg loss: 0.896101
+[epoch 15, batch  1599] avg loss: 0.915188
+[epoch 15, batch  1699] avg loss: 0.896942
+[epoch 15, batch  1799] avg loss: 0.903004
+[epoch 15, batch  1899] avg loss: 0.904824
+[epoch 15, batch  1999] avg loss: 0.923110
+[epoch 15, batch  2099] avg loss: 0.907103
+[epoch 15, batch  2199] avg loss: 0.909403
+[epoch 15, batch  2299] avg loss: 0.902778
+[epoch 15, batch  2399] avg loss: 0.902225
+[epoch 16, batch    99] avg loss: 0.906563
+[epoch 16, batch   199] avg loss: 0.897853
+[epoch 16, batch   299] avg loss: 0.888934
+[epoch 16, batch   399] avg loss: 0.897116
+[epoch 16, batch   499] avg loss: 0.908317
+[epoch 16, batch   599] avg loss: 0.914230
+[epoch 16, batch   699] avg loss: 0.895813
+[epoch 16, batch   799] avg loss: 0.914071
+[epoch 16, batch   899] avg loss: 0.902549
+[epoch 16, batch   999] avg loss: 0.919594
+[epoch 16, batch  1099] avg loss: 0.896068
+[epoch 16, batch  1199] avg loss: 0.900680
+[epoch 16, batch  1299] avg loss: 0.903120
+[epoch 16, batch  1399] avg loss: 0.901435
+[epoch 16, batch  1499] avg loss: 0.889230
+[epoch 16, batch  1599] avg loss: 0.903581
+[epoch 16, batch  1699] avg loss: 0.896559
+[epoch 16, batch  1799] avg loss: 0.898835
+[epoch 16, batch  1899] avg loss: 0.892965
+[epoch 16, batch  1999] avg loss: 0.899910
+[epoch 16, batch  2099] avg loss: 0.886457
+[epoch 16, batch  2199] avg loss: 0.893752
+[epoch 16, batch  2299] avg loss: 0.901820
+[epoch 16, batch  2399] avg loss: 0.886540
+[epoch 17, batch    99] avg loss: 0.914955
+[epoch 17, batch   199] avg loss: 0.893731
+[epoch 17, batch   299] avg loss: 0.886583
+[epoch 17, batch   399] avg loss: 0.905354
+[epoch 17, batch   499] avg loss: 0.902109
+[epoch 17, batch   599] avg loss: 0.887556
+[epoch 17, batch   699] avg loss: 0.883531
+[epoch 17, batch   799] avg loss: 0.885847
+[epoch 17, batch   899] avg loss: 0.879165
+[epoch 17, batch   999] avg loss: 0.903043
+[epoch 17, batch  1099] avg loss: 0.899032
+[epoch 17, batch  1199] avg loss: 0.884753
+[epoch 17, batch  1299] avg loss: 0.890653
+[epoch 17, batch  1399] avg loss: 0.898831
+[epoch 17, batch  1499] avg loss: 0.892745
+[epoch 17, batch  1599] avg loss: 0.895923
+[epoch 17, batch  1699] avg loss: 0.894867
+[epoch 17, batch  1799] avg loss: 0.903283
+[epoch 17, batch  1899] avg loss: 0.889463
+[epoch 17, batch  1999] avg loss: 0.891827
+[epoch 17, batch  2099] avg loss: 0.895439
+[epoch 17, batch  2199] avg loss: 0.887334
+[epoch 17, batch  2299] avg loss: 0.905482
+[epoch 17, batch  2399] avg loss: 0.903064
+[epoch 18, batch    99] avg loss: 0.880433
+[epoch 18, batch   199] avg loss: 0.887729
+[epoch 18, batch   299] avg loss: 0.881130
+[epoch 18, batch   399] avg loss: 0.895182
+[epoch 18, batch   499] avg loss: 0.891517
+[epoch 18, batch   599] avg loss: 0.901273
+[epoch 18, batch   699] avg loss: 0.893780
+[epoch 18, batch   799] avg loss: 0.881661
+[epoch 18, batch   899] avg loss: 0.902654
+[epoch 18, batch   999] avg loss: 0.886542
+[epoch 18, batch  1099] avg loss: 0.888944
+[epoch 18, batch  1199] avg loss: 0.891098
+[epoch 18, batch  1299] avg loss: 0.891249
+[epoch 18, batch  1399] avg loss: 0.889120
+[epoch 18, batch  1499] avg loss: 0.877855
+[epoch 18, batch  1599] avg loss: 0.892085
+[epoch 18, batch  1699] avg loss: 0.896737
+[epoch 18, batch  1799] avg loss: 0.892172
+[epoch 18, batch  1899] avg loss: 0.890325
+[epoch 18, batch  1999] avg loss: 0.897240
+[epoch 18, batch  2099] avg loss: 0.890114
+[epoch 18, batch  2199] avg loss: 0.888190
+[epoch 18, batch  2299] avg loss: 0.869335
+[epoch 18, batch  2399] avg loss: 0.892651
+[epoch 19, batch    99] avg loss: 0.885135
+[epoch 19, batch   199] avg loss: 0.885734
+[epoch 19, batch   299] avg loss: 0.892527
+[epoch 19, batch   399] avg loss: 0.886625
+[epoch 19, batch   499] avg loss: 0.897859
+[epoch 19, batch   599] avg loss: 0.889583
+[epoch 19, batch   699] avg loss: 0.902038
+[epoch 19, batch   799] avg loss: 0.894156
+[epoch 19, batch   899] avg loss: 0.882731
+[epoch 19, batch   999] avg loss: 0.887622
+[epoch 19, batch  1099] avg loss: 0.895578
+[epoch 19, batch  1199] avg loss: 0.894328
+[epoch 19, batch  1299] avg loss: 0.884714
+[epoch 19, batch  1399] avg loss: 0.873527
+[epoch 19, batch  1499] avg loss: 0.887751
+[epoch 19, batch  1599] avg loss: 0.884236
+[epoch 19, batch  1699] avg loss: 0.890530
+[epoch 19, batch  1799] avg loss: 0.883194
+[epoch 19, batch  1899] avg loss: 0.884684
+[epoch 19, batch  1999] avg loss: 0.891037
+[epoch 19, batch  2099] avg loss: 0.883090
+[epoch 19, batch  2199] avg loss: 0.890514
+[epoch 19, batch  2299] avg loss: 0.886305
+[epoch 19, batch  2399] avg loss: 0.872134
+Model saved to model/20200501-210011.pth.
+accuracy/TriangPrismIsosc : 0.408
+n_examples/TriangPrismIsosc : 500.0
+accuracy/parallelepiped : 0.442
+n_examples/parallelepiped : 500.0
+accuracy/sphere : 0.9313725490196079
+n_examples/sphere : 102.0
+accuracy/wire : 0.455
+n_examples/wire : 200.0
+accuracy/avg_geom : 0.46927803379416283
+loss/validation_geom : 1.159874163098782
+accuracy/Au : 0.0
+n_examples/Au : 1302.0
+accuracy/SiN : 0.0
+n_examples/SiN : 0.0
+accuracy/SiO2 : 0.0
+n_examples/SiO2 : 0.0
+accuracy/avg_mat : 0.0
+loss/validation_mat : 3.668685122019684
+MSE/ShortestDim : 3.0803947580574844
+MAE/ShortestDim : 0.8448965348040087
+MSE/MiddleDim : 9.904151107858404
+MAE/MiddleDim : 2.3279152209491407
+MSE/LongDim : 120.24721375918058
+MAE/LongDim : 7.267515226443242
+MSE/log Area/Vol : 8.467933924333657
+MAE/log Area/Vol : 1.8038775419126825
+loss/validation_dim : 141.69969354943012
+loss/validation : 146.5282528345486
+Metrics saved to model/20200501-210011_metrics.csv.
