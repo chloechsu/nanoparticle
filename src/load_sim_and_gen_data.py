@@ -36,8 +36,13 @@ class DatasetFromFilepath(Dataset):
     def __init__(self, input_filepath, label_filepath):
         super(DatasetFromFilepath).__init__()
         self.X = read_split_files(input_filepath)
-        self.X_diff = self.X[:, 1:] - self.X[:, :-1]
-        self.X = np.concatenate([self.X, self.X_diff], axis=1)
+        self.X_diff = self.X
+        self.X_diff[:, 1:] = self.X[:, 1:] - self.X[:, :-1]
+        self.X_log = np.log(self.X + 1e-10)
+        self.X_log_diff = self.X_log
+        self.X_log_diff[:, 1:] = self.X_log[:, 1:] - self.X_log[:, :-1]
+        self.X = np.stack([self.X, self.X_diff, self.X_log,
+            self.X_log_diff], axis=-1)
         df_y = read_split_files(label_filepath, is_pandas=True)
         # Check X and y have the same number of rows.
         self.n_samples = self.X.shape[0]
