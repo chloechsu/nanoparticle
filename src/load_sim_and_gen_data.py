@@ -36,10 +36,12 @@ class DatasetFromFilepath(Dataset):
     def __init__(self, input_filepath, label_filepath):
         super(DatasetFromFilepath).__init__()
         self.X = read_split_files(input_filepath)
-        self.X_diff = self.X
+        self.X_diff = np.zeros_like(self.X)
+        self.X_diff[:, 0] = self.X[:, 0]
         self.X_diff[:, 1:] = self.X[:, 1:] - self.X[:, :-1]
         self.X_log = np.log(self.X + 1e-10)
-        self.X_log_diff = self.X_log
+        self.X_log_diff = np.zeros_like(self.X_log)
+        self.X_log_diff[:, 0] = self.X_log[:, 0]
         self.X_log_diff[:, 1:] = self.X_log[:, 1:] - self.X_log[:, :-1]
         self.X = np.stack([self.X, self.X_diff, self.X_log,
             self.X_log_diff], axis=-1)
