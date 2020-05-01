@@ -117,7 +117,10 @@ def compute_metrics(model, validation_set, print_metrics=False):
                     class_correct[label] += c[i].item()
                     class_total[label] += 1
         for i, c in enumerate(class_names):
-            metrics['accuracy/' + c] = float(class_correct[i]) / class_total[i]
+            if class_total[i] == 0:
+                metrics['accuracy/' + c] = 0.
+            else:
+                metrics['accuracy/' + c] = float(class_correct[i]) / class_total[i]
             metrics['n_examples/' + c] = class_total[i]
         metrics['accuracy/avg_' + geom_or_mat] = float(
                 np.sum(class_correct)) / validation_set.__len__()
@@ -201,7 +204,7 @@ def main():
             (args.model_name, args.lr, train_set.__len__(), dt))
     print('Logging training progress to tensorboard dir %s.' % writer.log_dir)
 
-    global_setp = 0
+    global_step = 0
     # # Frist train only materials classification.
     # model, saved_path, global_step = train(model, train_set, args.n_epochs_mat,
     #         learning_rate=args.lr, validation_set=validation_set,
@@ -221,7 +224,7 @@ def main():
     #         global_step=global_step)
     # evaluate(saved_path, validation_set, model_cls)
     # Train shape classification alone.
-    model, saved_path, _ = train(model, train_set, args.n_epochs_geom,
+    model, saved_path, _ = train(model, train_set, args.n_epochs,
             learning_rate=args.lr, validation_set=validation_set,
             summary_writer=writer, loss_weights=[1., 0., 0.],
             global_step=global_step)
