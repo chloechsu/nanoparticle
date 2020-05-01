@@ -22,12 +22,13 @@ def gen_data_P1_P2_P3_Elzouka(X, n=10**5, material=None):
     feature_set_mat = [x for x in cols if "Material" in x]    
     if material is None:
         mat_idx = np.random.choice(np.arange(len(feature_set_mat)),size=n)        
+        mat = pd.get_dummies(pd.Series(mat_idx)).values
     else:
         for i, x in enumerate(feature_set_mat):
             if x == "Material_" + material:
-                mat_idx = i + np.zeros(n, dtype=int)
                 break
-    mat = pd.get_dummies(pd.Series(mat_idx)).values
+        mat = np.zeros((n, len(feature_set_mat)))
+        mat[:, i] = 1.0
     X_gen[feature_set_mat] = mat    
     
     # picking geometry, uniform random

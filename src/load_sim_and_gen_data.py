@@ -88,34 +88,36 @@ class DatasetFromFilepath(Dataset):
 class OriginalTrainDataset(DatasetFromFilepath):
     """The original simulated training dataset for training random forest."""
 
-    def __init__(self):
+    def __init__(self, material):
         super(OriginalTrainDataset, self).__init__(
-            'data/sim_train_spectrum_all.csv', 'data/sim_train_labels_all.csv')
+            'data/sim_train_spectrum_%s.csv' % material,
+            'data/sim_train_labels_%s.csv' % material)
 
 
 class ValidationDataset(DatasetFromFilepath):
     """The original simulated test dataset."""
 
-    def __init__(self):
+    def __init__(self, material):
         super(ValidationDataset, self).__init__(
-            'data/sim_validation_spectrum_all.csv',
-            'data/sim_validation_labels_all.csv')
+            'data/sim_validation_spectrum_%s.csv' % material,
+            'data/sim_validation_labels_%s.csv' % material)
 
 
 class TestDataset(DatasetFromFilepath):
     """The original simulated test dataset."""
 
-    def __init__(self):
+    def __init__(self, material):
         super(TestDataset, self).__init__(
-            'data/sim_test_spectrum_all.csv', 'data/sim_test_labels_all.csv')
+            'data/sim_test_spectrum_%s.csv' % material,
+            'data/sim_test_labels_%s.csv' % material)
 
 
 class GeneratedDataset(ConcatDataset):
     """The dataset generated from random forest."""
 
-    def __init__(self):
-        in_files = glob.glob('data/gen_spectrum_all_*-of-*.csv')
-        label_files = glob.glob('data/gen_labels_all_*-of-*.csv')
+    def __init__(self, material):
+        in_files = glob.glob('data/gen_spectrum_%s_*-of-*.csv' % material)
+        label_files = glob.glob('data/gen_labels_%s_*-of-*.csv' % material)
         in_files.sort()
         label_files.sort()
         assert len(in_files) == len(label_files)
@@ -127,9 +129,9 @@ class GeneratedDataset(ConcatDataset):
 class CombinedTrainDataset(ConcatDataset):
     """Generated dataset combined with original train dataset."""
     
-    def __init__(self):
+    def __init__(self, material):
         super(CombinedTrainDataset, self).__init__(
-                [OriginalTrainDataset(), GeneratedDataset()])
+                [OriginalTrainDataset(material), GeneratedDataset(material)])
         
 
 def main():

@@ -171,12 +171,16 @@ def main():
             'and only use original training data.')
     parser.add_argument('--lr', type=float, default=1e-4,
             help='Learning rate.')
-    parser.add_argument('--n_epochs_mat', type=int, default=5,
-            help='Number of epochs in training for materials.')
-    parser.add_argument('--n_epochs_dim', type=int, default=20,
-            help='Number of epochs in training for dimensions.')
-    parser.add_argument('--n_epochs_geom', type=int, default=10,
-            help='Number of epochs in training for shape.')
+    parser.add_argument('--material', type=str, default='Au',
+            help='Material to train and test on: `all`, `Au`, `SiN` or `SiO2`.')
+    parser.add_argument('--n_epochs', type=int, default=20,
+            help='Number of epochs in training.')
+    # parser.add_argument('--n_epochs_mat', type=int, default=5,
+    #         help='Number of epochs in training for materials.')
+    # parser.add_argument('--n_epochs_dim', type=int, default=20,
+    #         help='Number of epochs in training for dimensions.')
+    # parser.add_argument('--n_epochs_geom', type=int, default=10,
+    #         help='Number of epochs in training for shape.')
     args = parser.parse_args()
 
     if args.exclude_gen_data:
@@ -197,23 +201,25 @@ def main():
             (args.model_name, args.lr, train_set.__len__(), dt))
     print('Logging training progress to tensorboard dir %s.' % writer.log_dir)
 
-    # Frist train only materials classification.
-    model, saved_path, global_step = train(model, train_set, args.n_epochs_mat,
-            learning_rate=args.lr, validation_set=validation_set,
-            summary_writer=writer, loss_weights=[0., 1., 0.], global_step=0)
-    evaluate(saved_path, validation_set, model_cls)
-    # Then train dimension regression.
-    model, saved_path, global_step = train(model, train_set, args.n_epochs_dim,
-            learning_rate=args.lr, validation_set=validation_set,
-            summary_writer=writer, loss_weights=[0., 1., 0.02],
-            global_step=global_step)
-    evaluate(saved_path, validation_set, model_cls)
-    # Finally train shape classification.
-    model, saved_path, _ = train(model, train_set, args.n_epochs_geom,
-            learning_rate=args.lr, validation_set=validation_set,
-            summary_writer=writer, loss_weights=[1., 1., 0.02],
-            global_step=global_step)
-    evaluate(saved_path, validation_set, model_cls)
+    global_setp = 0
+    # # Frist train only materials classification.
+    # model, saved_path, global_step = train(model, train_set, args.n_epochs_mat,
+    #         learning_rate=args.lr, validation_set=validation_set,
+    #         summary_writer=writer, loss_weights=[0., 1., 0.],
+    #         global_step=global_step)
+    # evaluate(saved_path, validation_set, model_cls)
+    # # Then train dimension regression.
+    # model, saved_path, global_step = train(model, train_set, args.n_epochs_dim,
+    #         learning_rate=args.lr, validation_set=validation_set,
+    #         summary_writer=writer, loss_weights=[0., 1., 0.02],
+    #         global_step=global_step)
+    # evaluate(saved_path, validation_set, model_cls)
+    # # Finally train shape classification.
+    # model, saved_path, _ = train(model, train_set, args.n_epochs_geom,
+    #         learning_rate=args.lr, validation_set=validation_set,
+    #         summary_writer=writer, loss_weights=[1., 1., 0.02],
+    #         global_step=global_step)
+    # evaluate(saved_path, validation_set, model_cls)
     # Train shape classification alone.
     model, saved_path, _ = train(model, train_set, args.n_epochs_geom,
             learning_rate=args.lr, validation_set=validation_set,

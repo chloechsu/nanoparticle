@@ -304,5 +304,5 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
                               'y_train', 'y_new_train', 'y_test',
                               'n_gen', 'train_data_size_fraction', 'my_x', 'scaling_factors']
         for variable_name in variable_name_list:
-            joblib.dump(globals()[variable_name+'_'+material_name],
-                    save_folder+variable_name+'_'+material_name+'.joblib')        
+            joblib.dump(globals()[variable_name],
+                    save_folder+variable_name+'_'+material+'.joblib')        
