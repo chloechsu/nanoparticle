@@ -5,6 +5,7 @@ __pycache__/
 *.csv
 data/*
 *.swp
+*.txt
 *.swo
 *.DS_Store
 *.mat

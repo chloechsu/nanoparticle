@@ -16,12 +16,13 @@ from load_sim_and_gen_data import OriginalTrainDataset, ValidationDataset, TestD
 from load_sim_and_gen_data import GeneratedDataset, CombinedTrainDataset  
 
 from alexnet import AlexNet1D
-from fc import OneLayerFC, TwoLayerFC
+from fc import OneLayerFC, TwoLayerFC, ThreeLayerFC
 
 MODEL_NAME_TO_CLASS_MAP = {
     'alexnet': AlexNet1D,
     'onelayerfc': OneLayerFC,
     'twolayerfc': TwoLayerFC,
+    'threelayerfc': ThreeLayerFC,
 }
 
 N_GEOM_CLASSES = ValidationDataset.n_geom_classes()
@@ -29,19 +30,23 @@ N_MAT_CLASSES = ValidationDataset.n_mat_classes()
 N_DIM_LABELS = ValidationDataset.n_dim_labels()
 
 
-def loss_fn(logits, labels_geom, labels_mat, labels_dim):
+def loss_fn(logits, labels_geom, labels_mat, labels_dim, loss_weights=None):
+    if loss_weights is None:
+        loss_weights = np.ones(3)
+    loss_weights = torch.tensor(loss_weights, requires_grad=False)
     assert logits.shape[1] == N_GEOM_CLASSES + N_MAT_CLASSES + N_DIM_LABELS
+    losses = torch.zeros(3)
     ce = nn.CrossEntropyLoss()
-    combined_loss = ce(logits[:, :N_GEOM_CLASSES], labels_geom)
-    combined_loss += ce(
-            logits[:, N_GEOM_CLASSES:N_GEOM_CLASSES+N_MAT_CLASSES], labels_mat)
-    combined_loss += nn.MSELoss()(logits[:, -N_DIM_LABELS:], labels_dim)
-    return combined_loss
+    losses[0] = ce(logits[:, :N_GEOM_CLASSES], labels_geom)
+    losses[1] = ce(logits[:, N_GEOM_CLASSES:N_GEOM_CLASSES+N_MAT_CLASSES],
+            labels_mat)
+    losses[2] = nn.MSELoss()(logits[:, -N_DIM_LABELS:], labels_dim)
+    return torch.sum(losses * loss_weights)
 
 
 def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
         learning_rate=1e-4, save_model_dir="model/", validation_set=None,
-        summary_writer=None):
+        summary_writer=None, loss_weights=None, global_step=0):
     """Trains and saves a given model."""
 
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size,
@@ -51,7 +56,6 @@ def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
     if summary_writer is None:
         summary_writer = SummaryWriter()
 
-    n_batches_per_epoch = int(ceil(float(trainset.__len__()) / batch_size))
     for epoch in range(n_epochs):
         running_loss = 0.0
         for i, data in enumerate(trainloader):
@@ -59,7 +63,8 @@ def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
             # zero the parameter gradients, important
             optimizer.zero_grad()
             outputs = model(inputs)
-            loss = loss_fn(outputs, labels_geom, labels_mat, labels_dim)
+            loss = loss_fn(outputs, labels_geom, labels_mat, labels_dim,
+                    loss_weights=loss_weights)
             loss.backward()
             optimizer.step()
             
@@ -68,18 +73,18 @@ def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
                 avg_loss = running_loss / print_every_n_batches
                 print("[epoch %d, batch %5d] avg loss: %.6f" %
                       (epoch, i, avg_loss))
-                summary_writer.add_scalar('loss/train', avg_loss,
-                        global_step=epoch*n_batches_per_epoch+i)
+                global_step += print_every_n_batches
+                summary_writer.add_scalar('loss/train', avg_loss, global_step)
                 running_loss = 0.0
         if validation_set is not None:
             metrics = compute_metrics(model, validation_set)
             for k, v in metrics.items():
-                summary_writer.add_scalar(k, v, epoch*n_batches_per_epoch)
+                summary_writer.add_scalar(k, v, global_step)
 
     path = os.path.join(save_model_dir, time.strftime("%Y%m%d-%H%M%S") + ".pth")
     torch.save(model.state_dict(), path)
     print("Model saved to %s." % path)
-    return model, path
+    return model, path, global_step
 
 def compute_metrics(model, validation_set, print_metrics=False):
     evalloader = torch.utils.data.DataLoader(validation_set,
@@ -166,8 +171,12 @@ def main():
             'and only use original training data.')
     parser.add_argument('--lr', type=float, default=1e-4,
             help='Learning rate.')
-    parser.add_argument('--n_epochs', type=int, default=20,
-            help='Number of epochs in training.')
+    parser.add_argument('--n_epochs_mat', type=int, default=5,
+            help='Number of epochs in training for materials.')
+    parser.add_argument('--n_epochs_dim', type=int, default=20,
+            help='Number of epochs in training for dimensions.')
+    parser.add_argument('--n_epochs_geom', type=int, default=10,
+            help='Number of epochs in training for shape.')
     args = parser.parse_args()
 
     if args.exclude_gen_data:
@@ -184,11 +193,32 @@ def main():
     model = model_cls(n_logits=validation_set.n_logits())
 
     dt = datetime.now().strftime("%m_%d_%Y_%H:%M")
-    writer = SummaryWriter(log_dir="runs/%s-lr_%f-epochs_%d-trainsize_%d-%s" %
-            (args.model_name, args.lr, args.n_epochs, train_set.__len__(), dt))
+    writer = SummaryWriter(log_dir="runs/%s-lr_%f-trainsize_%d-%s" %
+            (args.model_name, args.lr, train_set.__len__(), dt))
     print('Logging training progress to tensorboard dir %s.' % writer.log_dir)
-    model, saved_path = train(model, train_set, args.n_epochs,
-            validation_set=validation_set, summary_writer=writer)
+
+    # Frist train only materials classification.
+    model, saved_path, global_step = train(model, train_set, args.n_epochs_mat,
+            learning_rate=args.lr, validation_set=validation_set,
+            summary_writer=writer, loss_weights=[0., 1., 0.], global_step=0)
+    evaluate(saved_path, validation_set, model_cls)
+    # Then train dimension regression.
+    model, saved_path, global_step = train(model, train_set, args.n_epochs_dim,
+            learning_rate=args.lr, validation_set=validation_set,
+            summary_writer=writer, loss_weights=[0., 1., 0.02],
+            global_step=global_step)
+    evaluate(saved_path, validation_set, model_cls)
+    # Finally train shape classification.
+    model, saved_path, _ = train(model, train_set, args.n_epochs_geom,
+            learning_rate=args.lr, validation_set=validation_set,
+            summary_writer=writer, loss_weights=[1., 1., 0.02],
+            global_step=global_step)
+    evaluate(saved_path, validation_set, model_cls)
+    # Train shape classification alone.
+    model, saved_path, _ = train(model, train_set, args.n_epochs_geom,
+            learning_rate=args.lr, validation_set=validation_set,
+            summary_writer=writer, loss_weights=[1., 0., 0.],
+            global_step=global_step)
     evaluate(saved_path, validation_set, model_cls)
 
 
