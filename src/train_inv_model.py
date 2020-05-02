@@ -178,12 +178,14 @@ def main():
             help='Material to train and test on: `all`, `Au`, `SiN` or `SiO2`.')
     parser.add_argument('--n_epochs', type=int, default=20,
             help='Number of epochs in training.')
-    # parser.add_argument('--n_epochs_mat', type=int, default=5,
-    #         help='Number of epochs in training for materials.')
-    # parser.add_argument('--n_epochs_dim', type=int, default=20,
-    #         help='Number of epochs in training for dimensions.')
-    # parser.add_argument('--n_epochs_geom', type=int, default=10,
-    #         help='Number of epochs in training for shape.')
+    parser.add_argument('--joint_obj', default=False, action='store_true',
+            help='Whether to jointly train with shape and dimension predictions.')
+    parser.add_argument('--multistage', default=False, action='store_true',
+            help='Whether to train in multiple stages.')
+    parser.add_argument('--n_epochs_mat', type=int, default=5,
+            help='Number of epochs in training for materials.')
+    parser.add_argument('--n_epochs_dim', type=int, default=20,
+            help='Number of epochs in training for dimensions.')
     args = parser.parse_args()
 
     if args.exclude_gen_data:
@@ -200,30 +202,36 @@ def main():
     model = model_cls(n_logits=validation_set.n_logits())
 
     dt = datetime.now().strftime("%m_%d_%Y_%H:%M")
-    writer = SummaryWriter(log_dir="runs/%s-lr_%f-trainsize_%d-%s" %
-            (args.model_name, args.lr, train_set.__len__(), dt))
+    log_dir_name = "runs/%s-%s-lr_%f-trainsize_%d-%s" % (args.model_name,
+            args.material, args.lr, train_set.__len__(), dt)
+    if args.multistage:
+        log_dir_name += '-multistage'
+    if args.joint_obj:
+        log_dir_name += '-joint'
+    writer = SummaryWriter(log_dir=log_dir_name)
     print('Logging training progress to tensorboard dir %s.' % writer.log_dir)
 
     global_step = 0
-    # # Frist train only materials classification.
-    # model, saved_path, global_step = train(model, train_set, args.n_epochs_mat,
-    #         learning_rate=args.lr, validation_set=validation_set,
-    #         summary_writer=writer, loss_weights=[0., 1., 0.],
-    #         global_step=global_step)
-    # evaluate(saved_path, validation_set, model_cls)
-    # # Then train dimension regression.
-    # model, saved_path, global_step = train(model, train_set, args.n_epochs_dim,
-    #         learning_rate=args.lr, validation_set=validation_set,
-    #         summary_writer=writer, loss_weights=[0., 1., 0.02],
-    #         global_step=global_step)
-    # evaluate(saved_path, validation_set, model_cls)
-    # # Finally train shape classification.
-    # model, saved_path, _ = train(model, train_set, args.n_epochs_geom,
-    #         learning_rate=args.lr, validation_set=validation_set,
-    #         summary_writer=writer, loss_weights=[1., 1., 0.02],
-    #         global_step=global_step)
-    # evaluate(saved_path, validation_set, model_cls)
-    # Train shape classification alone.
+    
+    if args.multistage:
+        if args.material == 'all':
+            # If mixing materials in training data, frist train materials classification.
+            model, saved_path, global_step = train(model, train_set, args.n_epochs_mat,
+                    learning_rate=args.lr, validation_set=validation_set,
+                    summary_writer=writer, loss_weights=[0., 1., 0.],
+                    global_step=global_step)
+            evaluate(saved_path, validation_set, model_cls)
+        # Train dimension regression.
+        model, saved_path, global_step = train(model, train_set, args.n_epochs_dim,
+                learning_rate=args.lr, validation_set=validation_set,
+                summary_writer=writer, loss_weights=[0., 1., 0.01],
+                global_step=global_step)
+        evaluate(saved_path, validation_set, model_cls)
+    
+    if args.joint_obj:
+        loss_weights = [1., 1., 0.01]
+    else:
+        loss_weights = [1., 0., 0.]
     model, saved_path, _ = train(model, train_set, args.n_epochs,
             learning_rate=args.lr, validation_set=validation_set,
             summary_writer=writer, loss_weights=[1., 0., 0.],
