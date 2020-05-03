@@ -19,6 +19,9 @@ from alexnet import AlexNet1D
 from resnet import *
 from fc import OneLayerFC, TwoLayerFC, ThreeLayerFC
 
+use_cuda = torch.cuda.is_available()
+device = torch.device("cuda:0" if use_cuda else "cpu")
+
 MODEL_NAME_TO_CLASS_MAP = {
     'alexnet': AlexNet1D,
     'onelayerfc': OneLayerFC,
@@ -30,6 +33,10 @@ MODEL_NAME_TO_CLASS_MAP.update(RESNET_NAME_TO_MODEL_MAP)
 N_GEOM_CLASSES = ValidationDataset.n_geom_classes()
 N_MAT_CLASSES = ValidationDataset.n_mat_classes()
 N_DIM_LABELS = ValidationDataset.n_dim_labels()
+
+
+def to_device(tensors):
+    return [a.to(device) for a in tensors] 
 
 
 def loss_fn(logits, labels_geom, labels_mat, labels_dim, loss_weights=None):
@@ -54,6 +61,9 @@ def train(model, trainset, n_epochs, save_model_path, print_every_n_batches=100,
 
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size,
             shuffle=True, num_workers=1)
+
+    model = model.to(device)
+
     if optimizer_name == 'SGD':
         optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
     elif optimizer_name == 'Adam':
@@ -65,7 +75,7 @@ def train(model, trainset, n_epochs, save_model_path, print_every_n_batches=100,
     for epoch in range(n_epochs):
         running_loss = 0.0
         for i, data in enumerate(trainloader):
-            inputs, labels_geom, labels_mat, labels_dim = data
+            inputs, labels_geom, labels_mat, labels_dim = to_device(data)
             # zero the parameter gradients, important
             optimizer.zero_grad()
             outputs = model(inputs)
@@ -95,6 +105,7 @@ def compute_metrics(model, validation_set, print_metrics=False):
     evalloader = torch.utils.data.DataLoader(validation_set,
             batch_size=64, shuffle=False, num_workers=1)
     metrics = {}
+    model = model.to(device)
     # Evaluate classification performance.
     for geom_or_mat in ['geom', 'mat']:
         if geom_or_mat == 'geom':
@@ -110,10 +121,10 @@ def compute_metrics(model, validation_set, print_metrics=False):
         with torch.no_grad():
             for data in evalloader:
                 if geom_or_mat == 'geom':
-                    inputs, labels, _, _ = data
+                    inputs, labels, _, _ = to_device(data)
                     outputs = model(inputs)[:, :N_GEOM_CLASSES]
                 else:
-                    inputs, _, labels, _ = data
+                    inputs, _, labels, _ = to_device(data)
                     outputs = model(inputs)[:, N_GEOM_CLASSES:N_GEOM_CLASSES+N_MAT_CLASSES]
                 predicted = torch.argmax(outputs.data, dim=1)
                 cross_entropy_loss += cross_entropy_fn(outputs, labels).item()
@@ -139,10 +150,10 @@ def compute_metrics(model, validation_set, print_metrics=False):
     mae_loss = np.zeros(len(label_names))
     with torch.no_grad():
         for data in evalloader:
-            inputs, _, _, labels = data 
+            inputs, _, _, labels = to_device(data)
             outputs = model(inputs)[:, -N_DIM_LABELS:]
-            mse_loss += np.sum(mse_fn(outputs, labels).numpy(), axis=0)
-            mae_loss += np.sum(mae_fn(outputs, labels).numpy(), axis=0)
+            mse_loss += np.sum(mse_fn(outputs, labels).cpu().numpy(), axis=0)
+            mae_loss += np.sum(mae_fn(outputs, labels).cpu().numpy(), axis=0)
     mse_loss /= validation_set.__len__()
     mae_loss /= validation_set.__len__()
     for i, c in enumerate(label_names):
@@ -161,7 +172,7 @@ def evaluate(model_path, validation_set, model_cls):
     model = model_cls(n_logits=validation_set.n_logits())
     model.load_state_dict(torch.load(model_path))
     metrics = compute_metrics(model, validation_set, print_metrics=True)
-    metrics_path = model_path.split('.')[0] + '_metrics.csv'
+    metrics_path = model_path[:-4] + '_metrics.csv'
     with open(metrics_path, 'w') as f:
         w = csv.DictWriter(f, metrics.keys())
         w.writeheader()
@@ -194,6 +205,11 @@ def main():
     parser.add_argument('--n_epochs_dim', type=int, default=20,
             help='Number of epochs in training for dimensions.')
     args = parser.parse_args()
+
+    print('')
+    print('-------------------------')
+    print('Args for training:')
+    print(args)
 
     if args.exclude_gen_data:
         train_set = OriginalTrainDataset(args.material)
