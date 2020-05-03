@@ -47,13 +47,17 @@ def loss_fn(logits, labels_geom, labels_mat, labels_dim, loss_weights=None):
 
 
 def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
-        learning_rate=1e-4, save_model_dir="model/", validation_set=None,
-        summary_writer=None, loss_weights=None, global_step=0):
+        optimizer_name='Adam', learning_rate=1e-4, save_model_dir="model/",
+        validation_set=None, summary_writer=None, loss_weights=None,
+        global_step=0):
     """Trains and saves a given model."""
 
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size,
             shuffle=True, num_workers=1)
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    if optimizer_name == 'SGD':
+        optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
+    elif optimizer_name == 'Adam':
+        optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
     if summary_writer is None:
         summary_writer = SummaryWriter()
@@ -155,7 +159,7 @@ def compute_metrics(model, validation_set, print_metrics=False):
 
 
 def evaluate(model_path, validation_set, model_cls):
-    model = model_cls(validation_set.n_logits())
+    model = model_cls(n_logits=validation_set.n_logits())
     model.load_state_dict(torch.load(model_path))
     metrics = compute_metrics(model, validation_set, print_metrics=True)
     metrics_path = model_path.split('.')[0] + '_metrics.csv'
@@ -176,6 +180,8 @@ def main():
             'and only use original training data.')
     parser.add_argument('--lr', type=float, default=1e-4,
             help='Learning rate.')
+    parser.add_argument('--optimizer_name', type=str, default='Adam',
+            help='Optimizer name, Adam or SGD.')
     parser.add_argument('--material', type=str, default='Au',
             help='Material to train and test on: `all`, `Au`, `SiN` or `SiO2`.')
     parser.add_argument('--n_epochs', type=int, default=20,
@@ -204,8 +210,8 @@ def main():
     model = model_cls(n_logits=validation_set.n_logits())
 
     dt = datetime.now().strftime("%m_%d_%Y_%H:%M")
-    log_dir_name = "runs/%s-%s-lr_%f-trainsize_%d-%s" % (args.model_name,
-            args.material, args.lr, train_set.__len__(), dt)
+    log_dir_name = "runs/%s-%s-%s-lr_%f-trainsize_%d-%s" % (args.model_name,
+            args.material, args.optimizer_name, args.lr, train_set.__len__(), dt)
     if args.multistage:
         log_dir_name += '-multistage'
     if args.joint_obj:
@@ -219,15 +225,15 @@ def main():
         if args.material == 'all':
             # If mixing materials in training data, frist train materials classification.
             model, saved_path, global_step = train(model, train_set, args.n_epochs_mat,
-                    learning_rate=args.lr, validation_set=validation_set,
-                    summary_writer=writer, loss_weights=[0., 1., 0.],
-                    global_step=global_step)
+                    learning_rate=args.lr, optimizer_name=args.optimizer_name,
+                    validation_set=validation_set, summary_writer=writer,
+                    loss_weights=[0., 1., 0.], global_step=global_step)
             evaluate(saved_path, validation_set, model_cls)
         # Train dimension regression.
         model, saved_path, global_step = train(model, train_set, args.n_epochs_dim,
-                learning_rate=args.lr, validation_set=validation_set,
-                summary_writer=writer, loss_weights=[0., 1., 0.01],
-                global_step=global_step)
+                learning_rate=args.lr, optimizer_name=args.optimizer_name,
+                validation_set=validation_set, summary_writer=writer,
+                loss_weights=[0., 1., 0.01], global_step=global_step)
         evaluate(saved_path, validation_set, model_cls)
     
     if args.joint_obj:
@@ -235,9 +241,9 @@ def main():
     else:
         loss_weights = [1., 0., 0.]
     model, saved_path, _ = train(model, train_set, args.n_epochs,
-            learning_rate=args.lr, validation_set=validation_set,
-            summary_writer=writer, loss_weights=[1., 0., 0.],
-            global_step=global_step)
+            learning_rate=args.lr, optimizer_name=args.optimizer_name,
+            validation_set=validation_set, summary_writer=writer,
+            loss_weights=[1., 0., 0.], global_step=global_step)
     evaluate(saved_path, validation_set, model_cls)
 
 
