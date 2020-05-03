@@ -16,6 +16,7 @@ from load_sim_and_gen_data import OriginalTrainDataset, ValidationDataset, TestD
 from load_sim_and_gen_data import GeneratedDataset, CombinedTrainDataset  
 
 from alexnet import AlexNet1D
+from resnet import *
 from fc import OneLayerFC, TwoLayerFC, ThreeLayerFC
 
 MODEL_NAME_TO_CLASS_MAP = {
@@ -24,6 +25,7 @@ MODEL_NAME_TO_CLASS_MAP = {
     'twolayerfc': TwoLayerFC,
     'threelayerfc': ThreeLayerFC,
 }
+MODEL_NAME_TO_CLASS_MAP.update(RESNET_NAME_TO_MODEL_MAP)
 
 N_GEOM_CLASSES = ValidationDataset.n_geom_classes()
 N_MAT_CLASSES = ValidationDataset.n_mat_classes()
