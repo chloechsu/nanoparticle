@@ -11,5 +11,3 @@ nohup.txt
 *.DS_Store
 *.mat
 cache/
-model/*
-runs/*

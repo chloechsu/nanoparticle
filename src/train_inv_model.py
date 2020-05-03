@@ -46,8 +46,8 @@ def loss_fn(logits, labels_geom, labels_mat, labels_dim, loss_weights=None):
     return torch.sum(losses * loss_weights)
 
 
-def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
-        optimizer_name='Adam', learning_rate=1e-4, save_model_dir="model/",
+def train(model, trainset, n_epochs, save_model_path, print_every_n_batches=100,
+        batch_size=64, optimizer_name='Adam', learning_rate=1e-4,
         validation_set=None, summary_writer=None, loss_weights=None,
         global_step=0):
     """Trains and saves a given model."""
@@ -87,10 +87,9 @@ def train(model, trainset, n_epochs, print_every_n_batches=100, batch_size=64,
             for k, v in metrics.items():
                 summary_writer.add_scalar(k, v, global_step)
 
-    path = os.path.join(save_model_dir, time.strftime("%Y%m%d-%H%M%S") + ".pth")
-    torch.save(model.state_dict(), path)
-    print("Model saved to %s." % path)
-    return model, path, global_step
+    torch.save(model.state_dict(), save_model_path)
+    print("Model saved to %s." % save_model_path)
+    return model, global_step
 
 def compute_metrics(model, validation_set, print_metrics=False):
     evalloader = torch.utils.data.DataLoader(validation_set,
@@ -210,28 +209,31 @@ def main():
     model = model_cls(n_logits=validation_set.n_logits())
 
     dt = datetime.now().strftime("%m_%d_%Y_%H:%M")
-    log_dir_name = "runs/%s-%s-%s-lr_%f-trainsize_%d-%s" % (args.model_name,
+    model_str = "%s-%s-%s-lr_%f-trainsize_%d-%s" % (args.model_name,
             args.material, args.optimizer_name, args.lr, train_set.__len__(), dt)
     if args.multistage:
         log_dir_name += '-multistage'
     if args.joint_obj:
         log_dir_name += '-joint'
-    writer = SummaryWriter(log_dir=log_dir_name)
+    writer = SummaryWriter(log_dir=os.path.join('runs', model_str))
     print('Logging training progress to tensorboard dir %s.' % writer.log_dir)
+    saved_path = os.path.join('model', model_str + '.pth')
 
     global_step = 0
     
     if args.multistage:
         if args.material == 'all':
             # If mixing materials in training data, frist train materials classification.
-            model, saved_path, global_step = train(model, train_set, args.n_epochs_mat,
-                    learning_rate=args.lr, optimizer_name=args.optimizer_name,
+            model, global_step = train(model, train_set, args.n_epochs_mat,
+                    saved_path, learning_rate=args.lr,
+                    optimizer_name=args.optimizer_name,
                     validation_set=validation_set, summary_writer=writer,
                     loss_weights=[0., 1., 0.], global_step=global_step)
             evaluate(saved_path, validation_set, model_cls)
         # Train dimension regression.
-        model, saved_path, global_step = train(model, train_set, args.n_epochs_dim,
-                learning_rate=args.lr, optimizer_name=args.optimizer_name,
+        model, global_step = train(model, train_set, args.n_epochs_dim,
+                saved_path, learning_rate=args.lr,
+                optimizer_name=args.optimizer_name,
                 validation_set=validation_set, summary_writer=writer,
                 loss_weights=[0., 1., 0.01], global_step=global_step)
         evaluate(saved_path, validation_set, model_cls)
@@ -240,7 +242,7 @@ def main():
         loss_weights = [1., 1., 0.01]
     else:
         loss_weights = [1., 0., 0.]
-    model, saved_path, _ = train(model, train_set, args.n_epochs,
+    model, _ = train(model, train_set, args.n_epochs, saved_path,
             learning_rate=args.lr, optimizer_name=args.optimizer_name,
             validation_set=validation_set, summary_writer=writer,
             loss_weights=[1., 0., 0.], global_step=global_step)
