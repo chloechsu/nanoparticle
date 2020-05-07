@@ -4,6 +4,7 @@ import itertools
 import numpy as np
 import pandas as pd
 from sklearn.utils import shuffle
+from sklearn.model_selection import train_test_split 
 import torch
 from torch.utils.data import Dataset, ConcatDataset
 
@@ -33,22 +34,33 @@ def read_split_files(base_filepath, is_pandas=False):
 class DatasetFromFilepath(Dataset):
     """Abstract class for creating datasets from filepath."""
 
-    def __init__(self, input_filepath, label_filepath):
+    def __init__(self, input_filepath, label_filepath, data_fraction=1.0,
+            feature_engineering=True):
         super(DatasetFromFilepath).__init__()
         self.X = read_split_files(input_filepath)
-        self.X_diff = np.zeros_like(self.X)
-        self.X_diff[:, 0] = self.X[:, 0]
-        self.X_diff[:, 1:] = self.X[:, 1:] - self.X[:, :-1]
-        self.X_log = np.log(self.X + 1e-10)
-        self.X_log_diff = np.zeros_like(self.X_log)
-        self.X_log_diff[:, 0] = self.X_log[:, 0]
-        self.X_log_diff[:, 1:] = self.X_log[:, 1:] - self.X_log[:, :-1]
-        self.X = np.stack([self.X, self.X_diff, self.X_log,
-            self.X_log_diff], axis=1)
+        if feature_engineering:
+            self.X_diff = np.zeros_like(self.X)
+            self.X_diff[:, 0] = self.X[:, 0]
+            self.X_diff[:, 1:] = self.X[:, 1:] - self.X[:, :-1]
+            self.X_log = np.log(self.X + 1e-10)
+            self.X_log_diff = np.zeros_like(self.X_log)
+            self.X_log_diff[:, 0] = self.X_log[:, 0]
+            self.X_log_diff[:, 1:] = self.X_log[:, 1:] - self.X_log[:, :-1]
+            self.X = np.stack([self.X, self.X_diff, self.X_log,
+                self.X_log_diff], axis=1)
+        else:
+            self.X = np.stack([self.X, self.X, self.X, self.X], axis=1)
         df_y = read_split_files(label_filepath, is_pandas=True)
+
         # Check X and y have the same number of rows.
         self.n_samples = self.X.shape[0]
         assert df_y.shape[0] == self.n_samples
+
+        if data_fraction < 1.0:
+            self.n_samples = int(data_fraction * self.n_samples)
+            _, self.X, _, df_y = train_test_split(self.X, df_y,
+                    test_size=self.n_samples)
+
         # Extract geometry and material information.
         self.geom = df_y[["Geometry_" + g for g in GEOM_CLASSES]].to_numpy()
         self.mat = df_y[["Material_" + g for g in MAT_CLASSES]].to_numpy()
@@ -95,50 +107,52 @@ class DatasetFromFilepath(Dataset):
 class OriginalTrainDataset(DatasetFromFilepath):
     """The original simulated training dataset for training random forest."""
 
-    def __init__(self, material):
+    def __init__(self, material, **kwargs):
         super(OriginalTrainDataset, self).__init__(
             'data/sim_train_spectrum_%s.csv' % material,
-            'data/sim_train_labels_%s.csv' % material)
+            'data/sim_train_labels_%s.csv' % material, **kwargs)
 
 
 class ValidationDataset(DatasetFromFilepath):
     """The original simulated test dataset."""
 
-    def __init__(self, material):
+    def __init__(self, material, **kwargs):
         super(ValidationDataset, self).__init__(
             'data/sim_validation_spectrum_%s.csv' % material,
-            'data/sim_validation_labels_%s.csv' % material)
+            'data/sim_validation_labels_%s.csv' % material, **kwargs)
 
 
 class TestDataset(DatasetFromFilepath):
     """The original simulated test dataset."""
 
-    def __init__(self, material):
+    def __init__(self, material, **kwargs):
         super(TestDataset, self).__init__(
             'data/sim_test_spectrum_%s.csv' % material,
-            'data/sim_test_labels_%s.csv' % material)
+            'data/sim_test_labels_%s.csv' % material, **kwargs)
 
 
 class GeneratedDataset(ConcatDataset):
     """The dataset generated from random forest."""
 
-    def __init__(self, material):
-        in_files = glob.glob('data/gen_spectrum_%s_*-of-*.csv' % material)
-        label_files = glob.glob('data/gen_labels_%s_*-of-*.csv' % material)
+    def __init__(self, material, data_fraction=1.0, **kwargs):
+        in_files = glob.glob('data/gen_spectrum_%s_*-of-16.csv' % material)
+        label_files = glob.glob('data/gen_labels_%s_*-of-16.csv' % material)
         in_files.sort()
         label_files.sort()
         assert len(in_files) == len(label_files)
 
         super(GeneratedDataset, self).__init__(
-            [DatasetFromFilepath(i, l) for i, l in zip(in_files, label_files)])
+            [DatasetFromFilepath(i, l, data_fraction, **kwargs) for i, l in zip(
+                in_files, label_files)])
 
 
 class CombinedTrainDataset(ConcatDataset):
     """Generated dataset combined with original train dataset."""
     
-    def __init__(self, material):
+    def __init__(self, material, gen_data_fraction=1.0, **kwargs):
         super(CombinedTrainDataset, self).__init__(
-                [OriginalTrainDataset(material), GeneratedDataset(material)])
+                [OriginalTrainDataset(material, **kwargs),
+                 GeneratedDataset(material, gen_data_fraction, **kwargs)])
         
 
 def main():

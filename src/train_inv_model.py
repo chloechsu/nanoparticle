@@ -170,11 +170,12 @@ def compute_metrics(model, validation_set, print_metrics=False):
     return metrics
 
 
-def evaluate(model_path, validation_set, model_cls):
+def evaluate(model_path, validation_set, model_cls, metrics_path=None):
     model = model_cls(n_logits=validation_set.n_logits())
     model.load_state_dict(torch.load(model_path))
     metrics = compute_metrics(model, validation_set, print_metrics=True)
-    metrics_path = model_path[:-4] + '_metrics.csv'
+    if metrics_path is None:
+        metrics_path = model_path[:-4] + '_metrics.csv'
     with open(metrics_path, 'w') as f:
         w = csv.DictWriter(f, metrics.keys())
         w.writeheader()
@@ -190,6 +191,8 @@ def main():
     parser.add_argument('--exclude_gen_data', default=False,
             action='store_true', help='Whether to exclude generated data '
             'and only use original training data.')
+    parser.add_argument('--gen_data_fraction', type=float, default=1.0,
+            help='What fraction of the generated training data to use.')
     parser.add_argument('--lr', type=float, default=1e-4,
             help='Learning rate.')
     parser.add_argument('--optimizer_name', type=str, default='Adam',
@@ -200,6 +203,8 @@ def main():
             help='Number of epochs in training.')
     parser.add_argument('--joint_obj', default=False, action='store_true',
             help='Whether to jointly train with shape and dimension predictions.')
+    parser.add_argument('--no_feature_engineering', default=False, action='store_true',
+            help='Whether to use log emissivity and derivatives as features.')
     parser.add_argument('--multistage', default=False, action='store_true',
             help='Whether to train in multiple stages.')
     parser.add_argument('--n_epochs_mat', type=int, default=5,
@@ -213,11 +218,15 @@ def main():
     print('Args for training:')
     print(args)
 
+    feature_engineering = (not args.no_feature_engineering)
     if args.exclude_gen_data:
-        train_set = OriginalTrainDataset(args.material)
+        train_set = OriginalTrainDataset(args.material,
+                feature_engineering=feature_engineering)
     else:
-        train_set = CombinedTrainDataset(args.material)
-    validation_set = ValidationDataset(args.material)
+        train_set = CombinedTrainDataset(args.material, args.gen_data_fraction,
+                feature_engineering=feature_engineering)
+    validation_set = ValidationDataset(args.material,
+            feature_engineering=feature_engineering)
 
     try:
         model_cls = MODEL_NAME_TO_CLASS_MAP[args.model_name.lower()]
@@ -230,9 +239,11 @@ def main():
     model_str = "%s-%s-%s-lr_%f-trainsize_%d-%s" % (args.model_name,
             args.material, args.optimizer_name, args.lr, train_set.__len__(), dt)
     if args.multistage:
-        log_dir_name += '-multistage'
+        model_str += '-multistage'
     if args.joint_obj:
-        log_dir_name += '-joint'
+        model_str += '-joint'
+    if args.no_feature_engineering:
+        model_str += '-nofeature'
     writer = SummaryWriter(log_dir=os.path.join('runs', model_str))
     print('Logging training progress to tensorboard dir %s.' % writer.log_dir)
     saved_path = os.path.join('model', model_str + '.pth')

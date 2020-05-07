@@ -33,7 +33,7 @@ n_estimators = 200
 test_size = 0.2
 n_cpus = 8
 num_folds_training_for_errors = 2 # 100
-n_gen_to_data_ratio = 20 # the ratio between n_gen to the data used for ML
+n_gen_to_data_ratio = 100 # the ratio between n_gen to the data used for ML
 
 train_datasize_fraction_scalar = 0.5 # the fraction of original data to be used for ML.
 train_datasize_fraction_spectral = 0.5 # the fraction of original data to be used for ML.
@@ -230,7 +230,7 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
     X_test_all_materials = X_test
     y_test_all_materials = y_test
 
-    for material in [None, 'Au', 'SiN', 'SiO2']:
+    for material in ['Au', 'SiN', 'SiO2']:
         X_gen = gen_data_P1_P2_P3_Elzouka(X_train_all_columns,n_gen,
                 material=material)
         X_gen = pd.DataFrame(X_gen,columns=X_train.columns).astype(np.float64)
@@ -284,33 +284,33 @@ for spectral_or_scalar_calc in spectral_or_scalar_calc_all:
         print("DTGEN error analysis")
         dt_gen_r2,dt_gen_mae,dt_gen_mse,dt_gen_Erel, dt_gen_r2_all,dt_gen_mae_all,dt_gen_mse_all,dt_gen_Erel_all = calc_RMSE_MAE_MSE_Erel(y_test,y_pred_dtgen, my_x)    
 
-        split_and_write_to_csv(X_train, 'data/sim_train_labels_%s.csv' %
-                material)
-        split_and_write_to_csv(y_train, 'data/sim_train_spectrum_%s.csv' %
-                material)
+        # split_and_write_to_csv(X_train, 'data/sim_train_labels_%s.csv' %
+        #         material)
+        # split_and_write_to_csv(y_train, 'data/sim_train_spectrum_%s.csv' %
+        #         material)
         split_and_write_to_csv(X_gen, 'data/gen_labels_%s.csv' %
                 material)
         split_and_write_to_csv(y_gen, 'data/gen_spectrum_%s.csv' %
                 material)
         # Split test into half validation and half test.
-        X_val, X_test_split, y_val, y_test_split = train_test_split(X_test, y_test,
-                test_size=0.5, stratify=X_test[feature_set_geom_mat])
-        split_and_write_to_csv(X_val,
-                'data/sim_validation_labels_%s.csv' % material)
-        split_and_write_to_csv(y_val,
-                'data/sim_validation_spectrum_%s.csv' % material)
-        split_and_write_to_csv(X_test_split,
-                'data/sim_test_labels_%s.csv' % material)
-        split_and_write_to_csv(y_test_split,
-                'data/sim_test_spectrum_%s.csv' % material)
+        # X_val, X_test_split, y_val, y_test_split = train_test_split(X_test, y_test,
+        #         test_size=0.5, stratify=X_test[feature_set_geom_mat])
+        # split_and_write_to_csv(X_val,
+        #         'data/sim_validation_labels_%s.csv' % material)
+        # split_and_write_to_csv(y_val,
+        #         'data/sim_validation_spectrum_%s.csv' % material)
+        # split_and_write_to_csv(X_test_split,
+        #         'data/sim_test_labels_%s.csv' % material)
+        # split_and_write_to_csv(y_test_split,
+        #         'data/sim_test_spectrum_%s.csv' % material)
         
         
         #%% save ML models, test and train data ===================================
         # Save in Python format
-        variable_name_list = ['rf', 'dt', 'dt_gen',                           
-                              'X_train', 'X_new_train', 'X_test', 
-                              'y_train', 'y_new_train', 'y_test',
-                              'n_gen', 'train_data_size_fraction', 'my_x', 'scaling_factors']
-        for variable_name in variable_name_list:
-            joblib.dump(globals()[variable_name],
-                    save_folder+variable_name+'_'+material+'.joblib')        
+        # variable_name_list = ['rf', 'dt', 'dt_gen',                           
+        #                       'X_train', 'X_new_train', 'X_test', 
+        #                       'y_train', 'y_new_train', 'y_test',
+        #                       'n_gen', 'train_data_size_fraction', 'my_x', 'scaling_factors']
+        # for variable_name in variable_name_list:
+        #     joblib.dump(globals()[variable_name],
+        #             save_folder+variable_name+'_'+material+'.joblib')        

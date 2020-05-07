@@ -7,7 +7,9 @@ data/*
 *.swp
 nohup.txt
 *.txt
+*.out
 *.swo
 *.DS_Store
 *.mat
 cache/
+*.pth
