@@ -203,6 +203,8 @@ def main():
             help='Number of epochs in training.')
     parser.add_argument('--joint_obj', default=False, action='store_true',
             help='Whether to jointly train with shape and dimension predictions.')
+    parser.add_argument('--size_only', default=False, action='store_true',
+            help='Whether to train with only dimension predictions.')
     parser.add_argument('--no_feature_engineering', default=False, action='store_true',
             help='Whether to use log emissivity and derivatives as features.')
     parser.add_argument('--multistage', default=False, action='store_true',
@@ -242,6 +244,8 @@ def main():
         model_str += '-multistage'
     if args.joint_obj:
         model_str += '-joint'
+    if args.size_only:
+        model_str += '-size'
     if args.no_feature_engineering:
         model_str += '-nofeature'
     writer = SummaryWriter(log_dir=os.path.join('runs', model_str))
@@ -269,12 +273,14 @@ def main():
     
     if args.joint_obj:
         loss_weights = [1., 1., 0.01]
+    elif args.size_only:
+        loss_weights = [0., 0., 1.]
     else:
         loss_weights = [1., 0., 0.]
     model, _ = train(model, train_set, args.n_epochs, saved_path,
             learning_rate=args.lr, optimizer_name=args.optimizer_name,
             validation_set=validation_set, summary_writer=writer,
-            loss_weights=[1., 0., 0.], global_step=global_step)
+            loss_weights=loss_weights, global_step=global_step)
     evaluate(saved_path, validation_set, model_cls)
 
 
