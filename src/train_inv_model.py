@@ -140,6 +140,8 @@ def compute_metrics(model, validation_set, print_metrics=False):
             else:
                 metrics['accuracy/' + c] = float(class_correct[i]) / class_total[i]
             metrics['n_examples/' + c] = class_total[i]
+        metrics['accuracy/simple_avg_' + geom_or_mat] = np.mean(
+                [metrics['accuracy/' + c] for c in class_names])
         metrics['accuracy/avg_' + geom_or_mat] = float(
                 np.sum(class_correct)) / validation_set.__len__()
         metrics['loss/validation_' + geom_or_mat] = (
