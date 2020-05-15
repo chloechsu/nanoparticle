@@ -33,7 +33,7 @@ n_estimators = 200
 test_size = 0.2
 n_cpus = 8
 num_folds_training_for_errors = 2 # 100
-n_gen_to_data_ratio = 100 # the ratio between n_gen to the data used for ML
+n_gen_to_data_ratio = 20 # the ratio between n_gen to the data used for ML
 
 train_datasize_fraction_scalar = 0.5 # the fraction of original data to be used for ML.
 train_datasize_fraction_spectral = 0.5 # the fraction of original data to be used for ML.
