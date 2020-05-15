@@ -34,7 +34,7 @@ See example script `src/load_sim_and_gen_data.py`.
 ### Train neural network as inverse model
 Example:
 
-`python src/train_inv_model.py --model_name=alexnet --lr=1e-4`
+`python src/train_inv_model.py --model_name=resnet18 --lr=1e-4`
 
 See `python src/train_inv_model.py -h` for all command line options.
 
