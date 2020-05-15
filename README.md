@@ -6,7 +6,7 @@ To simplify the measurement procedure, we show that machine learning models can 
      
 We compare the effectiveness of three types of models: random forests, fully connected neural networks, and convolutional neural networks, and compare different training procedures. We find that a ResNet-based convolutional neural network performs the best on shape classification, while random forests and convolutional neural networks are comparable on size regression. We also include studies on the effects of data augmentation, multi-task training, and joint training on materials.
 
-For more details, see `report.pdf` in the repository.
+For more details, see [`report.pdf`](report.pdf) in the repository.
 
 ## Usage
 
