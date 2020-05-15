@@ -182,7 +182,7 @@ def Train_Random_Forests_Shape_Classification(model_type, training_spectra, trai
 
 
 def Train_Random_Forests_Size_Regression(model_type, training_spectra, training_labels, 
-                                              test_spectra, test_labels, trees = 10):
+                                              test_spectra, test_labels, trees = 10, m_features = 'auto'):
 
     """
     Trains random forest regressor to predict size from nanoparticle emissivity spectra. Has the ability to train a
@@ -207,7 +207,7 @@ def Train_Random_Forests_Size_Regression(model_type, training_spectra, training_
         labels_test = test_labels.drop(columns = ['ShortestDim', 'MiddleDim', 'LongDim', 'Geometry_TriangPrismIsosc',
                                                             'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire', 'index',
                                                              'Material_Au', 'Material_SiN', 'Material_SiO2'] )
-        rf_model = RandomForestRegressor(n_estimators = trees, n_jobs = -1)
+        rf_model = RandomForestRegressor(n_estimators = trees, n_jobs = -1, max_features=m_features)
         rf_model.fit(training_spectra, np.ravel(labels_train))
         accuracy = rf_model.score(test_spectra, np.ravel(labels_test))
     
@@ -240,9 +240,44 @@ def Train_Random_Forests_Size_Regression(model_type, training_spectra, training_
         rf_model = MultiOutputRegressor(rf_model_temp, n_jobs = -1)
         rf_model.fit(training_spectra, labels_train_as_array)
         accuracy = rf_model.score(test_spectra, labels_test_as_array)
-        
-    
-    
+
+    if model_type == 'short_dim':
+        labels_train = training_labels.drop(columns = ['MiddleDim', 'LongDim', 'Geometry_TriangPrismIsosc',
+                                                            'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire', 'index',
+                                                             'Material_Au', 'Material_SiN', 'Material_SiO2', 'log Area/Vol'] )
+        labels_test = test_labels.drop(columns = ['MiddleDim', 'LongDim', 'Geometry_TriangPrismIsosc',
+                                                            'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire', 'index',
+                                                             'Material_Au', 'Material_SiN', 'Material_SiO2', 'log Area/Vol'] )
+
+        rf_model = RandomForestRegressor(n_estimators = trees, n_jobs = -1, max_features=m_features)
+        rf_model.fit(training_spectra, np.ravel(labels_train))
+        accuracy = rf_model.score(test_spectra, np.ravel(labels_test))
+
+    if model_type == 'middle_dim':
+        labels_train = training_labels.drop(columns = ['ShortestDim', 'LongDim', 'Geometry_TriangPrismIsosc',
+                                                            'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire', 'index',
+                                                             'Material_Au', 'Material_SiN', 'Material_SiO2', 'log Area/Vol'] )
+        labels_test = test_labels.drop(columns = ['ShortestDim', 'LongDim', 'Geometry_TriangPrismIsosc',
+                                                            'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire', 'index',
+                                                             'Material_Au', 'Material_SiN', 'Material_SiO2', 'log Area/Vol'] )
+
+        rf_model = RandomForestRegressor(n_estimators = trees, n_jobs = -1, max_features=m_features)
+        rf_model.fit(training_spectra, np.ravel(labels_train))
+        accuracy = rf_model.score(test_spectra, np.ravel(labels_test))
+
+    if model_type == 'long_dim':
+        labels_train = training_labels.drop(columns=['ShortestDim', 'MiddleDim', 'Geometry_TriangPrismIsosc',
+                                                     'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire',
+                                                     'index',
+                                                     'Material_Au', 'Material_SiN', 'Material_SiO2', 'log Area/Vol'])
+        labels_test = test_labels.drop(columns=['ShortestDim', 'MiddleDim', 'Geometry_TriangPrismIsosc',
+                                                'Geometry_parallelepiped', 'Geometry_sphere', 'Geometry_wire', 'index',
+                                                'Material_Au', 'Material_SiN', 'Material_SiO2', 'log Area/Vol'])
+
+        rf_model = RandomForestRegressor(n_estimators=trees, n_jobs=-1, max_features=m_features)
+        rf_model.fit(training_spectra, np.ravel(labels_train))
+        accuracy = rf_model.score(test_spectra, np.ravel(labels_test))
+
     return (accuracy, rf_model)
 
 
@@ -267,7 +302,7 @@ def normalize_cm(cm, test_set, num_categories):
 
 
 
-def plot_accuracy(cm, categories, title, y_range = [0.5,1]):
+def plot_accuracy(cm, categories, title, y_range = (0.5,1)):
     """
     plots the accuracy of a model at predicting shapes from spectra, showing the accuracy for each shape
 
@@ -317,10 +352,148 @@ def plot_confusion_matrix(cm, classes,
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
+    plt.show()
 
+
+def binary_classification_models(training_labels, training_spectra, testing_labels, testing_spectra, binary_model,
+                                 confusion_matrix_=True):
+
+    spectra_train_df = pd.DataFrame(training_spectra)
+    spectra_test_df = pd.DataFrame(testing_spectra)
+    all_data = spectra_train_df.join(training_labels)
+
+    if binary_model == 'Geometry_parallelepiped':
+        all_data_shape = all_data.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                'MiddleDim', 'LongDim', 'Material_SiN',
+                                                'Material_SiO2', 'Material_Au',
+                                                'Geometry_sphere',
+                                                'Geometry_wire',
+                                                'Geometry_TriangPrismIsosc'])
+        labels_test_shape = testing_labels.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                      'MiddleDim', 'LongDim', 'Material_SiN',
+                                                      'Material_SiO2', 'Material_Au',
+                                                      'Geometry_sphere',
+                                                      'Geometry_wire',
+                                                      'Geometry_TriangPrismIsosc'])
+
+        all_data_shape_only = all_data_shape[all_data_shape.Geometry_parallelepiped != 0]
+        all_data_shape_others = all_data_shape[all_data_shape.Geometry_parallelepiped == 0]
+        test = spectra_test_df.join(labels_test_shape)
+        labels_test_shape_only = test[test.Geometry_parallelepiped != 0]
+        labels_test_shape_others = test[test.Geometry_parallelepiped == 0]
+
+    if binary_model == 'Geometry_sphere':
+        all_data_shape = all_data.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                'MiddleDim', 'LongDim', 'Material_SiN',
+                                                'Material_SiO2', 'Material_Au',
+                                                'Geometry_parallelepiped',
+                                                'Geometry_wire',
+                                                'Geometry_TriangPrismIsosc'])
+        labels_test_shape = testing_labels.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                      'MiddleDim', 'LongDim', 'Material_SiN',
+                                                      'Material_SiO2', 'Material_Au',
+                                                      'Geometry_parallelepiped',
+                                                      'Geometry_wire',
+                                                      'Geometry_TriangPrismIsosc'])
+
+        all_data_shape_only = all_data_shape[all_data_shape.Geometry_sphere != 0]
+        all_data_shape_others = all_data_shape[all_data_shape.Geometry_sphere == 0]
+        test = spectra_test_df.join(labels_test_shape)
+        labels_test_shape_only = test[test.Geometry_sphere != 0]
+        labels_test_shape_others = test[test.Geometry_sphere == 0]
+
+    if binary_model == 'Geometry_wire':
+        all_data_shape = all_data.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                'MiddleDim', 'LongDim', 'Material_SiN',
+                                                'Material_SiO2', 'Material_Au',
+                                                'Geometry_parallelepiped',
+                                                'Geometry_sphere',
+                                                'Geometry_TriangPrismIsosc'])
+        labels_test_shape = testing_labels.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                      'MiddleDim', 'LongDim', 'Material_SiN',
+                                                      'Material_SiO2', 'Material_Au',
+                                                      'Geometry_parallelepiped',
+                                                      'Geometry_sphere',
+                                                      'Geometry_TriangPrismIsosc'])
+
+        all_data_shape_only = all_data_shape[all_data_shape.Geometry_wire != 0]
+        all_data_shape_others = all_data_shape[all_data_shape.Geometry_wire == 0]
+        test = spectra_test_df.join(labels_test_shape)
+        labels_test_shape_only = test[test.Geometry_wire != 0]
+        labels_test_shape_others = test[test.Geometry_wire == 0]
+
+    if binary_model == 'Geometry_TriangPrismIsosc':
+        all_data_shape = all_data.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                'MiddleDim', 'LongDim', 'Material_SiN',
+                                                'Material_SiO2', 'Material_Au',
+                                                'Geometry_parallelepiped',
+                                                'Geometry_wire',
+                                                'Geometry_sphere'])
+        labels_test_shape = testing_labels.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
+                                                      'MiddleDim', 'LongDim', 'Material_SiN',
+                                                      'Material_SiO2', 'Material_Au',
+                                                      'Geometry_parallelepiped',
+                                                      'Geometry_wire',
+                                                      'Geometry_sphere'])
+
+        all_data_shape_only = all_data_shape[all_data_shape.Geometry_TriangPrismIsosc != 0]
+        all_data_shape_others = all_data_shape[all_data_shape.Geometry_TriangPrismIsosc == 0]
+        test = spectra_test_df.join(labels_test_shape)
+        labels_test_shape_only = test[test.Geometry_TriangPrismIsosc != 0]
+        labels_test_shape_others = test[test.Geometry_TriangPrismIsosc == 0]
+
+    remove_n = 3176
+    drop_indices = np.random.choice(labels_test_shape_others.index, remove_n, replace=False)
+    test_subset = labels_test_shape_others.drop(drop_indices)
+
+    test_50_50 = pd.concat([test_subset, labels_test_shape_only])
+    shape_binary_test = test_50_50[binary_model]
+    test_50_50.drop(columns=[binary_model], inplace=True)
+
+    remove_n = 81205
+    drop_indices = np.random.choice(all_data_shape_others.index, remove_n, replace=False)
+    df_subset = all_data_shape_others.drop(drop_indices)
+
+    all_data_shape_50_50 = pd.concat([df_subset, all_data_shape_only])
+    all_data_shape_50_50.reset_index(inplace=True)
+    all_data_shape_50_50.drop(columns=["index"], inplace=True)
+
+    shape_binary = all_data_shape_50_50[binary_model]
+    all_data_shape_50_50.drop(columns=[binary_model], inplace=True)
+
+    rf_binary = RandomForestClassifier(n_estimators=50, n_jobs=-1)
+    rf_binary.fit(all_data_shape_50_50, np.ravel(shape_binary))
+    rf_binary_accuracy = rf_binary.score(test_50_50, shape_binary_test)
+    rf_binary_predictions = rf_binary.predict(test_50_50)
+    rf_binary_cm = confusion_matrix(shape_binary_test, rf_binary_predictions)
+
+    cm_normalized = normalize_cm(rf_binary_cm, list(shape_binary_test), 2)
+    if confusion_matrix_ == True:
+        plot_confusion_matrix(np.asarray(cm_normalized), [binary_model, "Not " + binary_model])
+        plt.savefig(binary_model + '.png', format='png')
+
+    return ("Binary Classification Model of " + binary_model, rf_binary, rf_binary_accuracy, cm_normalized,
+            rf_binary_predictions, shape_binary_test)
+
+""" Dictionaries used to convert from one hot encoding
+from_one_hot_dict = {(1.,0.,0.,0.) : 0, (0.,1.,0.,0.) : 1, (0.,0.,1.,0.) : 2, (0.,0.,0.,1.) : 3}
+from_one_hot_dict_materials = {(1.,0.,0.) : 0, (0.,1.,0.) : 1, (0.,0.,1.) : 2}
+
+# Example code to produce shape classification model for only gold and visualize it's accuracy
+rf_Au = Train_Random_Forests_Shape_Classification("Au", spectra_train_set, labels_train_set, spectra_test_set, labels_test_set, 50)
+
+accuracy_rf = rf_Au[0]
+print(accuracy_rf)
+rf_Au_model = rf_Au[1]
+cm_Au = rf_Au[2]
+rf_Au_test_list = list(rf_Au[4])
+
+cm_Au_normalized = normalize_cm(cm_Au, rf_Au_test_list, 4)
+catagories_shape_prediction = ["TriangPrismIsosc", "Parallelepiped", "Sphere", "Wire"]
+plot_accuracy(cm_Au_normalized, catagories_shape_prediction, "Accuracy of Shapes Au")
 
 def shape_classification_binary(training_set_spectrum, training_set_lables, test_set_spectrum, test_set_labels,
-                                num_trees, shapes):
+                                shapes, num_trees = 50, depth = None, m_features = 'auto'):
     for shape in shapes:
         if shape == 'Geometry_parallelepiped':
             labels_train_shape_parallelepiped = training_set_lables.drop(columns=['index', 'log Area/Vol', 'ShortestDim',
@@ -338,7 +511,7 @@ def shape_classification_binary(training_set_spectrum, training_set_lables, test
             labels_test_shape_parallelepiped_as_array = np.asarray(labels_test_shape_parallelepiped)
 
             print("Training rf_parallelepiped")
-            rf_parallelepiped = RandomForestClassifier(n_estimators=num_trees)
+            rf_parallelepiped = RandomForestClassifier(n_estimators = num_trees, max_depth = depth, max_features = m_features, n_jobs=-1)
             rf_parallelepiped.fit(training_set_spectrum, np.ravel(labels_train_shape_parallelepiped_as_array))
             rf_parallelepiped_accuracy = rf_parallelepiped.score(test_set_spectrum,
                                                                  labels_test_shape_parallelepiped_as_array)
@@ -360,7 +533,7 @@ def shape_classification_binary(training_set_spectrum, training_set_lables, test
             labels_test_shape_triangle_as_array = np.asarray(labels_test_shape_triangle)
 
             print("Training rf_triangle")
-            rf_triangle = RandomForestClassifier(n_estimators=num_trees)
+            rf_triangle = RandomForestClassifier(n_estimators = num_trees, max_depth = depth, max_features = m_features, n_jobs=-1 )
             rf_triangle.fit(training_set_spectrum, np.ravel(labels_train_shape_triangle_as_array))
             rf_triangle_accuracy = rf_triangle.score(test_set_spectrum, labels_test_shape_triangle_as_array)
             rf_triangle_predictions = rf_triangle.predict(test_set_spectrum)
@@ -381,7 +554,7 @@ def shape_classification_binary(training_set_spectrum, training_set_lables, test
             labels_test_shape_wire_as_array = np.asarray(labels_test_shape_wire)
 
             print("Training rf_wire")
-            rf_wire = RandomForestClassifier(n_estimators=num_trees)
+            rf_wire = RandomForestClassifier(n_estimators = num_trees, max_depth = depth, max_features = m_features, n_jobs=-1)
             rf_wire.fit(training_set_spectrum, np.ravel(labels_train_shape_wire_as_array))
             rf_wire_accuracy = rf_wire.score(test_set_spectrum, labels_test_shape_wire_as_array)
             rf_wire_predictions = rf_wire.predict(test_set_spectrum)
@@ -402,37 +575,18 @@ def shape_classification_binary(training_set_spectrum, training_set_lables, test
             labels_test_shape_sphere_as_array = np.asarray(labels_test_shape_sphere)
 
             print("Training rf_sphere")
-            rf_sphere = RandomForestClassifier(n_estimators=num_trees)
+            rf_sphere = RandomForestClassifier(n_estimators = num_trees, max_depth = depth, max_features = m_features, n_jobs=-1)
             rf_sphere.fit(training_set_spectrum, np.ravel(labels_train_shape_sphere_as_array))
             rf_sphere_accuracy = rf_sphere.score(test_set_spectrum, labels_test_shape_sphere_as_array)
             rf_sphere_predictions = rf_sphere.predict(test_set_spectrum)
             rf_sphere_cm = confusion_matrix(labels_test_shape_sphere_as_array, rf_sphere_predictions)
 
-    return [["parallelepiped", rf_parallelepiped_accuracy, rf_parallelepiped_predictions, rf_parallelepiped_cm,
+    return [["parallelepiped", rf_parallelepiped ,rf_parallelepiped_accuracy, rf_parallelepiped_predictions, rf_parallelepiped_cm,
              labels_test_shape_parallelepiped_as_array],
-            ["sphere", rf_sphere_accuracy, rf_sphere_predictions, rf_sphere_cm, labels_test_shape_sphere_as_array],
-            ["triangle", rf_triangle_accuracy, rf_triangle_predictions, rf_triangle_cm,
+            ["sphere", rf_sphere, rf_sphere_accuracy, rf_sphere_predictions, rf_sphere_cm, labels_test_shape_sphere_as_array],
+            ["triangle", rf_triangle, rf_triangle_accuracy, rf_triangle_predictions, rf_triangle_cm,
              labels_test_shape_triangle_as_array],
-            ["wire", rf_wire_accuracy, rf_wire_predictions, rf_wire_cm, labels_test_shape_wire_as_array]]
-
-
-""" Dictionaries used to convert from one hot encoding
-from_one_hot_dict = {(1.,0.,0.,0.) : 0, (0.,1.,0.,0.) : 1, (0.,0.,1.,0.) : 2, (0.,0.,0.,1.) : 3}
-from_one_hot_dict_materials = {(1.,0.,0.) : 0, (0.,1.,0.) : 1, (0.,0.,1.) : 2}
-
-# Example code to produce shape classification model for only gold and visualize it's accuracy
-rf_Au = Train_Random_Forests_Shape_Classification("Au", spectra_train_set, labels_train_set, spectra_test_set, labels_test_set, 50)
-
-accuracy_rf = rf_Au[0]
-print(accuracy_rf)
-rf_Au_model = rf_Au[1]
-cm_Au = rf_Au[2]
-rf_Au_test_list = list(rf_Au[4])
-
-cm_Au_normalized = normalize_cm(cm_Au, rf_Au_test_list, 4)
-catagories_shape_prediction = ["TriangPrismIsosc", "Parallelepiped", "Sphere", "Wire"]
-plot_accuracy(cm_Au_normalized, catagories_shape_prediction, "Accuracy of Shapes Au")
-
+            ["wire", rf_wire, rf_wire_accuracy, rf_wire_predictions, rf_wire_cm, labels_test_shape_wire_as_array]]
 
 
 """
