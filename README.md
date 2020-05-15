@@ -50,5 +50,5 @@ the `model/`directory.
 Run the script `src/test_inv_model.py`.
 
 ### Random forest models
-See the Jupyter notebooks `Build_RF_Models_UPDATED_051420.ipynb` and
-`Paper Figures.ipynb`.
+The Jupyter notebook `Build_RF_Models_UPDATED_051420.ipynb` trains the RF models using `RF_Model_Functions.py` and
+`Paper Figures.ipynb` creates the figures shown in the paper relating to the random forest models.
