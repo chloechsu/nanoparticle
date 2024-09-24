@@ -13,7 +13,7 @@ For more details, see [`report.pdf`](report.pdf) in the repository.
 ### Prerequisite
 With Python 3, install requirements on pip by running `pip install -r requirements.txt`.
 
-Put the training data from [Elzouka et al. (arXiv:2002.04223)](https://arxiv.org/abs/2002.04223) in `data/simulated_data.mat`.
+Put the training data from [Elzouka et al. https://www.sciencedirect.com/science/article/pii/S2666386420302812] in `data/simulated_data.mat`.
 
 ### Data augmentation
 In the nanoparticle directory, run
